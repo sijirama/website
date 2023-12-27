@@ -37,7 +37,7 @@ export default function About() {
             opacity: 0,
             duration: 1.2,
             ease: "power3.inOut",
-            delay:0.5
+            delay: 0.5
         })
 
         tl.from([soc1.current, soc2.current, soc3.current], {
@@ -45,8 +45,8 @@ export default function About() {
             opacity: 0,
             duration: 1,
             ease: "power3.inOut",
-            stagger:{
-                amount:0.2
+            stagger: {
+                amount: 0.2
             }
         }, ">+0.1")
     }, { scope: title })
@@ -69,9 +69,10 @@ export default function About() {
                         my name is Oluwasijibomi Ilesanmi, currently studying software engineering as a final year student at Babcock University. I have a deep passion for crafting applications that not only solve problems but also contribute positively to the well-being of humanity.
                     </p>
                     <p>
+                        I dream of coding for a cause, creating apps that really matter. I want my work to be a game-changer, making a difference in people's lives.
                     </p>
+                    When I'm not glued to my computer or immersed in a good book, you'll likely find me passionately defending Kanye West – he's practically a life priority. Right after the debate, I dive into his music. Beyond hip hop, I groove to R&B and occasionally dip into the world of Afro beats. Ted Dekker is my go-to author, and I've devoured nearly all of R.L. Stine's Goosebumps books (well, maybe not all, but a lot). In an alternate universe, I might have pursued physics in university, but no regrets – the people I've met along the way have been awesome
                     <p>
-                        My dream is to work in an environment where I feel like a superhero, saving lives with the code I write. I aim to build applications that make a real impact and become lifelines for those who need it most.
                     </p>
                 </div>
                 <div className="w-full">
