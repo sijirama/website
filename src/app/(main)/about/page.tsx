@@ -58,7 +58,7 @@ export default function About() {
                 <div className="flex gap-3 items-center justify-start md:justify-center w-full px-5">
                     {socials.map((social, index) => (
                         <a key={index} href={`${social.link}`} ref={social.ref} target="_blank">
-                            <div className="p-2 hover:text-gray-500  cursor-pointer border border-zinc-900 rounded-[0.58rem] flex items-center justify-center text-gray-600 transition-colors duration-200 text-sm md:text-xl" >{social.icon}</div>
+                            <div className="p-2 hover:text-gray-800  cursor-pointer border border-zinc-950 rounded-[0.58rem] flex items-center justify-center text-black transition-colors duration-200 text-sm md:text-xl" >{social.icon}</div>
                         </a>
                     ))}
                 </div>
