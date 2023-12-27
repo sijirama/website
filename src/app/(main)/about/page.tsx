@@ -69,9 +69,9 @@ export default function About() {
                         my name is Oluwasijibomi Ilesanmi, currently studying software engineering as a final year student at Babcock University. I have a deep passion for crafting applications that not only solve problems but also contribute positively to the well-being of humanity.
                     </p>
                     <p>
-                        I dream of coding for a cause, creating apps that really matter. I want my work to be a game-changer, making a difference in people's lives.
+                        I dream of coding for a cause, creating apps that really matter. I want my work to be a game-changer, making a difference in peoples lives.
                     </p>
-                    When I'm not glued to my computer or immersed in a good book, you'll likely find me passionately defending Kanye West – he's practically a life priority. Right after the debate, I dive into his music. Beyond hip hop, I groove to R&B and occasionally dip into the world of Afro beats. Ted Dekker is my go-to author, and I've devoured nearly all of R.L. Stine's Goosebumps books (well, maybe not all, but a lot). In an alternate universe, I might have pursued physics in university, but no regrets – the people I've met along the way have been awesome
+                    When I am not glued to my computer or immersed in a good book, you will likely find me passionately defending Kanye West – he iss practically a life priority. Right after the debate, I dive into his music. Beyond hip hop, I groove to R&B and occasionally dip into the world of Afro beats. Ted Dekker is my go-to author, and I have devoured nearly all of R.L. Stines Goosebumps books (well, maybe not all, but a lot). In an alternate universe, I might have pursued physics in university, but no regrets – the people I have met along the way have been awesome
                     <p>
                     </p>
                 </div>
