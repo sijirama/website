@@ -89,7 +89,7 @@ export default function Home() {
                 </div>
             </section>
             <LatestUpdateComponent />
-            <section className="bg-purple-800 h-[20rem]  lg:h-52">
+            <section className="bg-black min-h-[20rem]  lg:min-h-52 flex items-center justify-center">
                 <JobHunt />
             </section>
         </main>
