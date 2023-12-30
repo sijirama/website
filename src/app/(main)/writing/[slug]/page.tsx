@@ -19,7 +19,7 @@ function page(props: any) {
         </div>
 
         <div className="w-full p-2 flex flex-col items-center justify-center">
-          <h1 className="font-bold text-3xl -tracking-wider">
+          <h1 className="font-bold text-2xl md:text-3xl text-center -tracking-wider">
             {post.data.title}
           </h1>
           <p className="font-light text-sm">
@@ -29,7 +29,7 @@ function page(props: any) {
         </div>
 
         <div className="text-start text-lg">
-          <article className="prose prose-stone max-w-none mx-auto prose-pre:bg-black">
+          <article className="prose prose-stone max-w-none mx-auto prose-pre:bg-black prose-p:text-sm md:prose-p:text-base prose-headings:text-lg md:prose-headings:text-2xl">
             <Markdown>{post.content}</Markdown>
           </article>
         </div>
