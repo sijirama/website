@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     openGraph:{
         title:"siji's website",
         description:"this is siji's website",
-        images:"/me.jpeg"
+        images:"https://website-1p2vz3kd2-imnaseli.vercel.app/opengraph-image.jpeg?fa796db7ad26ea85="
     }
 }
 
