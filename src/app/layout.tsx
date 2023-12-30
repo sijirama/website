@@ -7,6 +7,10 @@ import { inter } from '@/lib/fonts'
 export const metadata: Metadata = {
     title: 'oluwasijibomi',
     description: 'i live so i love.',
+    openGraph:{
+        title:"siji's website",
+        description:"this is siji's website",
+    }
 }
 
 export default function RootLayout({

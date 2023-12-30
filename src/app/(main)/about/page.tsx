@@ -1,4 +1,5 @@
 "use client"
+import CustomCode from "@/components/CustomCodeBlock";
 import { bai, manrope, rubik } from "@/lib/fonts";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
@@ -57,7 +58,7 @@ export default function About() {
                 {/* title side */}
                 <div className={`w-full flex flex-col items-center justify-center gap-2 `}>
                     <p ref={title} className={`text-[3rem]/none md:text-[3rem]/none lg:text-[4rem]/none font-semibold ${rubik.className} -tracking-widest  md:text-center w-full`}>about /</p>
-                    <div className="flex gap-3 items-center justify-start md:justify-center w-full">
+                    <div className="flex gap-3 items-center justify-start md:justify-center w-full overflow-hidden">
                         {socials.map((social, index) => (
                             <a key={index} href={`${social.link}`} ref={social.ref} target="_blank">
                                 <div className="p-1 md:p-2 hover:text-gray-800  cursor-pointer border border-zinc-950 rounded-[0.58rem] flex items-center justify-center text-black transition-colors duration-200 text-sm md:text-xl" >{social.icon}</div>
@@ -94,6 +95,9 @@ export default function About() {
                         <li>the future and what it holds for us.</li>
                     </ul>
                 </div>
+                <CustomCode>
+                    Apologies for it being kinda short, truth is i am still figuring who i am.
+                </CustomCode>
             </div>
         </main>
     )
