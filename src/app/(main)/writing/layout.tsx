@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
+import Header from "@/components/Header";
+import { Footer } from "@/components/Footer";
+import { inter } from "@/lib/fonts";
 
 export const metadata: Metadata = {
-  title: "oluwasijibomi",
+  title: "Siji's blog",
   description: "i sometimes write stuff.",
   openGraph: {
     title: "oluwasijibomi",
@@ -10,3 +13,11 @@ export const metadata: Metadata = {
       "https://opengraph.b-cdn.net/production/documents/1e1ccf42-4d7f-4915-97ee-d6d788602025.png?token=ZnDicu8y44ePX_Roep6yaQmgrAjPADHQQPRh6L69004&height=514&width=1200&expires=33239952242",
   },
 };
+
+export default function WritingLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return <main>{children}</main>;
+}
