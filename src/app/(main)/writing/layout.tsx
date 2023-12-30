@@ -1,8 +1,4 @@
 import type { Metadata } from "next";
-import "./globals.css";
-import Header from "@/components/Header";
-import { Footer } from "@/components/Footer";
-import { inter } from "@/lib/fonts";
 
 export const metadata: Metadata = {
   title: "oluwasijibomi",
