@@ -10,6 +10,7 @@ export const metadata: Metadata = {
     openGraph:{
         title:"siji's website",
         description:"this is siji's website",
+        images:"/me.jpeg"
     }
 }
 
