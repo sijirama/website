@@ -26,6 +26,7 @@ export function getPostMetaData(): PostMetaData[] {
       description: matterResult.data.description,
       slug: filename.replace(format, ""),
       thumbnail: matterResult.data.thumbnail,
+      readTime: matterResult.data.readTime,
     };
   });
 
