@@ -9,8 +9,8 @@ export const metadata: Metadata = {
     description: 'i live so i love.',
     openGraph:{
         title:"siji's website",
-        description:"this is siji's website",
-        images:"https://website-1p2vz3kd2-imnaseli.vercel.app/opengraph-image.jpeg?fa796db7ad26ea85="
+        description:"i live so that i can love",
+        images:"https://siji.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Faphrodite.ba7bb8a6.jpg&w=3840&q=75"
     }
 }
 
