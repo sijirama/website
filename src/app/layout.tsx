@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     openGraph:{
         title:"siji's website",
         description:"i live so that i can love",
-        images:"https://siji.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Faphrodite.ba7bb8a6.jpg&w=3840&q=75"
+        images:"https://opengraph.b-cdn.net/production/documents/6f6fe320-ad5f-4c32-ae18-8bd71717f445.jpg?token=_Uqx-HbKtoYMzIEDNJu12usQP2ygfPpkCh_U1LjyHvk&height=675&width=1200&expires=33239909303"
     }
 }
 
