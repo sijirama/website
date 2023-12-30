@@ -50,29 +50,30 @@ export default function About() {
             }
         }, ">+0.1")
     }, { scope: title })
-
     return (
-        <main className={`min-h-screen items-center pt-12 md:pt-10 lg:pt-14 -tracking-wider bg-white ${manrope.className} grid grid-cols-1 md:grid-cols-2 grid-rows-5 md:grid-rows-1 text-black`}>
-            <div className={`h-full w-full flex flex-col items-center justify-center gap-2`}>
-                <p ref={title} className={`text-[4rem] lg:text-[6rem] font-semibold ${rubik.className} -tracking-widest px-5 md:text-center w-full`}>about /</p>
-                <div className="flex gap-3 items-center justify-start md:justify-center w-full px-5">
-                    {socials.map((social, index) => (
-                        <a key={index} href={`${social.link}`} ref={social.ref} target="_blank">
-                            <div className="p-2 hover:text-gray-800  cursor-pointer border border-zinc-950 rounded-[0.58rem] flex items-center justify-center text-black transition-colors duration-200 text-sm md:text-xl" >{social.icon}</div>
-                        </a>
-                    ))}
+        <main className={`min-h-screen items-center pt-12 md:pt-10 lg:pt-14 -tracking-wide bg-white ${manrope.className} flex flex-col justify-center text-black`}>
+            {/* info side */}
+            <div className="h-full w-full md:w-2/3 lg:w-3/5 row-span-4 flex flex-col items-center justify-center px-5 gap-2 py-7 -tracking-wide ">
+                {/* title side */}
+                <div className={`w-full flex flex-col items-center justify-center gap-2 `}>
+                    <p ref={title} className={`text-[3rem]/none md:text-[3rem]/none lg:text-[4rem]/none font-semibold ${rubik.className} -tracking-widest  md:text-center w-full`}>about /</p>
+                    <div className="flex gap-3 items-center justify-start md:justify-center w-full">
+                        {socials.map((social, index) => (
+                            <a key={index} href={`${social.link}`} ref={social.ref} target="_blank">
+                                <div className="p-1 md:p-2 hover:text-gray-800  cursor-pointer border border-zinc-950 rounded-[0.58rem] flex items-center justify-center text-black transition-colors duration-200 text-sm md:text-xl" >{social.icon}</div>
+                            </a>
+                        ))}
+                    </div>
                 </div>
-            </div>
-            <div className="h-full w-full row-span-4 flex flex-col items-center justify-center px-5 gap-2 py-7 -tracking-wider">
+
                 <div className="mx-auto flex gap-1 flex-col">
                     <p>
-                        my name is Oluwasijibomi Ilesanmi, currently studying software engineering as a final year student at Babcock University. I have a deep passion for crafting applications that not only solve problems but also contribute positively to the well-being of humanity.
+                        my parents named me Oluwasijibomi, but people usually find that hard to pronounce, so i prefer they call me siji, currently studying software engineering as a final year student at Babcock University. I have a deep passion for crafting applications that not only solve problems but also contribute positively to the well-being of humanity.
                     </p>
                     <p>
-                        I dream of coding for a cause, creating apps that really matter. I want my work to be a game-changer, making a difference in peoples lives.
                     </p>
-                    When I am not glued to my computer or immersed in a good book, you will likely find me passionately defending Kanye West – he iss practically a life priority. Right after the debate, I dive into his music. Beyond hip hop, I groove to R&B and occasionally dip into the world of Afro beats. Ted Dekker is my go-to author, and I have devoured nearly all of R.L. Stines Goosebumps books (well, maybe not all, but a lot). In an alternate universe, I might have pursued physics in university, but no regrets – the people I have met along the way have been awesome
                     <p>
+                    When I am not glued to my computer or immersed in a good book, you will likely find me passionately defending Kanye West – he is practically a life priority at this point. Right after the debate, I dive into his music. Beyond hip hop, I groove to R&B and occasionally dip into the world of Afro beats. Ted Dekker is my go-to author, and I have devoured nearly all of R.L. Stines Goosebumps books (well, maybe not all, but a lot). In an alternate universe, I might have pursued physics in university, but no regrets – the people I have met along the way have been awesome
                     </p>
                 </div>
                 <div className="w-full">
@@ -93,7 +94,6 @@ export default function About() {
                         <li>the future and what it holds for us.</li>
                     </ul>
                 </div>
-
             </div>
         </main>
     )
