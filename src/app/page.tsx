@@ -58,7 +58,7 @@ export default function Home() {
     }, { scope: title })
 
     return (
-        <main className="w-full h-full">
+        <main className="w-full h-full overflow-x-hidden">
             <section className=" min-h-screen gap-2 flex flex-col justify-center lg:justify-normal lg:grid grid-col-1 w-screen px-2 lg:px-5 items-center py-10 lg:pt-16 bg-white text-black">
                 <div className="flex items-center justify-start w-full text-start overflow-hidden ">
                     <h1 ref={name1} className={`overflow-hidden text-6xl/none md:text-7xl/none lg:text-[6.5rem]/none font-bold -tracking-widest ${inter.className}`}>
@@ -89,7 +89,7 @@ export default function Home() {
                 </div>
             </section>
             <LatestUpdateComponent />
-            <section className="bg-black min-h-[20rem]  lg:min-h-52 flex items-center justify-center">
+            <section className="bg-black min-h-[24rem]  lg:min-h-56 flex items-center justify-center">
                 <JobHunt />
             </section>
         </main>
