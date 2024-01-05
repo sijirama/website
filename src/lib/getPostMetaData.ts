@@ -29,6 +29,7 @@ export function getPostMetaData(): PostMetaData[] {
       readTime: matterResult.data.readTime,
     };
   });
+  // sort posts, but not yet
 
   return posts;
 }
