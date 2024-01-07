@@ -5,7 +5,7 @@ import { Footer } from '@/components/Footer'
 import { inter } from '@/lib/fonts'
 
 export const metadata: Metadata = {
-    title: 'oluwasijibomi',
+    title: 'oluwasijibomi - Software Engineer',
     description: 'my fucking website.',
     openGraph:{
         title:"oluwasijibomi",

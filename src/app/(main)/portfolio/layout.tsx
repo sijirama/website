@@ -4,7 +4,7 @@ import { Footer } from "@/components/Footer";
 import { inter } from "@/lib/fonts";
 
 export const metadata: Metadata = {
-  title: "Writings • Oluwasijibomi",
+  title: "Portfolio • Oluwasijibomi",
   description: "i sometimes write stuff.",
   openGraph: {
     title: "oluwasijibomi",
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function WritingLayout({
+export default function PortfolioLayout({
   children,
 }: {
   children: React.ReactNode;
