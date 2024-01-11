@@ -17,18 +17,20 @@ export function getPostMetaData(): PostMetaData[] {
   const files = fs.readdirSync(folder);
   const markdownPosts = files.filter((file) => file.endsWith(format));
 
-  const posts = markdownPosts.map((filename) => {
-    const fileContents = fs.readFileSync(`src/posts/${filename}`, "utf8");
-    const matterResult = matter(fileContents);
-    return {
-      title: matterResult.data.title,
-      date: matterResult.data.date,
-      description: matterResult.data.description,
-      slug: filename.replace(format, ""),
-      thumbnail: matterResult.data.thumbnail,
-      readTime: matterResult.data.readTime,
-    };
-  });
+  const posts = markdownPosts
+    .map((filename) => {
+      const fileContents = fs.readFileSync(`src/posts/${filename}`, "utf8");
+      const matterResult = matter(fileContents);
+      return {
+        title: matterResult.data.title,
+        date: matterResult.data.date,
+        description: matterResult.data.description,
+        slug: filename.replace(format, ""),
+        thumbnail: matterResult.data.thumbnail,
+        readTime: matterResult.data.readTime,
+      };
+    })
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
   // sort posts, but not yet
 
   return posts;

@@ -12,7 +12,7 @@ function PostCard({ post }: Props) {
   return (
     <Link href={`writing/${post.slug}`} className="w-full">
       <div
-        className={`p-2 rounded-md my-2 hover:bg-zinc-100 transition-colors duration-300 ${manrope.className} `}
+        className={`p-2 rounded-md my-2 hover:bg-slate-200 text-black  transition-colors duration-300 ${manrope.className} `}
       >
         <h1 className="mb-1 font-semibold underline underline-offset-2">
           {post.title}

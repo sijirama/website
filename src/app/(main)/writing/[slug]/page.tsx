@@ -2,6 +2,7 @@ import { getPostContent, getPostMetaData } from "@/lib/getPostMetaData";
 import React from "react";
 import Markdown from "markdown-to-jsx";
 import Link from "next/link";
+import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
 
 function page(props: any) {
   const slug = props.params.slug;
@@ -12,8 +13,11 @@ function page(props: any) {
         <div className="my-5">
           <Link
             href={"/writing"}
-            className="p-2 rounded-lg text-black text-lg font-semibold -tracking-wider underline"
+            className="p-2 rounded-lg text-slate-700 text-base font-semibold -tracking-wider flex items-center hover:text-slate-950 transition-colors duration-300"
           >
+            <span>
+              <MdOutlineKeyboardArrowLeft className="text-2xl" />
+            </span>
             Go back!
           </Link>
         </div>

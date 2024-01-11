@@ -1,0 +1,317 @@
+---
+date: "2024-01-11"
+thumbnail: /images/me.jpeg
+title: Concurrency in Golang - a noob understanding
+description: computers aren't getting any faster, so how can we make our software faster.
+readTime: 4
+---
+
+During my journey of learning Golang, I stumbled upon a skill that hadn't crossed my mind while working with languages like JavaScript or Python: concurrency. Golang introduced me to the concept of deploying processes across different cores in a processor to enhance speed, and I couldn't be happier about it.
+
+In recent years, the pace of improvement in single-threaded computer performance has slowed down, despite ongoing technological advancements. This deceleration is primarily attributed to the physical limitations outlined by [Moore's Law](https://en.wikipedia.org/wiki/Moore%27s_law), coupled with challenges in managing increasing power usage and heat. However, such limitations are precisely the challenges that motivate software developers—to push beyond boundaries and triumph over constraints. This is the essence of building fast applications despite limitations, In my exploration of concurrent programming in Golang, especially with the aid of goroutines, I delved into a paper by [Noah](https://noahs-blog.net/?p=377). The paper delves into the constraints of single-threaded processors and underscores the significance of mastering systems programming with multiple cores. This knowledge is invaluable in the quest to build efficient applications, even in the face of limited processors
+
+but how do we create such systems? honestly i do not know, that's why i'm writing this, to better understand.
+
+> disclaimer, basic understanding of the go programming language is important, like duh. if you think anything is wrong in this paper, remember that i'm using this paper to understand the concept more better.
+
+## Goroutines
+
+First up are goroutines (this obviously means go-routines, but idk, whateva). Since I lacked previous experience in concurrent programming and only heard the term defined everywhere in YouTube videos, I struggled to understand what these are. But then I found the perfect analogy to use and understand what the heck these really are.
+
+Imagine you have a factory (your program) with different tasks that need to be performed. Instead of having one worker (thread) doing everything sequentially, you have multiple workers (goroutines) handling different tasks concurrently.
+
+Each worker (goroutine) is responsible for a specific job, and they can work independently without waiting for the others to finish. They can communicate with each other by passing items on a conveyor belt (channels), and they can synchronize their activities using signals (Mutexes).
+
+> dont fret, we will get to Mutexes and channels immediately after go routines.
+
+The thing is, from every other language I've used, I only wrote code that could work on one thread at a time. But it is unbelievably easy to use multiple threads in Golang.
+
+```go
+package main
+
+import (
+	"fmt"
+	"time"
+)
+
+func main() {
+
+    // Start a new goroutine
+	go func() {
+		fmt.Println("Hello from goroutine!")
+	}()
+
+	// Main goroutine continues its work
+	fmt.Println("Hello from main!")
+
+	// Allow time for the goroutine to execute
+	time.Sleep(time.Millisecond * 500)
+}
+
+```
+
+Look at how simple it is to offload that task to another thread, the task being printing Hello from goroutine. Such easy work, right?
+
+We have an anonymous function that we've called using the go keyword, running it on another thread. This simplicity is one of the things that attracted me to the Go programming language.
+
+> Just know that everything is a thread; the main function is the first thread that runs in the main goroutine.
+
+In this example, we start a new goroutine that prints "Hello from goroutine!" concurrently with the main goroutine, which prints "Hello from main!". We use time.Sleep to ensure that the main goroutine doesn't exit before the goroutine has a chance to execute.
+
+> using time.sleep isn't really the best, what production codebases use are waitgorups, but i have no fucking idea what those are sooo.
+
+to be certain you can use the `go` keyword to execute already defined functions such as
+
+```go
+
+package main
+
+import (
+	"fmt"
+	"time"
+)
+
+// Goroutine function
+func helloFromGoroutine() {
+	fmt.Println("Hello from goroutine!")
+}
+
+func main() {
+	// Start a new goroutine
+	go helloFromGoroutine()
+
+	// Main goroutine continues its work
+	fmt.Println("Hello from main!")
+
+	// Allow time for the goroutine to execute
+	time.Sleep(time.Millisecond * 500)
+}
+
+```
+
+Isn't that really cool?
+
+But then, one might think, "Yo, that's great and all, but I want to get data from that function. How can I get it from the goroutine? Because it's being executed on another thread, and I don't know when that execution will end."
+
+If you asked this question, congrats, you're smart. I didn't; I was like cool, whatever, and kept hacking.
+
+It is exactly in this kind of situation that channels come in.
+
+## Channels
+
+Channels play a crucial role in Go's concurrency model by offering a means for goroutines to communicate and synchronize their execution. They address the challenge of communication and data sharing between processes that lack knowledge about when they will terminate. Channels provide a secure method for different parts of a program running concurrently to communicate. Think of channels as pipes through which data can flow seamlessly between goroutines.
+
+```golang
+package main
+
+import "fmt"
+
+func main() {
+
+    messages := make(chan string)
+
+    go func() { messages <- "ping" }()
+
+    msg := <-messages
+    fmt.Println(msg)
+}
+
+```
+
+this example was gotten from [Go by examples](https://gobyexample.com/) a really great place to learn about the go programming language.
+
+In this example, we create a channel named messages using `make(chan string)`, specifying that it will convey values of type string. Inside a new goroutine created with `go func() { messages <- "ping" }()`, we send the string "ping" into the messages channel using the `messages <- "ping"` syntax.
+
+The line `msg := <-messages` receives the value from the messages channel, and we print the received message using `fmt.Println(msg)`.
+
+The key concept here is the blocking nature of channel operations. When we attempt to send a message `(messages <- "ping")` or receive a message `(msg := <-messages)`, the operation will block until both the sender and receiver are ready. In this example, the program doesn't exit until the "ping" message is successfully passed between the goroutines. The blocking behavior ensures that the communication is synchronized, and both the sender and receiver are in a ready state to perform their respective operations.
+
+> For the sender and receiver to be ready means that, at the moment of attempting a channel operation, the sender has a value to send, and the receiver is prepared to receive, or vice versa, ensuring that the communication can occur without blocking.
+
+The blocking action occurs with any channel operation, causing all operations in that goroutine to pause. This concept might be challenging to grasp initially, but as you continue to explore, it will become clearer. Channels serve two primary purposes, at least based on my limited understanding after a week of studying. They are primarily employed for passing messages between goroutines and synchronization among them.
+
+The synchronization technique using channels is intriguing to me. Traditionally, a waitgroup would be used for synchronization, but channels provide a handy alternative.
+
+```go
+package main
+
+import (
+	"fmt"
+	"sync"
+)
+
+// Function for Goroutine 1
+func goroutine1(done chan bool) {
+	fmt.Println("Goroutine 1 is doing some work")
+	// Signal that Goroutine 1 is done
+	done <- true
+}
+
+// Function for Goroutine 2
+func goroutine2(done chan bool) {
+	fmt.Println("Goroutine 2 is doing some work")
+	// Signal that Goroutine 2 is done
+	done <- true
+}
+
+func main() {
+	// Create a channel to synchronize the goroutines
+	done1 := make(chan bool)
+	done2 := make(chan bool)
+
+
+	// Goroutine 1
+	go goroutine1(done1)
+
+	// Goroutine 2
+	go goroutine2(done2)
+
+	// Wait for both goroutines to finish
+	<-done1
+	<-done2
+
+	fmt.Println("Both goroutines have completed their work")
+}
+
+```
+
+Now our program will print "Both goroutines have completed their work" only when it has received signals from both done1 and done2 channels, indicating the completion of both goroutines' tasks.
+
+really cool right. i know.
+
+However, a new challenge emerges: we've resolved the communication issue between goroutines, but now we need to address what happens when two goroutines attempt to access or modify the same data simultaneously. This scenario is known as a race condition (I think, not entirely sure).
+
+## Mutexes
+
+Mutexes (short for mutual exclusion) solve the problem of data race conditions in concurrent programming. When multiple goroutines access shared data concurrently, without proper synchronization, it can lead to race conditions where the final outcome depends on the interleaving of operations (whic is definitely what we don't want). Mutexes provide a mechanism to ensure exclusive access to shared resources, preventing multiple goroutines from simultaneously modifying the same data.
+
+```Go
+package main
+
+import (
+	"fmt"
+	"sync"
+)
+
+// shared data
+var counter int
+
+// a mutex from the sync module
+var mutex sync.Mutex
+
+func increment() {
+	// Lock the mutex before modifying the shared counter
+	mutex.Lock()
+
+	counter++
+
+	// unlock after
+	mutex.Unlock()
+	fmt.Println("Incremented counter:", counter)
+}
+
+func main() {
+
+	// Launch multiple goroutines that increment the counter
+	for i := 0; i < 5; i++ {
+		go increment()
+	}
+
+	// Sleep to allow goroutines to complete
+	// In a real-world scenario, you might use a sync.WaitGroup or channels for synchronization
+	fmt.Println("Waiting for goroutines to finish...")
+}
+
+```
+
+This example uses a simple counter variable and a sync.Mutex to protect it. Multiple goroutines are launched to concurrently increment the counter. The mutex.Lock() and mutex.Unlock() ensure exclusive access to the shared data, preventing data races.
+
+Mutexes help ensure there aren't any unexpected side effects when multiple goroutines access the same data. In Go, mutexes synchronize access to shared data in a concurrent program. The term "mutex" stands for "mutual exclusion," emphasizing its role in allowing only one goroutine to access a critical section of code at a time.
+
+Initially, one might think this approach contradicts the principles of concurrent programming, as goroutines seem to line up and wait for access to data. However, mutexes are a trade-off, a beneficial one at that. They prevent data corruption caused by simultaneous access from multiple goroutines, which would be challenging to debug.
+
+1. Locking (mutex.Lock()): When a goroutine wants to access the shared data, it must first acquire the lock by calling mutex.Lock(). If the lock is available, the goroutine successfully acquires it and proceeds to execute the critical section. If the lock is already held by another goroutine, the requesting goroutine will be blocked until the lock becomes available
+
+2. Critical Section: The section of code between mutex.Lock() and mutex.Unlock() is known as the critical section. It contains the code that operates on the shared data. Only one goroutine can be inside the critical section at any given time.
+
+3. Unlocking (mutex.Unlock()): After a goroutine completes its work in the critical section, it releases the lock by calling mutex.Unlock(). This action allows other waiting goroutines to acquire the lock and enter the critical section.
+
+```go
+// Lock the mutex before modifying the shared counter
+mutex.Lock()
+
+// Critical section: Increment the counter and print its value
+counter++
+fmt.Println("Incremented counter:", counter)
+
+// Unlock the mutex after modifying the shared counter
+mutex.Unlock()
+
+```
+
+but then a question came up in my mind - "Why should I line up just to take a peek at the data when I only want to read it and not modify it?"
+
+In addition to the regular `sync.Mutex` provided by the sync package, Go also offers `sync.RWMutex`. This can be used to lock for reading, making the data read-only, or for writing, making the data write-only.
+
+```go
+package main
+
+import (
+	"fmt"
+	"sync"
+	"time"
+)
+
+var sharedData int
+var rwMutex sync.RWMutex
+
+func readData(readerID int) {
+	// Lock for reading
+	rwMutex.RLock()
+	defer rwMutex.RUnlock()
+
+	fmt.Printf("Reader %d is reading data: %d\n", readerID, sharedData)
+	time.Sleep(time.Millisecond) // Simulate reading
+
+	fmt.Printf("Reader %d finished reading\n", readerID)
+}
+
+func writeData(writerID int) {
+	// Lock for writing
+	rwMutex.Lock()
+	defer rwMutex.Unlock()
+
+	sharedData = writerID
+	fmt.Printf("Writer %d is writing data: %d\n", writerID, sharedData)
+	time.Sleep(time.Millisecond) // Simulate writing
+
+	fmt.Printf("Writer %d finished writing\n", writerID)
+}
+
+func main() {
+	// Launch multiple readers and writers
+	for i := 0; i < 3; i++ {
+		go readData(i)
+		go writeData(i)
+	}
+
+	// Sleep to allow goroutines to complete
+	time.Sleep(3 * time.Second)
+}
+
+```
+
+- `readData` simulates multiple readers accessing the shared data. They use `rwMutex.RLock()` for reading and `rwMutex.RUnlock()` to release the read lock.
+- `writeData` simulates multiple writers modifying the shared data. They use `rwMutex.Lock()` for writing and `rwMutex.Unlock()` to release the write lock.
+
+The sync.RWMutex allows multiple readers to hold a read lock simultaneously but ensures that only one goroutine can hold the write lock at a time. This helps in scenarios where reading is more frequent than writing.
+
+## Conclusion.
+
+make fast software
+
+It was truly exciting to learn about all this. I bombarded people with questions, had lengthy conversations with ChatGPT on these topics, and there's still more to explore, like wait groups and channel buffering, but that's for another day.
+
+if you see any "gg" or "jk", it's because i was switching in between vim and vs code to write this.
+
+# Thank you for reading.
