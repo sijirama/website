@@ -185,7 +185,7 @@ However, a new challenge emerges: we've resolved the communication issue between
 
 Mutexes (short for mutual exclusion) solve the problem of data race conditions in concurrent programming. When multiple goroutines access shared data concurrently, without proper synchronization, it can lead to race conditions where the final outcome depends on the interleaving of operations (whic is definitely what we don't want). Mutexes provide a mechanism to ensure exclusive access to shared resources, preventing multiple goroutines from simultaneously modifying the same data.
 
-```Go
+```go
 package main
 
 import (

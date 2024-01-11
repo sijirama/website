@@ -1,8 +1,9 @@
 import { getPostContent, getPostMetaData } from "@/lib/getPostMetaData";
-import React from "react";
+import React, { useEffect } from "react";
 import Markdown from "markdown-to-jsx";
 import Link from "next/link";
 import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
+import { PreBlock } from "@/lib/syntaxhighlight";
 
 function page(props: any) {
   const slug = props.params.slug;
@@ -34,7 +35,9 @@ function page(props: any) {
 
         <div className="text-start text-lg">
           <article className="prose prose-stone max-w-none mx-auto prose-pre:bg-black prose-p:text-sm md:prose-p:text-base prose-headings:text-lg md:prose-headings:text-2xl">
-            <Markdown>{post.content}</Markdown>
+            <Markdown options={{ overrides: { pre: PreBlock } }}>
+              {post.content}
+            </Markdown>
           </article>
         </div>
       </main>
