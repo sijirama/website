@@ -10,6 +10,7 @@ import LatestUpdateComponent from "@/components/LatestUpdate";
 import Image from "next/image";
 import bgImg from '../../public/images/aphrodite.jpg'
 import JobHunt from "@/components/PageAbout";
+import { Information } from "@/components/Information";
 
 export default function Home() {
 
@@ -92,6 +93,7 @@ export default function Home() {
             <section className="bg-black min-h-[24rem]  lg:min-h-56 flex items-center justify-center">
                 <JobHunt />
             </section>
+            <Information />
         </main>
     )
 }

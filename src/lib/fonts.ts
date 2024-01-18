@@ -1,6 +1,13 @@
-import { Bai_Jamjuree , Manrope , Rubik , Inter } from "next/font/google"
+import { Bai_Jamjuree , Manrope , Rubik , Inter , Roboto } from "next/font/google"
 
 export const bai = Bai_Jamjuree({
+    weight: ['400', '500','700'],
+    style: ['normal', 'italic'],
+    subsets: ['latin'],
+    display: 'swap',
+})
+
+export const roboto = Roboto({
     weight: ['400', '500','700'],
     style: ['normal', 'italic'],
     subsets: ['latin'],
