@@ -75,7 +75,7 @@ export default function About() {
             ref={title}
             className={`text-[2rem]/none md:text-[2rem]/none lg:text-[3rem]/none font-semibold ${rubik.className} -tracking-widest  w-full`}
           >
-            Ilesanmi Oluwasijibomi.
+            me.
           </p>
 
           {/* icons */}

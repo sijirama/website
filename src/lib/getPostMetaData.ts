@@ -36,6 +36,8 @@ export function getPostMetaData(): PostMetaData[] {
   return posts;
 }
 
+export const LatestPost = getPostMetaData()[0]
+
 export function getPostContent(slug: string) {
   const folder = "src/posts/";
   const file = `${folder}/${slug}${format}`;
