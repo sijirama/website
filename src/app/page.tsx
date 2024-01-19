@@ -1,16 +1,14 @@
 "use client"
 import { FaStarOfLife } from "react-icons/fa6";
-import { manrope , inter } from "@/lib/fonts"
-import gsap from "gsap"
+import { manrope, inter } from "@/lib/fonts"
 import { useRef } from "react"
 import { useGSAP } from "@gsap/react"
-//import About from "@/components/About";
 import { maintimeline as tl } from "@/lib/animations";
 import LatestUpdateComponent from "@/components/LatestUpdate";
 import Image from "next/image";
 import bgImg from '../../public/images/aphrodite.jpg'
-import JobHunt from "@/components/PageAbout";
 import { Information } from "@/components/Information";
+import { Marquee } from "@/components/boxes/marquee";
 
 export default function Home() {
 
@@ -20,6 +18,7 @@ export default function Home() {
     const title = useRef(null)
     const title2 = useRef(null)
     const icon = useRef(null)
+
 
     useGSAP(() => {
         //const tl = gsap.timeline({})
@@ -58,11 +57,15 @@ export default function Home() {
         }, ">+0.5")
     }, { scope: title })
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
     return (
         <main className="w-full h-full overflow-x-hidden">
             <section className=" min-h-screen gap-2 flex flex-col justify-center lg:justify-normal lg:grid grid-col-1 w-screen px-2 lg:px-5 items-center py-10 lg:pt-16 bg-white text-black">
                 <div className="flex items-center justify-start w-full text-start overflow-hidden ">
-                    <h1 ref={name1} className={`overflow-hidden text-6xl/none md:text-7xl/none lg:text-[6.5rem]/none font-bold -tracking-widest ${inter.className}`}>
+                    <h1 ref={name1} className={`overflow-y-hidden overflow-x-visible text-6xl/none md:text-7xl/none lg:text-[6.5rem]/none font-bold -tracking-widest ${inter.className}`}>
                         Oluwasijibomi{" "}
                         <span ref={name2} className="block">Ilesanmi</span>
                     </h1>
@@ -90,10 +93,8 @@ export default function Home() {
                 </div>
             </section>
             <LatestUpdateComponent />
-            <section className="bg-black min-h-[24rem]  lg:min-h-56 flex items-center justify-center">
-                <JobHunt />
-            </section>
             <Information />
+            <Marquee />
         </main>
     )
 }

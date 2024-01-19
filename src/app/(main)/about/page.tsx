@@ -100,8 +100,7 @@ export default function About() {
 
         <div className="mx-auto flex gap-1 flex-col">
           <p>
-            my parents named me Oluwasijibomi, but people usually find that hard
-            to pronounce, so i prefer they call me siji, currently studying
+            my name is siji and i'm currently studying
             software engineering as a final year student at Babcock University.
             I have a deep passion for crafting applications that not only solve
             problems but also contribute positively to the well-being of
@@ -151,10 +150,6 @@ export default function About() {
             <li>the future and what it holds for us.</li>
           </ul>
         </div>
-        <CustomCode>
-          Apologies for it being kinda short, truth is i am still figuring who i
-          am.
-        </CustomCode>
       </div>
     </main>
   );
