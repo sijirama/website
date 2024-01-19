@@ -100,7 +100,7 @@ export default function About() {
 
         <div className="mx-auto flex gap-1 flex-col">
           <p>
-            my name is siji and i'm currently studying
+            my name is siji and i am currently studying
             software engineering as a final year student at Babcock University.
             I have a deep passion for crafting applications that not only solve
             problems but also contribute positively to the well-being of

@@ -51,8 +51,8 @@ export function MiniPortfolio() {
                     <p ref={title1ref}>Experience</p>
                 </div>
                 <div className="md:col-span-3 md:row-span-3">
-                    {expereince.map((exp) => (
-                        <div className="items-center justify-between border-b border-zinc-900 w-full h-auto py-4 grid grid-cols-3 transition-colors duration-300 hover:text-white">
+                    {expereince.map((exp , index) => (
+                        <div key={index} className="items-center justify-between border-b border-zinc-900 w-full h-auto py-4 grid grid-cols-3 transition-colors duration-300 hover:text-white">
                             <p ref={exprole} className="col-span-1 font-semibold ">{exp.role}</p>
                             <p ref={expname} className="col-span-1">{exp.name}</p>
                             <p ref={expperiod} className="col-span-1">{exp.period}</p>
@@ -65,8 +65,8 @@ export function MiniPortfolio() {
                     <p>Education</p>
                 </div>
                 <div className="md:col-span-3 md:row-span-3">
-                    {education.map((exp) => (
-                        <div className="items-center justify-between pb-5 border-zinc-900 w-full h-auto py-4 grid grid-cols-3 hover:text-white">
+                    {education.map((exp , index) => (
+                        <div key={index} className="items-center justify-between pb-5 border-zinc-900 w-full h-auto py-4 grid grid-cols-3 hover:text-white">
                             <p className="col-span-1">{exp.name}</p>
                             <p className="col-span-1">{exp.description}</p>
                             <p className="col-span-1">{exp.period}</p>

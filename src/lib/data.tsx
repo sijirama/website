@@ -12,7 +12,7 @@ export const expereince = [
     {
         role: "Full Stack Web Developer Intern",
         name: "Sunu Assurances Nigeria",
-        period: "August 2023"
+        period: "August 2022"
     }
 ]
 
