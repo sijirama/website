@@ -9,6 +9,7 @@ import Image from "next/image";
 import bgImg from '../../public/images/aphrodite.jpg'
 import { Information } from "@/components/Information";
 import { Marquee } from "@/components/boxes/marquee";
+import { MiniPortfolio } from "@/components/miniportfolio";
 
 export default function Home() {
 
@@ -94,6 +95,7 @@ export default function Home() {
             </section>
             <LatestUpdateComponent />
             <Information />
+            <MiniPortfolio />
             <Marquee />
         </main>
     )
