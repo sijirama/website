@@ -64,7 +64,7 @@ export default function Home() {
 
     return (
         <main className="w-full h-full overflow-x-hidden">
-            <section className=" min-h-screen gap-2 flex flex-col justify-center lg:justify-normal lg:grid grid-col-1 w-screen px-2 lg:px-5 items-center py-10 lg:pt-16 bg-white text-black">
+            <section className=" min-h-screen gap-2 flex flex-col justify-center lg:justify-normal lg:grid grid-col-1 w-screen px-2 lg:px-5 items-center py-10 lg:pt-16 bg-black text-primary">
                 <div className="flex items-center justify-start w-full text-start overflow-hidden ">
                     <h1 ref={name1} className={`overflow-y-hidden overflow-x-visible text-6xl/none md:text-7xl/none lg:text-[6.5rem]/none font-bold -tracking-widest ${inter.className}`}>
                         Oluwasijibomi{" "}
@@ -72,14 +72,14 @@ export default function Home() {
                     </h1>
                 </div>
                 <div className="w-full">
-                    <div className="h-48 lg:h-56 w-full overflow-hidden " id="hero-image-cont">
+                    <div className="h-48 lg:h-56 w-full overflow-hidden" id="hero-image-cont">
                         <Image ref={image} src={bgImg} id="hero-image" alt="image" className="w-full h-full object-cover" />
                     </div>
                 </div>
                 <div className="flex justify-between items-center text-start lg:text-end w-full">
 
                     <div className="md:flex gap-7 items-center hidden ">
-                        <div ref={icon} className="bg-black rounded-full h-36 w-36 text-white font-extrabold flex items-center justify-center">
+                        <div ref={icon} className="bg-primary rounded-full h-36 w-36 text-black font-extrabold flex items-center justify-center">
                             <FaStarOfLife size={72} />
                         </div>
                         <div className="text-black w-72 h-5/6 ">

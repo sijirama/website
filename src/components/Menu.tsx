@@ -63,8 +63,8 @@ export default function Menu({ state }: Props) {
   }, [state]);
 
   // a styles
-  const liStyle = `text-[4rem]/none md:text-[5rem]/none lg:text-[5.9rem]/none font-extrabold -tracking-widest overflow-hidden text-black  hover:skew-x-2 hover:scale-105 transition transition-transform duration-300 overflow-visible`;
-  const aStyle = "hover:text-black overflow-hidden";
+  const liStyle = `text-[4rem]/none md:text-[5rem]/none lg:text-[5.9rem]/none font-extrabold -tracking-widest overflow-hidden text-zinc-700  hover:skew-x-2 hover:scale-105 transition transition-transform duration-300 overflow-visible`;
+  const aStyle = "hover:text-zinc-300 overflow-hidden";
 
   return (
     <section
@@ -77,12 +77,12 @@ export default function Menu({ state }: Props) {
       <div
         ref={revealMenuBackground}
         id="menu-seconday-bg"
-        className="z-[-1] fixed top-0 bottom-0 left-0 right-0 h-full bg-black w-full "
+        className="z-[-1] fixed top-0 bottom-0 left-0 right-0 h-full  w-full bg-orange-950"
       />
       <div
         ref={revealMenu}
         id="menu-layer"
-        className="bg-white h-full relative overflow-hidden"
+        className= "h-full relative overflow-hidden bg-black"
       >
         <div
           id="menu-free-bg"
@@ -117,7 +117,7 @@ export default function Menu({ state }: Props) {
             </nav>
             <div ref={info} id="menu-info gap-8 flex flex-col ">
               <p
-                className={`font-light text-xs md:text-sm text-black ${manrope.className}`}
+                className={`font-light text-xs md:text-sm text-zinc-300 ${manrope.className}`}
               >
                 To know more about me and what i am currently working on you can
                 check the about page, writing has always been my way of gaining

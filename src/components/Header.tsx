@@ -70,11 +70,11 @@ export default function Header({ }) {
 
     return (
         <header className="z-10 w-full p-3 bg-black fixed top-0">
-            <main className="z-50 flex justify-between lg:w-5/6 mx-auto bg-black p-2 px-3 rounded-lg">
-                <div>
+            <main className="z-50 flex justify-between lg:w-5/6 mx-auto bg-black p-2 px-3 rounded-lg text-zinc-500">
+                <div className="hover:text-orange-600">
                     <Link href="/" className="-tracking-widest font-bold">oluwasijibomi</Link>
                 </div>
-                <div>
+                <div className="hover:text-orange-600">
                     <button disabled={disabled} onClick={handleMenu} className="underline font-semibold -tracking-wider">{menuState.menuName}</button>
                 </div>
             </main>
