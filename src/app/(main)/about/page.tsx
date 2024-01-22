@@ -63,7 +63,7 @@ export default function About() {
   );
   return (
     <main
-      className={`min-h-screen items-center pt-12 md:pt-10 lg:pt-14 -tracking-wide bg-white ${manrope.className} flex flex-col justify-center text-black`}
+      className={`min-h-screen items-center pt-12 md:pt-10 lg:pt-14 -tracking-wide bg-black ${manrope.className} flex flex-col justify-center text-zinc-400`}
     >
       {/* info side */}
       <div className="h-full w-full md:w-2/3 lg:w-3/5 row-span-4 flex flex-col items-center justify-center px-5 gap-2 py-7 -tracking-wide ">
