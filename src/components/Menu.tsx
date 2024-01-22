@@ -63,7 +63,7 @@ export default function Menu({ state }: Props) {
   }, [state]);
 
   // a styles
-  const liStyle = `text-[4rem]/none md:text-[6rem]/none font-extrabold -tracking-widest overflow-hidden text-zinc-700  hover:skew-x-2 hover:scale-105 transition transition-transform duration-300 overflow-visible`;
+  const liStyle = `text-[4rem]/none md:text-[6rem]/none font-extrabold -tracking-widest overflow-hidden text-zinc-500  hover:skew-x-2 hover:scale-105 transition transition-transform duration-300 overflow-visible`;
   const aStyle = "hover:text-zinc-300 overflow-hidden";
 
   return (
@@ -117,7 +117,7 @@ export default function Menu({ state }: Props) {
             </nav>
             <div ref={info} id="menu-info gap-8 flex flex-col ">
               <p
-                className={`font-light text-xs md:text-sm text-zinc-300 ${manrope.className}`}
+                className={`font-light text-xs md:text-sm text-zinc-500 ${manrope.className}`}
               >
                 To know more about me and what i am currently working on you can
                 check the about page, writing has always been my way of gaining
@@ -134,9 +134,8 @@ export default function Menu({ state }: Props) {
                   target="_blank"
                   className="underline font-semibold underline-offset-2"
                 >
-                  here
+                  here.
                 </a>
-                , by the way, I collaborated with Pinterest on the design.
               </p>
             </div>
           </div>
