@@ -18,30 +18,30 @@ export function MiniPortfolio() {
     useGSAP(() => {
 
         gsap.registerPlugin(ScrollTrigger)
-        let tl = gsap.timeline({
-            scrollTrigger: {
-                trigger: contref.current,
-                start: "top center",
-                //markers: true,
-            }
-        })
-
-        tl.from(title1ref.current, {
-            y: 100,
-            opacity: 0,
-            duration: 1,
-            ease: "power3.inOut"
-        })
-        tl.from([exprole.current, expname.current, expperiod.current], {
-            y: 100,
-            opacity: 0,
-            duration: 1,
-            ease: "power3.inOut",
-            stagger: {
-                amount: 0.1
-            }
-        }, ">")
-
+        // let tl = gsap.timeline({
+        //     scrollTrigger: {
+        //         trigger: contref.current,
+        //         start: "top center",
+        //         //markers: true,
+        //     }
+        // })
+        //
+        // tl.from(title1ref.current, {
+        //     y: 100,
+        //     opacity: 0,
+        //     duration: 1,
+        //     ease: "power3.inOut"
+        // })
+        // tl.from([exprole.current, expname.current, expperiod.current], {
+        //     y: 100,
+        //     opacity: 0,
+        //     duration: 1,
+        //     ease: "power3.inOut",
+        //     stagger: {
+        //         amount: 0.1
+        //     }
+        // }, ">")
+        //
     }, {})
 
     return (
@@ -52,7 +52,7 @@ export function MiniPortfolio() {
                 </div>
                 <div className="md:col-span-3 md:row-span-3">
                     {expereince.map((exp , index) => (
-                        <div key={index} className=" gap-2 items-center justify-between border-b border-zinc-900 w-full h-auto py-4 grid grid-cols-3 transition-colors duration-300 hover:text-orange-700 ">
+                        <div key={index} className=" gap-2 items-center justify-between border-b border-zinc-900 w-full h-auto py-4 grid grid-cols-3 transition-colors duration-300 hover:text-orange-800 ">
                             <p ref={exprole} className="col-span-1 font-semibold ">{exp.role}</p>
                             <p ref={expname} className="col-span-1">{exp.name}</p>
                             <p ref={expperiod} className="col-span-1">{exp.period}</p>
@@ -66,7 +66,7 @@ export function MiniPortfolio() {
                 </div>
                 <div className="md:col-span-3 md:row-span-3">
                     {education.map((exp , index) => (
-                        <div key={index} className="items-center justify-between pb-5 border-zinc-900 w-full h-auto py-4 grid grid-cols-3 hover:text-orange-700">
+                        <div key={index} className="items-center justify-between pb-5 border-zinc-900 w-full h-auto py-4 grid grid-cols-3 hover:text-orange-800">
                             <p className="col-span-1">{exp.name}</p>
                             <p className="col-span-1">{exp.description}</p>
                             <p className="col-span-1">{exp.period}</p>

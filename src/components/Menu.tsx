@@ -63,7 +63,7 @@ export default function Menu({ state }: Props) {
   }, [state]);
 
   // a styles
-  const liStyle = `text-[4rem]/none md:text-[5rem]/none lg:text-[5.9rem]/none font-extrabold -tracking-widest overflow-hidden text-zinc-700  hover:skew-x-2 hover:scale-105 transition transition-transform duration-300 overflow-visible`;
+  const liStyle = `text-[4rem]/none md:text-[6rem]/none font-extrabold -tracking-widest overflow-hidden text-zinc-700  hover:skew-x-2 hover:scale-105 transition transition-transform duration-300 overflow-visible`;
   const aStyle = "hover:text-zinc-300 overflow-hidden";
 
   return (
