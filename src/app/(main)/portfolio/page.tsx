@@ -47,8 +47,8 @@ export default function Page() {
                         Victoria Island, Lagos, NG.
                     </p>
                     <div className="w-full flex gap-2 flex-wrap">
-                        {socials.map((social) => (
-                            <a href={`${social.url}`} target="_blank">
+                        {socials.map((social, i) => (
+                            <a key={i} href={`${social.url}`} target="_blank">
                                 <div className="p-3 rounded-lg border border-zinc-800 hover:bg-zinc-800 transition-colors duration-300">
                                     {social.icon}
                                 </div>
@@ -72,8 +72,8 @@ export default function Page() {
             <img src="http://ghchart.rshah.org/sijirama" alt="2016rshah's Github chart" />
             <div className="w-full">
                 <p className="font-extrabold -tracking-wide text-lg">Work Experience</p>
-                {expereince.map((exp) => (
-                    <div className="my-3">
+                {expereince.map((exp , i) => (
+                    <div className="my-3"  key={i}>
                         <div className="flex items-center justify-between">
                             <div className="flex items-center gap-1 md:gap-3">
                                 <p className="font-semibold text-sm md:text-base tracking-[0.010em] text-clip ">{exp.name}</p>
@@ -89,8 +89,8 @@ export default function Page() {
             </div>
             <div className="w-full">
                 <p className="font-extrabold -tracking-wide text-lg">Education</p>
-                {education.map((exp) => (
-                    <div className="my-3">
+                {education.map((exp , i) => (
+                    <div className="my-3" key={i}>
                         <div className="flex items-center justify-between">
                             <p className="font-semibold tracking-[0.010em] ">{exp.name}</p>
                             <p className="text-xs md:text-sm tracking-wide">{exp.period}</p>
@@ -104,16 +104,16 @@ export default function Page() {
             <div className="w-full">
                 <p className="font-extrabold -tracking-wide text-lg">Skills</p>
                 <div className="flex items-center flex-wrap gap-3 my-2">
-                    {skills.map((skill) => (
-                        <div className="text-xs bg-zinc-200 text-black rounded-md py-0.5 px-3 font-semibold tracking-wide" >{skill}</div>
+                    {skills.map((skill , i) => (
+                        <div key={i} className="text-xs bg-zinc-200 text-black rounded-md py-0.5 px-3 font-semibold tracking-wide" >{skill}</div>
                     ))}
                 </div>
             </div>
             <div className="w-full">
                 <p className="font-extrabold -tracking-wide text-lg">Projects</p>
                 <div className="items-center gap-3 my-2 grid grid-cols-2 md:grid-cols-3">
-                    {projects.map((project) => (
-                        <a href="">
+                    {projects.map((project, i) => (
+                        <a href="" key={i}>
                             <div className="p-3 hover:bg-zinc-950 transition-colors duration-200 border border-zinc-800 rounded-xl h-56 md:h-48 flex flex-col justify-between">
                                 <div>
                                     <p className="font-bold tracking-[0.010em]">{project.title}</p>
