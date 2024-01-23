@@ -120,8 +120,8 @@ export default function Page() {
                                     <p className="text-xs tracking-wide text-zinc-400">{project.description}</p>
                                 </div>
                                 <div className="flex gap-2 flex-wrap py-1">
-                                    {project.technologies.map((skill) => (
-                                        <div className="text-xs bg-zinc-200 text-black rounded-md py-0.5 px-2 md:px-3 font-semibold tracking-wide" >{skill}</div>
+                                    {project.technologies.map((skill , i) => (
+                                        <div key={i} className="text-xs bg-zinc-200 text-black rounded-md py-0.5 px-2 md:px-3 font-semibold tracking-wide" >{skill}</div>
                                     ))}
                                 </div>
                             </div>
