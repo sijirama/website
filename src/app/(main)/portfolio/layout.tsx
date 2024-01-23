@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { inter } from "@/lib/fonts";
+import { bai } from "@/lib/fonts";
 
 export const metadata: Metadata = {
   title: "Portfolio • Oluwasijibomi",
@@ -19,5 +19,5 @@ export default function PortfolioLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <main>{children}</main>;
+  return <main className={`${bai.className} py-4 md:py-14`}>{children}</main>;
 }
