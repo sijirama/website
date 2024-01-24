@@ -45,7 +45,7 @@ export function MiniPortfolio() {
     }, {})
 
     return (
-        <section ref={contref} className={` ${manrope.className} text-sm md:text-base min-h-30 w-[95%] mx-auto flex flex-col gap-5 my-3 py-6 px-2 md:px-0 border-y-zinc-900 border-y text-zinc-500 `}>
+        <section ref={contref} className={` ${manrope.className} text-sm md:text-base min-h-30 w-[95%] mx-auto flex flex-col gap-5 my-3 py-6 px-2 md:px-0 border-y-zinc-900 border-y text-zinc-500 bg-black`}>
             <div className="grid md:grid-cols-4 md:grid-row-3 h-full w-full">
                 <div className="md:col-span-1 row-span-3 py-4 ">
                     <p ref={title1ref}>Experience</p>
