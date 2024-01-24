@@ -5,7 +5,7 @@ export const expereince = [
         name: "Tradit Markets",
         period: "Aug 2023 - October 2023",
         mode: "Remote",
-        description: "Developed and implemented a backend server using NestJS for a service advertisement application. Designed and optimized functionalities to enhance the user experience and facilitate efficient service promotion. Leveraged NestJS's robust capabilities to create a seamless and responsive backend infrastructure for the application."
+        description: "Developed and implemented a backend server using NestJS for a service advertisement application. Designed and optimized functionalities to enhance the user experience and facilitate efficient service promotion. Leveraged NestJS robust capabilities to create a seamless and responsive backend infrastructure for the application."
     },
     {
         role: "Full Stack Web Developer Intern",

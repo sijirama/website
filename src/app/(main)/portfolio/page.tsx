@@ -67,9 +67,9 @@ export default function Page() {
             </div>
             <div className="text-start  w-full flex flex-col gap-2">
                 <p className="font-extrabold -tracking-wide text-lg">About</p>
-                <p className="text-xs md:text-sm tracking-wide text-zinc-400">As a dedicated Full Stack Engineer, my passion lies in building technology that positively impacts and aids people. I am consistently excited about the opportunity to create, innovate, and contribute to meaningful solutions. Whether it's bringing ideas to life or leading collaborative efforts, I thrive on the constant journey of building and making a difference.</p>
+                <p className="text-xs md:text-sm tracking-wide text-zinc-400">As a dedicated Full Stack Engineer, my passion lies in building technology that positively impacts and aids people. I am consistently excited about the opportunity to create, innovate, and contribute to meaningful solutions. Whether it is bringing ideas to life or leading collaborative efforts, I thrive on the constant journey of building and making a difference.</p>
             </div>
-            <img src="http://ghchart.rshah.org/sijirama" alt="2016rshah's Github chart" />
+            <img src="http://ghchart.rshah.org/sijirama" alt="sijirama's Github chart" />
             <div className="w-full">
                 <p className="font-extrabold -tracking-wide text-lg">Work Experience</p>
                 {expereince.map((exp , i) => (
