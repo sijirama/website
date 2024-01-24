@@ -27,7 +27,7 @@ export function Information() {
     // }, {})
     //
     return (
-        <div className="flex flex-col gap-4 md:grid md:grid-cols-4 md:grid-row-1 px-2 py-4 lg:px-4 lg:py-6">
+        <div className="flex flex-col gap-4 md:grid md:grid-cols-4 md:grid-row-1 px-2 py-4 lg:px-4 lg:py-6 bg-black">
             <div className="col-span-3">
                 <JobHunt />
             </div>

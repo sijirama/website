@@ -5,21 +5,21 @@ export const expereince = [
         name: "Tradit Markets",
         period: "Aug 2023 - October 2023",
         mode: "Remote",
-        description: "Implemented new features, led squad, worked on improving the way developers ship the code, started migration from Emotion to Tailwind CSS and more. Technologies: React, TypeScript, GraphQL"
+        description: "Developed and implemented a backend server using NestJS for a service advertisement application. Designed and optimized functionalities to enhance the user experience and facilitate efficient service promotion. Leveraged NestJS's robust capabilities to create a seamless and responsive backend infrastructure for the application."
     },
     {
         role: "Full Stack Web Developer Intern",
         name: "ChamsAccess Nigeria",
         period: "Jan 2023 - July 2023",
         mode: "Hybrid",
-        description: "Implemented new features, led squad, worked on improving the way developers ship the code, started migration from Emotion to Tailwind CSS and more. Technologies: React, TypeScript, GraphQL Implemented new features, led squad, worked on improving the way developers ship the code, started migration from Emotion to Tailwind CSS and more. Technologies: React, TypeScript, GraphQL"
+        description: "Revamped the Chamsaccess BOS web platform to optimize user experience and streamline complaint management processes. Developed the frontend using a modern and efficient technology stack, including Typescript, React, and C# (.Net), leading to improved performance. Collaborated with a team of developers to iteratively enhance project functionalities, contributing to a significant boost in customer experience scores."
     },
     {
         role: "Full Stack Web Developer Intern",
         name: "Sunu Assurances Nigeria",
         period: "May 2022 - August 2022",
         mode: "Onsite",
-        description: "Implemented new features, led squad, worked on improving the way developers ship the code, started migration from Emotion to Tailwind CSS and more. Technologies: React, TypeScript, GraphQL Implemented new features, led squad, worked on improving the way developers ship the code, started migration from Emotion to Tailwind CSS and more. Technologies: React, TypeScript, GraphQL Implemented new features, led squad, worked on improving the way developers ship the code, started migration from Emotion to Tailwind CSS and more. Technologies: React, TypeScript, GraphQL"
+        description: "Developed a Django Web app exclusively for company use, streamlining the online handling of technical complaints and resources. Collaborated with developers to conduct user research and iterated on design for optimal functionality, resulting in a substantial increase in user satisfaction. Implemented the web application, achieving a more efficient working environment for staff."
     }
 ]
 
@@ -32,74 +32,54 @@ export const education = [
 ]
 
 export const skills = [
+    "TypeScript/JavaScript",
     "Golang",
     "Rust",
-    "TypeScript/JavaScript",
+    "C/C++",
     "NextJS/React",
     "Node.Js",
-    "TailwindCSS"
+    "TailwindCSS",
+    "Docker",
+    "PostgreSQL",
+    "MongoDB",
+    "MySQL/MariaDB",
+    "Redis",
+    "Git/Github",
+    "Neovim/Vim",
 ]
 
 export const projects = [
     {
-        "title": "Consultly",
-        "description": "A platform to build and grow your online business",
+        "title": "Bauble",
+        "description": "Streamlining university project management for student groups, Bauble simplifies collaboration, enhances teamwork, and ensures an efficient project experience.",
+        "type": "Final Year Project",
+        "technologies": ["TypeScript", "Next.js", "TailwindCSS", "PostgreSQL", "Prisma"]
+    },
+    {
+        "title": "Accord",
+        "description": "fullstack messaging application inspired by Discord, channels management, real-time messaging etc.",
+        "type": "Final Year Project",
+        "technologies": ["TypeScript", "Next.js", "TailwindCSS", "PostgreSQL", "Prisma"]
+    },
+
+    {
+        "title": "oluwasijibomi.me",
+        "description": "My personal website and blog. Built with Next.js ",
         "type": "Side Project",
-        "technologies": ["TypeScript", "Next.js", "Vite", "GraphQL", "WebRTC", "Monito"]
+        "technologies": ["Next.js", "MDX", "TailwindCSS"]
     },
     {
-        "title": "Jarocki.me",
-        "description": "My personal website and blog. Built with Next.js and Notion API",
+        "title": "Tidy",
+        "description": "CLI application for organization and task tracking",
         "type": "Side Project",
-        "technologies": ["Next.js", "MDX", "Minimal"]
+        "technologies": ["GoLang", "SQlite", "BubbleTea"]
     },
     {
-        "title": "Barepapers",
-        "description": "Generates beautiful wallpapers using random shapes and gradients",
+        "title": "Nebula(WIP)",
+        "description": "simple KV database that implement B-trees for data management and access with complete persistence and querying functionality",
         "type": "Side Project",
-        "technologies": ["Next.js", "Puppeteer"]
+        "technologies": ["Golang"]
     },
-    {
-        "title": "Year progress",
-        "description": "Tracks current year progress and displays a countdown",
-        "type": "Side Project",
-        "technologies": ["TypeScript", "Next.js"]
-    },
-    {
-        "title": "Parabol",
-        "description": "The Agile meeting co-pilot that delivers better meetings with less effort",
-        "role": "Full Stack Developer",
-        "technologies": ["TypeScript", "React", "Node.js", "GraphQL"]
-    },
-    {
-        "title": "Evercast",
-        "description": "Creative collaboration platform that combines video conferencing and HD media streaming",
-        "role": "Lead Frontend Developer",
-        "technologies": ["TypeScript", "React", "Node.js", "GraphQL"]
-    },
-    {
-        "title": "Mobile Vikings",
-        "description": "Android application for leading virtual mobile operator in Poland",
-        "role": "Lead Android Developer",
-        "technologies": ["Android", "Kotlin"]
-    },
-    {
-        "title": "Howdy",
-        "description": "Howdy is a place for you to join communities you care about",
-        "role": "Lead Android Developer",
-        "technologies": ["Android", "Kotlin"]
-    },
-    {
-        "title": "Tastycloud",
-        "description": "Android application for managing and displaying restaurant menus in kiosk mode",
-        "role": "Lead Android Developer",
-        "technologies": ["Android", "Kotlin"]
-    },
-    {
-        "title": "Ambit",
-        "description": "Android application that helps with sharing your contact details",
-        "role": "Lead Android Developer",
-        "technologies": ["Android"]
-    }
+
 ]
 

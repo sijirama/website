@@ -17,7 +17,7 @@ export const LatestUpdateComponent = () => {
 
 
     return (
-        <div className='flex items-center justify-center gap-3 h-12 w-full bg-black text-white text-sm'>
+        <div className='flex items-center justify-center gap-3 h-12 w-full dark:bg-black bg-black text-white text-sm'>
             <div className="p-1 rounded-lg bg-gray-900 shadow-yellow-300 shadow-7xl">
                 <p className="text-xs font-semibold text-myYellow">{update.type}</p>
             </div>
