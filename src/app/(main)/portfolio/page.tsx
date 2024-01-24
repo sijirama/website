@@ -75,7 +75,7 @@ export default function Page() {
                 {expereince.map((exp , i) => (
                     <div className="my-3"  key={i}>
                         <div className="flex items-center justify-between">
-                            <div className="flex-col justify-start flex items-start md:flex-row md:items-center gap-1 md:gap-3 my-2 md:my-1 ">
+                            <div className="flex-col-reverse justify-start flex items-start md:flex-row md:items-center gap-1 md:gap-3 my-2 md:my-1 ">
                                 <p className="font-semibold text-sm md:text-base tracking-[0.010em] text-clip ">{exp.name}</p>
                                 <div className="text-xs bg-zinc-200 text-black rounded-md py-0.5 px-1 md:px-3 font-semibold tracking-wide" >{exp.mode}</div>
                             </div>
@@ -114,7 +114,7 @@ export default function Page() {
                 <div className="items-center gap-3 my-2 grid grid-cols-2 md:grid-cols-3">
                     {projects.map((project, i) => (
                         <a href="" key={i}>
-                            <div className="p-3 hover:bg-zinc-950 transition-colors duration-200 border border-zinc-800 rounded-xl h-60 md:h-56 flex flex-col justify-between">
+                            <div className="p-3 hover:bg-zinc-950 transition-colors duration-200 border border-zinc-800 rounded-xl h-72 md:h-56 flex flex-col justify-between">
                                 <div>
                                     <p className="font-bold tracking-[0.010em]">{project.title}</p>
                                     <p className="text-xs tracking-wide text-zinc-400">{project.description}</p>
