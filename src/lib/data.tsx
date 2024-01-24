@@ -51,7 +51,7 @@ export const skills = [
 export const projects = [
     {
         "title": "Bauble",
-        "description": "Streamlining university project management for student groups, Bauble simplifies collaboration, enhances teamwork, and ensures an efficient project experience.",
+        "description": "Streamlining university project management for student groups and ensures an efficient project experience.",
         "type": "Final Year Project",
         "technologies": ["TypeScript", "Next.js", "TailwindCSS", "PostgreSQL", "Prisma"]
     },
