@@ -56,8 +56,14 @@ export const projects = [
         "technologies": ["TypeScript", "Next.js", "TailwindCSS", "PostgreSQL", "Prisma"]
     },
     {
+        "title": "Monko (WIP)",
+        "description": "simple interpreter built in Golang",
+        "type": "Side Project",
+        "technologies": ["Golang"]
+    },
+    {
         "title": "Accord",
-        "description": "fullstack messaging application inspired by Discord, channels management, real-time messaging etc.",
+        "description": "fullstack messaging application inspired by Discord, channel management, real-time messaging etc.",
         "type": "Final Year Project",
         "technologies": ["TypeScript", "Next.js", "TailwindCSS", "PostgreSQL", "Prisma"]
     },
@@ -73,12 +79,6 @@ export const projects = [
         "description": "CLI application for organization and task tracking",
         "type": "Side Project",
         "technologies": ["GoLang", "SQlite", "BubbleTea"]
-    },
-    {
-        "title": "Nebula(WIP)",
-        "description": "simple KV database that implement B-trees for data management and access with complete persistence and querying functionality",
-        "type": "Side Project",
-        "technologies": ["Golang"]
     },
 
 ]
