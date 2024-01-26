@@ -5,6 +5,7 @@ import Link from "next/link";
 import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
 import { PreBlock } from "@/lib/syntaxhighlight";
 import blog from "../../../../../public/images/blog.jpg";
+import { bai, manrope, rubik } from "@/lib/fonts";
 
 function page(props: any) {
   const slug = props.params.slug;
@@ -41,7 +42,9 @@ function page(props: any) {
         </div>
 
         <div className="text-start text-lg">
-          <article className="prose prose-stone max-w-none mx-auto prose-pre:bg-zinc-50 prose-p:text-sm prose-p:text-zinc-300 md:prose-p:text-base prose-headings:text-lg md:prose-headings:text-2xl prose-headings:text-zinc-100">
+          <article
+            className={`prose prose-stone prose-p:${rubik.className} max-w-none mx-auto prose-code:bg-zinc-400 prose-a:text-zinc-500 prose-code:py-0.5 prose-code:rounded-md prose-pre:bg-zinc-50 prose-p:text-sm prose-p:text-zinc-300 md:prose-p:text-base prose-headings:text-lg md:prose-headings:text-2xl prose-headings:text-zinc-100`}
+          >
             <Markdown options={{ overrides: { pre: PreBlock } }}>
               {post.content}
             </Markdown>
