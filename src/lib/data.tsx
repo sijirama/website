@@ -80,6 +80,13 @@ export const projects = [
         "type": "Side Project",
         "technologies": ["GoLang", "SQlite", "BubbleTea"]
     },
+    {
+        "title": "Alma",
+        "description": "Online community hub for university students",
+        "type": "Side Project",
+        "technologies": ["NextJS", "TailwindCSS", "PostgreSQL", "Redis", "Docker"]
+    },
+
 
 ]
 
