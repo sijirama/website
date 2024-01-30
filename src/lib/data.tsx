@@ -88,6 +88,13 @@ export const projects = [
         "technologies": ["GoLang", "SQlite", "BubbleTea"]
     },
     {
+        "title": "LRU",
+        "description": "LRU cache implemented in golang",
+        "type": "Side Project",
+        "technologies": ["Golang"]
+    },
+
+    {
         "title": "Chip*",
         "description": "Simple chip8 emulator built with javascript.",
         "type": "Side Project",
