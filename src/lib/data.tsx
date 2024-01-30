@@ -87,4 +87,11 @@ export const projects = [
         "type": "Side Project",
         "technologies": ["GoLang", "SQlite", "BubbleTea"]
     },
+    {
+        "title": "Chip*",
+        "description": "Simple chip8 emulator built with javascript.",
+        "type": "Side Project",
+        "technologies": ["JavaScript"]
+    },
+
 ]
