@@ -62,6 +62,12 @@ export const projects = [
         "technologies": ["Golang"]
     },
     {
+        "title": "Alma",
+        "description": "Online community hub for university students",
+        "type": "Side Project",
+        "technologies": ["NextJS", "TailwindCSS", "PostgreSQL", "Redis", "Docker"]
+    },
+    {
         "title": "Accord",
         "description": "fullstack messaging application inspired by Discord, channel management, real-time messaging etc.",
         "type": "Final Year Project",
@@ -79,12 +85,6 @@ export const projects = [
         "description": "CLI application for organization and task tracking",
         "type": "Side Project",
         "technologies": ["GoLang", "SQlite", "BubbleTea"]
-    },
-    {
-        "title": "Alma",
-        "description": "Online community hub for university students",
-        "type": "Side Project",
-        "technologies": ["NextJS", "TailwindCSS", "PostgreSQL", "Redis", "Docker"]
     },
 
 
