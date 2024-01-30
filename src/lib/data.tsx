@@ -46,6 +46,7 @@ export const skills = [
     "Redis",
     "Git/Github",
     "Neovim/Vim",
+    "Linux (ARCH BTW)",
 ]
 
 export const projects = [
@@ -86,7 +87,4 @@ export const projects = [
         "type": "Side Project",
         "technologies": ["GoLang", "SQlite", "BubbleTea"]
     },
-
-
 ]
-
