@@ -23,7 +23,7 @@ export default function Page() {
         },
         {
             "icon": <IoLogoLinkedin className={`${iconStyle}`} />,
-            "url": "https://linkedin.com/in/your-username"
+            "url": "https://www.linkedin.com/in/oluwasijibomi-ilesanmi-8504b123a/"
         },
         {
             "icon": <IoLogoTwitter className={`${iconStyle}`} />,
