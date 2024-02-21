@@ -113,7 +113,7 @@ export default function Page() {
                 <p className="font-extrabold -tracking-wide text-lg">Projects</p>
                 <div className="items-center gap-3 my-2 grid grid-cols-2 md:grid-cols-3">
                     {projects.map((project, i) => (
-                        <a href="" key={i}>
+                        <a href={project?.link} key={i} target="_blank">
                             <div className="p-3 hover:bg-zinc-950 transition-colors duration-200 border border-zinc-800 rounded-xl h-72 md:h-56 flex flex-col justify-between">
                                 <div>
                                     <p className="font-bold tracking-[0.010em]">{project.title}</p>
