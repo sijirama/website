@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import Header from "@/components/Header";
-import { Footer } from "@/components/Footer";
 import { bai } from "@/lib/fonts";
 
 export const metadata: Metadata = {
