@@ -3,6 +3,7 @@ import { expereince, education, skills, projects } from "@/lib/data";
 import { SlGlobe } from "react-icons/sl";
 import { IoLogoGithub, IoLogoLinkedin, IoLogoTwitter, IoMailOutline } from "react-icons/io5";
 import { HiOutlinePhone } from "react-icons/hi";
+import { bai, inter, manrope } from "@/lib/fonts";
 
 export default function Page() {
 
@@ -27,20 +28,20 @@ export default function Page() {
         },
         {
             "icon": <IoLogoTwitter className={`${iconStyle}`} />,
-            "url": "https://twitter.com/sijisaidwhat"
+            "url": "https://twitter.com/sijiramakun"
         }
     ]
 
 
     return (
-        <main className="flex min-h-screen flex-col gap-4 items-center mx-auto pt-20 w-full md:3/5 lg:w-3/6  text-zinc-300 -tracking-widest p-2.5  md:p-5">
-            <div className="flex w-full">
+        <main className={` ${manrope.className} flex min-h-screen flex-col gap-4 items-center mx-auto pt-2 w-full md:3/5 lg:w-3/6  text-zinc-300 -tracking-widest p-2.5  md:p-5`}>
+            <div className="flex justify-between items-center w-full">
                 <div className="w-3/5 flex flex-col gap-2">
                     <p className="font-extrabold -tracking-wide text-lg">
-                        Ilesanmi Oluwasijibomi
+                        Ilesanmi Oluwasijibomi Gbemileke.
                     </p>
                     <p className="text-xs md:text-sm tracking-wide">
-                        Full Stack Engineer focused on building products with extra attention to detail
+                        Full Stack Engineer focused on building products with extra attention to details
                     </p>
                     <p className="font-light text-xs tracking-wide flex gap-1 items-center justify-start">
                         <SlGlobe className="" />
@@ -56,11 +57,14 @@ export default function Page() {
                         ))}
                     </div>
                 </div>
+                {/**/}
+                {/*
+                */}
                 <div
                     style={{
                         backgroundImage: `url(${lagos.src})`,
                     }}
-                    className="w-2/5 rounded-lg bg-cover bg-center bg-no-repeat h-36 p-2 bg-red-800"
+                    className="w-1/5 hidden md:block rounded-lg bg-cover bg-center bg-no-repeat h-36 p-2 bg-red-800"
                 >
                 </div>
 
@@ -69,11 +73,11 @@ export default function Page() {
                 <p className="font-extrabold -tracking-wide text-lg">About</p>
                 <p className="text-xs md:text-sm tracking-wide text-zinc-400">As a dedicated Full Stack Engineer, my passion lies in building technology that positively impacts and aids people. I am consistently excited about the opportunity to create, innovate, and contribute to meaningful solutions. Whether it is bringing ideas to life or leading collaborative efforts, I thrive on the constant journey of building and making a difference.</p>
             </div>
-            <img src="http://ghchart.rshah.org/sijirama" alt="sijirama's Github chart" />
-            <div className="w-full">
+            <img className="w-full my-5" src="http://ghchart.rshah.org/sijirama" alt="sijirama's Github chart" />
+            <div className="w-full my-4">
                 <p className="font-extrabold -tracking-wide text-lg">Work Experience</p>
-                {expereince.map((exp , i) => (
-                    <div className="my-3"  key={i}>
+                {expereince.map((exp, i) => (
+                    <div className="my-3" key={i}>
                         <div className="flex items-center justify-between">
                             <div className="flex-col-reverse justify-start flex items-start md:flex-row md:items-center gap-1 md:gap-3 my-2 md:my-1 ">
                                 <p className="font-semibold text-sm md:text-base tracking-[0.010em] text-clip ">{exp.name}</p>
@@ -89,7 +93,7 @@ export default function Page() {
             </div>
             <div className="w-full">
                 <p className="font-extrabold -tracking-wide text-lg">Education</p>
-                {education.map((exp , i) => (
+                {education.map((exp, i) => (
                     <div className="my-3" key={i}>
                         <div className="flex items-center justify-between">
                             <p className="font-semibold tracking-[0.010em] ">{exp.name}</p>
@@ -104,7 +108,7 @@ export default function Page() {
             <div className="w-full">
                 <p className="font-extrabold -tracking-wide text-lg">Skills</p>
                 <div className="flex items-center flex-wrap gap-3 my-2">
-                    {skills.map((skill , i) => (
+                    {skills.map((skill, i) => (
                         <div key={i} className="text-xs bg-zinc-200 text-black rounded-md py-0.5 px-3 font-semibold tracking-wide" >{skill}</div>
                     ))}
                 </div>
@@ -120,7 +124,7 @@ export default function Page() {
                                     <p className="text-xs tracking-wide text-zinc-400">{project.description}</p>
                                 </div>
                                 <div className="flex gap-2 flex-wrap py-1">
-                                    {project.technologies.map((skill , i) => (
+                                    {project.technologies.map((skill, i) => (
                                         <div key={i} className="text-xs bg-zinc-200 text-black rounded-md py-0.5 px-2 md:px-3 font-semibold tracking-wide" >{skill}</div>
                                     ))}
                                 </div>
