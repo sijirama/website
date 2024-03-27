@@ -69,8 +69,8 @@ export default function Header({ }) {
 
 
     return (
-        <header className="z-10 w-full p-3 bg-black ">
-            <main className="z-50 flex justify-between lg:w-11/12 mx-auto bg-black p-2 rounded-lg text-zinc-500">
+        <header className="z-10 w-full bg-black ">
+            <main className="z-50 flex justify-between w-[95%] mx-auto py-6 rounded-lg text-zinc-500">
                 <div className="hover:text-orange-800">
                     <Link href="/" className="-tracking-widest font-bold">oluwasijibomi</Link>
                 </div>

@@ -54,7 +54,7 @@ export default function Menu({ state }: Props) {
                 });
                 staggerReveal(tl2, revealMenuBackground.current, revealMenu.current);
                 fadeInUp(tl2, info.current);
-                staggerText(tl2, line1.current, line2.current, line3.current);
+                staggerText(tl2, line1.current, line3.current, line2.current);
                 //setMenuVisibility(true)
             }
         };
