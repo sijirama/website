@@ -1,8 +1,10 @@
-import type { Metadata } from "next";
+import React from "react";
+import { HTMLAttributes } from "react";
 import "./globals.css";
 import Header from "@/components/Header";
-import { Footer } from "@/components/Footer";
+import Footer from "@/components/Footer";
 import { inter } from "@/lib/fonts";
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
     title: "oluwasijibomi - Software Engineer",
@@ -21,8 +23,8 @@ export default function RootLayout({
     children: React.ReactNode;
 }) {
     return (
-        <html lang="en">
-            <body className={`${inter.className} bg-red-900 flex flex-col`} >
+        <html lang="en" className="h-full">
+            <body className={`${inter.className} bg-red-900 flex flex-col h-full`} >
                 <Header />
                 <main className="flex-1">{children}</main>
                 <Footer />
@@ -30,3 +32,4 @@ export default function RootLayout({
         </html>
     );
 }
+

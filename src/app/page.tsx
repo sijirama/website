@@ -7,7 +7,7 @@ import HomePage from "@/components/Homepage";
 
 export default function Home() {
     return (
-        <main className="w-full overflow-x-hidden pt-20 lg:pt-12 bg-black">
+        <main className="w-full h-full overflow-x-hidden pt-20 lg:pt-12 bg-black">
             <LatestUpdateComponent />
             <Information />
             <MiniPortfolio />
