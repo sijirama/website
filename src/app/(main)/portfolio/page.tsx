@@ -118,7 +118,7 @@ export default function Page() {
                 <div className="items-center gap-3 my-2 grid grid-cols-2 md:grid-cols-3">
                     {projects.map((project, i) => (
                         <a href={project?.link} key={i} target="_blank">
-                            <div className="p-3 hover:bg-zinc-950 transition-colors duration-200 border border-zinc-800 rounded-xl h-64 md:h-56 flex flex-col justify-between">
+                            <div className="p-2 md:p-3 hover:bg-zinc-950 transition-colors duration-200 border border-zinc-800 rounded-xl h-72 md:h-56 flex flex-col justify-between">
                                 <div className="space-y-2">
                                     <p className="text-sm font-bold tracking-[0.010em]">{project.title}</p>
                                     <p className="text-xs tracking-wide text-zinc-400">{project.description}</p>
