@@ -36,7 +36,7 @@ export default function Page() {
     return (
         <main className={` ${manrope.className} flex min-h-screen flex-col gap-4 items-center mx-auto pt-2 w-full md:3/5 lg:w-3/6  text-zinc-300 -tracking-widest p-2.5  md:p-5`}>
             <div className="flex justify-between items-center w-full">
-                <div className="w-3/5 flex flex-col gap-2">
+                <div className="w-full md:w-3/5 flex flex-col gap-2">
                     <p className="font-extrabold -tracking-wide text-lg">
                         Ilesanmi Oluwasijibomi Gbemileke.
                     </p>
@@ -77,10 +77,10 @@ export default function Page() {
             <div className="w-full my-4">
                 <p className="font-extrabold -tracking-wide text-lg">Work Experience</p>
                 {expereince.map((exp, i) => (
-                    <div className="my-3" key={i}>
+                    <div className="my-4 md:my-3" key={i}>
                         <div className="flex items-center justify-between">
-                            <div className="flex-col-reverse justify-start flex items-start md:flex-row md:items-center gap-1 md:gap-3 my-2 md:my-1 ">
-                                <p className="font-semibold text-sm md:text-base tracking-[0.010em] text-clip ">{exp.name}</p>
+                            <div className="flex-col-reverse justify-start flex items-start md:flex-row md:items-center gap-2 md:gap-3 my-2 md:my-1 ">
+                                <p className="font-semibold text-sm  md:text-base tracking-[0.010em] text-clip ">{exp.name}</p>
                                 <div className="text-xs bg-zinc-200 text-black rounded-md py-0.5 px-1 md:px-3 font-semibold tracking-wide" >{exp.mode}</div>
                             </div>
                             <p className="text-xs md:text-sm tracking-wide">{exp.period}</p>
@@ -109,7 +109,7 @@ export default function Page() {
                 <p className="font-extrabold -tracking-wide text-lg">Skills</p>
                 <div className="flex items-center flex-wrap gap-3 my-2">
                     {skills.map((skill, i) => (
-                        <div key={i} className="text-xs bg-zinc-200 text-black rounded-md py-0.5 px-3 font-semibold tracking-wide" >{skill}</div>
+                        <div key={i} className="text-xs bg-zinc-200 text-black rounded-md py-0.5 px-2 md:px-3 font-semibold tracking-wide" >{skill}</div>
                     ))}
                 </div>
             </div>
@@ -118,14 +118,14 @@ export default function Page() {
                 <div className="items-center gap-3 my-2 grid grid-cols-2 md:grid-cols-3">
                     {projects.map((project, i) => (
                         <a href={project?.link} key={i} target="_blank">
-                            <div className="p-3 hover:bg-zinc-950 transition-colors duration-200 border border-zinc-800 rounded-xl h-72 md:h-56 flex flex-col justify-between">
-                                <div>
-                                    <p className="font-bold tracking-[0.010em]">{project.title}</p>
+                            <div className="p-3 hover:bg-zinc-950 transition-colors duration-200 border border-zinc-800 rounded-xl h-64 md:h-56 flex flex-col justify-between">
+                                <div className="space-y-2">
+                                    <p className="text-sm font-bold tracking-[0.010em]">{project.title}</p>
                                     <p className="text-xs tracking-wide text-zinc-400">{project.description}</p>
                                 </div>
                                 <div className="flex gap-2 flex-wrap py-1">
                                     {project.technologies.map((skill, i) => (
-                                        <div key={i} className="text-xs bg-zinc-200 text-black rounded-md py-0.5 px-2 md:px-3 font-semibold tracking-wide" >{skill}</div>
+                                        <div key={i} className="text-xs bg-zinc-200 text-black rounded-md py-0.5 px-1 md:px-3 font-semibold tracking-wide" >{skill}</div>
                                     ))}
                                 </div>
                             </div>
