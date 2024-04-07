@@ -52,13 +52,13 @@ export default function Page() {
                     tree.map((t) => {
                         if (t.type === "tree") {
                             return (
-                                <div className='text-blue-950'>
+                                <div key={t.fullPath} className='text-blue-950'>
                                     <p>{t.path}</p>
                                     <div className='ml-4'>
                                         {
                                             t.files.map((f) => {
                                                 if (f.type == "blob") {
-                                                    return <div onClick={() => onClick(f.fullPath)} className='text-green-950'>{f.path}</div>
+                                                    return <div key={f.fullPath} onClick={() => onClick(f.fullPath)} className='text-green-950'>{f.path}</div>
                                                 }
                                             }
                                             )
@@ -69,7 +69,7 @@ export default function Page() {
                         }
 
                         return (
-                            <div onClick={() => onClick(t.fullPath)} className='text-green-950'>{t.path}</div>
+                            <div key={t.fullPath} onClick={() => onClick(t.fullPath)} className='text-green-950'>{t.path}</div>
                         )
                     })
                 }
