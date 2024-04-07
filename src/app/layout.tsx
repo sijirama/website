@@ -7,7 +7,7 @@ import { inter } from "@/lib/fonts";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "oluwasijibomi - Software Engineer",
+    title: "sijiramakun ",
     description: "my fucking website.",
     openGraph: {
         title: "oluwasijibomi",
