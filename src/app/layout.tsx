@@ -1,5 +1,5 @@
 import React from "react";
-import { HTMLAttributes } from "react";
+import { ThemeProvider } from "@/components/providers/theme-provider"
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -24,11 +24,18 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en">
-            <body className={`${inter.className} bg-black h-dvh flex flex-col px-2 md:px-0 `} >
-                <Header />
-                <main className="flex-1">{children}</main>
-                <Footer />
-            </body>
+            <ThemeProvider
+                attribute="class"
+                defaultTheme="system"
+                enableSystem
+                disableTransitionOnChange
+            >
+                <body className={`${inter.className} bg-zinc-50 dark:bg-black h-dvh flex flex-col px-2 md:px-0 `} >
+                    <Header />
+                    <main className="flex-1">{children}</main>
+                    <Footer />
+                </body>
+            </ThemeProvider>
         </html>
     );
 }

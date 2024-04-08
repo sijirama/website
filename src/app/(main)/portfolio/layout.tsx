@@ -17,5 +17,5 @@ export default function PortfolioLayout({
 }: {
     children: React.ReactNode;
 }) {
-    return <main className={`py-4 md:py-8 bg-black`}>{children}</main>;
+    return <main className={`py-4 md:py-8 `}>{children}</main>;
 }

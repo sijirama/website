@@ -23,7 +23,7 @@ export function ImportantWord({ word, link }: Props) {
 
 
 export default function JobHunt() {
-    return <section className={`w-full h-full text-zinc-400 items-center flex ${manrope.className} text-base md:text-base `}>
+    return <section className={`w-full h-full text-zinc-900 dark:text-zinc-300 items-center flex ${manrope.className} text-base md:text-base `}>
         <div className="w-full lg:w-[95%] flex gap-1.5 flex-col items-left h-full md:py-2">
             <p id='target'>
                 hi, my name is <SpanWord word=" Oluwasijibomi Ilesanmi " />, a software developer based in Lagos, Nigeria. I have a deep passion for crafting applications that not only solve problems but also contribute positively to the well-being of humanity. I <SpanWord word="love music" link="https://open.spotify.com/user/31okn5a72nq67rs2sndgdoudfm3y" /> and listen mostly to R&B, Rap and occasionally Afro beats. i also love reading books, both fictional and non-fictional, you probrably should check out the notes and articles i have written <SpanWord word="Here in my Digital Garden" link="/library" />, i am also in search of a job, and my <SpanWord word="Portfolio can be found here." link="/portfolio" /></p>
@@ -44,7 +44,7 @@ export default function JobHunt() {
                 </ul>
             </div>
             <p>
-                Pls feel free to contact me on <SpanWord word="Twitter/X" link="https://twitter.com/sijiramakun" /> or <SpanWord word="Discord" link="https://discord.com/channels/@me/529714655333974025" /> or even  <SpanWord word="Github" link="https://github.com/sijirama" />, i absolutely love meeting new people.
+                shoot me a dm on <SpanWord word="Twitter/X" link="https://twitter.com/sijiramakun" /> or <SpanWord word="Discord" link="https://discord.com/channels/@me/529714655333974025" /> or even  <SpanWord word="Github" link="https://github.com/sijirama" />, if you want to chat, vibe, or build something cool together.
             </p>
         </div>
     </section>
