@@ -67,15 +67,15 @@ export default function Header({ }) {
         }, 1300)
     }
 
+    //<button disabled={disabled} onClick={handleMenu} className="underline font-semibold -tracking-wider">{menuState.menuName}</button>
 
     return (
-        <header className="z-10 w-full bg-black ">
-            <main className="z-50 flex justify-between w-[95%] mx-auto py-6 rounded-lg text-zinc-500">
+        <header className="z-10 w-full ">
+            <main className="z-50 flex justify-between w-[95%] mx-auto py-5 rounded-lg text-zinc-500">
                 <div className="hover:text-orange-800">
-                    <Link href="/" className="-tracking-widest font-bold">oluwasijibomi</Link>
+                    <Link href="/" className="-tracking-widest font-bold">home</Link>
                 </div>
                 <div className="hover:text-orange-800">
-                    <button disabled={disabled} onClick={handleMenu} className="underline font-semibold -tracking-wider">{menuState.menuName}</button>
                 </div>
             </main>
             <Menu state={menuState} />

@@ -1,6 +1,5 @@
 import JobHunt from "./PageAbout";
 import { Location } from "./boxes/loaction";
-import { Marquee } from "./boxes/marquee";
 import { useGSAP } from "@gsap/react";
 
 export function Information() {
@@ -27,11 +26,11 @@ export function Information() {
     // }, {})
     //
     return (
-        <div className="flex flex-col gap-4 md:grid md:grid-cols-4 md:grid-row-1 py-4 lg:py-6 md:w-[95%] mx-auto ">
-            <div className="col-span-3 ">
+        <div className="flex-1 flex flex-col md:flex-row gap-4 py-1 md:w-[95%] mx-auto ">
+            <div className="flex-1">
                 <JobHunt />
             </div>
-            <div className="hidden  min-h-36 md:col-span-1 md:flex items-center justify-center ">
+            <div className="hidden lg:w-1/4 h-full lg:grid items-center">
                 <Location />
             </div>
         </div>

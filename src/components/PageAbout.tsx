@@ -23,10 +23,28 @@ export function ImportantWord({ word, link }: Props) {
 
 
 export default function JobHunt() {
-    return <section className="w-full h-full text-zinc-400 items-center flex">
-        <div className=" w-full md:w-5/6 flex items-center h-full md:py-5">
-            <p id='target' className={`${manrope.className} text-base md:text-xl`} >
-                Welcome, I am <SpanWord word=" Oluwasijibomi Ilesanmi " />, a software developer based in Lagos, Nigeria, Feel free to connect with me on <SpanWord word="Twitter/X" link="https://twitter.com/sijiramakun" /> or <SpanWord word="Discord" link="https://discord.com/channels/@me/529714655333974025"/> or even  <SpanWord word="Github" link="https://github.com/sijirama" />
+    return <section className={`w-full h-full text-zinc-400 items-center flex ${manrope.className} text-base md:text-base `}>
+        <div className="w-full lg:w-[95%] flex gap-1.5 flex-col items-left h-full md:py-2">
+            <p id='target'>
+                hi, my name is <SpanWord word=" Oluwasijibomi Ilesanmi " />, a software developer based in Lagos, Nigeria. I have a deep passion for crafting applications that not only solve problems but also contribute positively to the well-being of humanity. I <SpanWord word="love music" link="https://open.spotify.com/user/31okn5a72nq67rs2sndgdoudfm3y" /> and listen mostly to R&B, Rap and occasionally Afro beats. i also love reading books, both fictional and non-fictional, you probrably should check out the notes and articles i've written <SpanWord word="Here in my Digital Garden" link="/library" />, i'm also in search of a job, and my <SpanWord word="Portfolio can be found here." link="/portfolio" /></p>
+            <div>
+                <p>i am really really really excited about ...</p>
+                <ul className="pl-4 list-disc">
+                    <li>
+                        the interesting discourse at intersection of science and religion,
+                        exploring nuanced discussions on origins, evolution, and ultimate
+                        implicaions for humanity.
+                    </li>
+                    <li>engineering endeavors that have the potential to positively transform lives, whether through innovative technologies or sustainable solutions.</li>
+                    <li>
+                        music and people that share music, sharing music is a love
+                        language.
+                    </li>
+                    <li>the future and what it holds for us.</li>
+                </ul>
+            </div>
+            <p>
+                Pls feel free to contact me on <SpanWord word="Twitter/X" link="https://twitter.com/sijiramakun" /> or <SpanWord word="Discord" link="https://discord.com/channels/@me/529714655333974025" /> or even  <SpanWord word="Github" link="https://github.com/sijirama" />, i absolutely love meeting new people.
             </p>
         </div>
     </section>
