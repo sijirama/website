@@ -1,15 +1,22 @@
 const label = "ExplorerPath"
 
 function SetItemForPath(path: string) {
-    localStorage.setItem(label, path)
+    if (typeof window !== undefined) {
+        localStorage.setItem(label, path)
+    }
 }
 
 function GetItemForPath() {
-    return localStorage.getItem(label)
+    if (typeof window !== undefined) {
+        return localStorage.getItem(label)
+    }
 }
 
 function isTherePathStored() {
-    const pathStored = localStorage.getItem(label)
+    let pathStored
+    if (typeof window !== undefined) {
+        pathStored = localStorage.getItem(label)
+    }
     return pathStored ? true : false
 }
 
