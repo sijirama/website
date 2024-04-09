@@ -1,10 +1,15 @@
 "use client"
+import { GetItemForPath, isTherePathStored } from '@/store/pathStorage'
+import { useRouter } from 'next/navigation'
 import React from 'react'
 export default function Page() {
-    
-    return (
-        <main className='text-white flex gap-1 bg-red-900 h-full'>
-            <p>Hello world</p>
-        </main >
-    )
+
+    const router = useRouter()
+
+    if (isTherePathStored()) {
+        router.push(`/library/${GetItemForPath()}`)
+    } else { router.push(`/library/Home.md`) }
+
+    return null
+
 }
