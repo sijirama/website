@@ -1,27 +1,25 @@
-const label = "ExplorerPath"
+const label = 'ExplorerPath';
 
-function SetItemForPath(path: string) {
-    if (typeof window !== undefined) {
-        localStorage.setItem(label, path)
+function setItemForPath(path: string) {
+    if (typeof window !== 'undefined') {
+        localStorage.setItem(label, path);
     }
 }
 
-function GetItemForPath() {
-    if (typeof window !== undefined) {
-        return localStorage.getItem(label)
+function getItemForPath() {
+    if (typeof window !== 'undefined') {
+        return localStorage.getItem(label);
     }
+    return null; // Return null if localStorage is not available
 }
 
 function isTherePathStored() {
-    let pathStored
-    if (typeof window !== undefined) {
-        pathStored = localStorage.getItem(label)
+    if (typeof window !== 'undefined') {
+        const pathStored = localStorage.getItem(label);
+        return !!pathStored; // Convert to boolean using !! operator
     }
-    return pathStored ? true : false
+    return false; // Return false if localStorage is not available
 }
 
-export {
-    SetItemForPath,
-    GetItemForPath,
-    isTherePathStored
-}
+export { setItemForPath, getItemForPath, isTherePathStored };
+

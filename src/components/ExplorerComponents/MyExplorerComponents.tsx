@@ -10,7 +10,7 @@ import {
     Accordion,
 } from "@/components/ui/accordion"
 import { renderAccordionItems } from '@/components/ExplorerComponents/Tree';
-import { SetItemForPath } from '@/store/pathStorage';
+import { setItemForPath } from '@/store/pathStorage';
 
 
 
@@ -36,7 +36,7 @@ export function Explorer() {
     const router = useRouter()
 
     const onClick = async (path: string) => {
-        SetItemForPath(path)
+        setItemForPath(path)
         router.push(`/library/${path}`)
     }
 

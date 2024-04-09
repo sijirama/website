@@ -1,34 +1,23 @@
 "use client"
 import { useRouter } from 'next/navigation'
+import { isTherePathStored, getItemForPath } from '@/store/pathStorage'
+import { useEffect } from 'react';
+
 export default function Page() {
-    const label = "ExplorerPath"
-
-    function SetItemForPath(path: string) {
-        if (typeof window !== undefined) {
-            localStorage.setItem(label, path)
-        }
-    }
-
-    function GetItemForPath() {
-        if (typeof window !== undefined) {
-            return localStorage.getItem(label)
-        }
-    }
-
-    function isTherePathStored() {
-        let pathStored
-        if (typeof window !== undefined) {
-            pathStored = localStorage.getItem(label)
-        }
-        return pathStored ? true : false
-    }
-
 
     const router = useRouter()
 
-    if (isTherePathStored()) {
-        router.push(`/library/${GetItemForPath()}`)
-    } else { router.push(`/library/Home.md`) }
+    useEffect(() => {
+        if (isTherePathStored()) {
+            const storedPath = getItemForPath();
+            if (storedPath) {
+                router.push(`/library/${storedPath}`);
+            } else {
+                router.push(`/library/Home.md`);
+            }
+        }
+    }, []);
+
 
     return null
 
