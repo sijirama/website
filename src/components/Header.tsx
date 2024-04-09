@@ -1,7 +1,8 @@
 "use client"
 import Link from "next/link";
 import { FaRegCircle } from "react-icons/fa";
-import { ThemeToggle } from "./providers/theme-toggle";
+import { ThemeToggle } from "@/providers/theme-toggle";
+import ExplorerSheetTrigger from "./ExplorerComponents/ExplorerSheetTrigger";
 
 export default function Header({ }) {
     return (
@@ -10,8 +11,11 @@ export default function Header({ }) {
                 <div className="hover:text-orange-800">
                     <Link href="/" className="-tracking-widest font-bold">home</Link>
                 </div>
-                <div className="hover:text-orange-800">
-                    <ThemeToggle />
+                <div className="flex items-center gap-2">
+                    <ExplorerSheetTrigger />
+                    <div className="hover:text-orange-800">
+                        <ThemeToggle />
+                    </div>
                 </div>
             </main>
         </header>

@@ -1,10 +1,11 @@
 import React from "react";
-import { ThemeProvider } from "@/components/providers/theme-provider"
+import { ThemeProvider } from "@/providers/theme-provider"
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { inter } from "@/lib/fonts";
 import { Metadata } from "next";
+import { InterfaceProvider } from "@/providers/InterfaceProvider";
 
 export const metadata: Metadata = {
     title: "sijiramakun ",
@@ -31,6 +32,7 @@ export default function RootLayout({
                     enableSystem
                     disableTransitionOnChange
                 >
+                    <InterfaceProvider />
                     <Header />
                     <main className="flex-1">{children}</main>
                     <Footer />
