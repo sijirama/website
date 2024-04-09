@@ -19,7 +19,7 @@ export default function Page(props: any) {
     useEffect(() => {
         const fetchContent = async (path: string[]) => {
             const blobUrl = path.join("/")
-            console.log(blobUrl)
+            //console.log(blobUrl)
 
             const headers = {
                 'Accept': 'application/vnd.github+json',
@@ -40,11 +40,11 @@ export default function Page(props: any) {
     }
 
     return (
-        <section className=' px-5 max-h-full overflow-y-auto'>
+        <section className=' px-5 h-full overflow-y-auto'>
             {
                 !fileContent ? ("No data yet") : (
                     <article
-                        className={`prose prose-stone prose-p:${rubik.className} max-w-none mx-auto prose-code:bg-zinc-400 prose-a:text-zinc-500 prose-code:py-0.5 prose-code:rounded-md prose-pre:bg-zinc-50 prose-p:text-sm prose-p:text-zinc-300 md:prose-p:text-base prose-headings:text-lg md:prose-headings:text-2xl prose-headings:text-zinc-100`}
+                        className={`prose prose-stone prose-p:${rubik.className} max-w-none mx-auto prose-code:bg-zinc-400 prose-a:text-zinc-500 prose-code:py-0.5 prose-code:rounded-md prose-pre:bg-zinc-50 prose-p:text-sm prose-p:text-zinc-900 dark:prose-p:text-zinc-300 md:prose-p:text-base prose-headings:text-lg md:prose-headings:text-2xl prose-headings:text-zinc-900 dark:prose-headings:text-zinc-100`}
                     >
                         <Markdown options={{ overrides: { pre: PreBlock } }}>
                             {fileContent!}

@@ -38,7 +38,7 @@ export default function LibraryLayout({
     const router = useRouter()
 
     const onClick = async (path: string) => {
-        console.log(path)
+        //console.log(path)
         router.push(`/library/${path}`)
     }
 
@@ -46,45 +46,44 @@ export default function LibraryLayout({
         return null
     }
 
-    return <main className='text-white flex gap-1 max-h-screen'>
-        <ResizablePanelGroup direction='horizontal' className='max-h-[50rem]'>
-            <ResizablePanel defaultSize={25} className='bg-red-400 hidden lg:block'>
-                <section className='hidden lg:block bg-zinc-950 p-5 overflow-y-auto w-full h-full'>
-                    <p>Explorer</p>
-                    {
-                        tree.map((t) => {
-                            if (t.type === "tree") {
-                                return (
-                                    <div key={t.fullPath} className='text-blue-950'>
-                                        <p>{t.path}</p>
-                                        <div className='ml-4'>
-                                            {
-                                                t.files.map((f) => {
-                                                    if (f.type == "blob") {
-                                                        return <div key={f.fullPath} onClick={() => onClick(f.fullPath)} className='text-green-950'>{f.path}</div>
-                                                    }
-                                                }
-                                                )
-                                            }
-                                        </div>
-                                    </div>
-                                )
-                            }
-
+    return <ResizablePanelGroup direction='horizontal' className='max-h-screen'>
+        <ResizablePanel defaultSize={25} className='hidden lg:block '>
+            <section className='hidden lg:block p-5 overflow-y-auto h-full w-full my-auto text-base'>
+                {
+                    tree.map((t) => {
+                        if (t.type === "tree") {
                             return (
-                                <div key={t.fullPath} onClick={() => onClick(t.fullPath)} className='text-green-950'>{t.path}</div>
+                                <div key={t.fullPath} className='text-blue-950'>
+                                    <p>{t.path}</p>
+                                    <div className='ml-4'>
+                                        {
+                                            t.files.map((f) => {
+                                                if (f.type == "blob") {
+                                                    return <div key={f.fullPath} onClick={() => onClick(f.fullPath)} className='text-green-950'>{f.path}</div>
+                                                }
+                                            }
+                                            )
+                                        }
+                                    </div>
+                                </div>
                             )
-                        })
-                    }
-                </section>
-            </ResizablePanel>
-            <ResizableHandle withHandle />
-            <ResizablePanel defaultSize={75} >
-                <section className='w-full overflow-y-auto h-full'>
-                    {children}
-                </section>
-            </ResizablePanel>
-        </ResizablePanelGroup>
-    </main >
+                        }
+
+                        return (
+                            <div key={t.fullPath} onClick={() => onClick(t.fullPath)} className='text-green-950'>{t.path}</div>
+                        )
+                    })
+                }
+            </section>
+        </ResizablePanel>
+        <ResizableHandle withHandle />
+        <ResizablePanel defaultSize={75} >
+            <section className='w-full overflow-y-auto h-full'>
+                {/*
+                    */}
+                {children}
+            </section>
+        </ResizablePanel>
+    </ResizablePanelGroup>
 
 }

@@ -23,19 +23,19 @@ export default function RootLayout({
     children: React.ReactNode;
 }) {
     return (
-        <html lang="en">
-            <ThemeProvider
-                attribute="class"
-                defaultTheme="system"
-                enableSystem
-                disableTransitionOnChange
-            >
-                <body className={`${inter.className} bg-zinc-50 dark:bg-black h-dvh flex flex-col px-2 md:px-0 `} >
+        <html lang="en" suppressHydrationWarning={true}>
+            <body suppressHydrationWarning={true} className={`${inter.className} bg-zinc-50 dark:bg-black h-dvh flex flex-col px-2 md:px-0 `} >
+                <ThemeProvider
+                    attribute="class"
+                    defaultTheme="system"
+                    enableSystem
+                    disableTransitionOnChange
+                >
                     <Header />
                     <main className="flex-1">{children}</main>
                     <Footer />
-                </body>
-            </ThemeProvider>
+                </ThemeProvider>
+            </body>
         </html>
     );
 }
