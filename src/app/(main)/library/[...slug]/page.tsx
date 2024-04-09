@@ -6,6 +6,8 @@ import axios from 'axios';
 import { rubik } from '@/lib/fonts';
 import Markdown from "markdown-to-jsx";
 import { PreBlock } from "@/lib/syntaxhighlight";
+import { getPostContent, getPostMetaData } from '@/lib/getPostMetaData';
+import matter from 'gray-matter';
 
 export default function Page(props: any) {
     /*
@@ -13,8 +15,9 @@ export default function Page(props: any) {
         it returns an array of strings with all the routes included
     */
 
-    const slug = props.params.slug; 
+    const slug = props.params.slug;
     const [fileContent, setFileContent] = useState<string | null>(null)
+    const [fileMeta, setFileMeta] = useState<matter.GrayMatterFile<string> | null>(null)
 
     useEffect(() => {
         const fetchContent = async (path: string[]) => {
@@ -39,8 +42,21 @@ export default function Page(props: any) {
         return null
     }
 
+    const fileMetadata = getPostMetaData(fileContent)
+
+    if (fileMetadata.title) {
+        const filestuff = getPostContent(fileContent)
+        setFileMeta(filestuff)
+        setFileContent(filestuff.content)
+
+    }
+
     return (
         <section className=' px-5 h-full overflow-y-auto'>
+            <h1 className="font-bold text-2xl md:text-3xl -tracking-wider dark:text-zinc-300">
+                {fileMeta?.data.title}
+            </h1>
+
             {
                 !fileContent ? ("No data yet") : (
                     <article
