@@ -15,7 +15,7 @@ export default function ExplorerSheet() {
     const isSheetOpen = isOpen && type === "explorer"
     return (
         <Sheet open={isSheetOpen} onOpenChange={onClose}>
-            <SheetContent className='block px-2 '>
+            <SheetContent className='block px-2 dark:bg-black'>
                 <SheetHeader>
                     <SheetTitle>Explorer</SheetTitle>
                 </SheetHeader>
