@@ -3,5 +3,6 @@ export const HiddenFilesandFolders = [
     ".obsidian.vimrc",
     ".obsidian",
     "README.md",
-    "Hidden Stuff"
+    "Hidden Stuff",
+    "Templates"
 ]
