@@ -16,9 +16,6 @@ export default function ExplorerSheet() {
     return (
         <Sheet open={isSheetOpen} onOpenChange={onClose}>
             <SheetContent className='block px-2 dark:bg-black'>
-                <SheetHeader>
-                    <SheetTitle>Explorer</SheetTitle>
-                </SheetHeader>
                 <section className='pr-3 overflow-y-auto h-full w-full my-auto text-base'>
                     <Explorer />
                 </section>
