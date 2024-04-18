@@ -5,7 +5,7 @@ import { manrope } from "@/lib/fonts";
 export function MiniPortfolio() {
 
     return (
-        <section className={`flex-1 ${manrope.className} text-sm lg:text-base md:w-[95%] mx-auto flex flex-col gap-5 my-3 py-6 border-y-zinc-400 dark:border-y-zinc-700 border-y-[0.1px] text-zinc-900 dark:text-zinc-300 `}>
+        <section className={`flex-1 ${manrope.className} text-xs lg:text-sm md:w-[95%] mx-auto flex flex-col gap-5 my-3 py-6 border-y-zinc-400 dark:border-y-zinc-700 border-y-[0.1px] text-zinc-900 dark:text-zinc-300 `}>
             <div className="grid md:grid-cols-4 md:grid-row-3 h-full w-full">
                 <div className="md:col-span-1 row-span-3 py-4 ">
                     <p >Experience</p>
