@@ -10,7 +10,7 @@ export default function ExplorerSheetTrigger() {
     }
     return (
         <div onClick={onClick} className="block lg:hidden">
-            <FaRegSquare />
+            <FaRegSquare className="text-lg" />
         </div>
     )
 }

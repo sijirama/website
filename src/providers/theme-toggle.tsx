@@ -17,7 +17,7 @@ export function ThemeToggle() {
 
     return (
         <div onClick={onclick} className="cursor-pointer p-1">
-            <FaRegCircle onClick={onclick} className="text-black dark:text-zinc-200 font-semibold" />
+            <FaRegCircle onClick={onclick} className="text-lg text-black dark:text-zinc-200 font-semibold" />
         </div>
     )
 }

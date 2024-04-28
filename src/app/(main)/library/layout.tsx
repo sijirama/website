@@ -21,7 +21,7 @@ export default function LibraryLayout({
                 <Explorer />
             </section>
         </ResizablePanel>
-        <ResizableHandle withHandle />
+        <ResizableHandle withHandle className='bg-zinc-600' />
         <ResizablePanel defaultSize={75} >
             <section className='w-full overflow-y-auto h-full'>
                 {children}
