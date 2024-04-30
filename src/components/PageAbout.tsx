@@ -32,15 +32,13 @@ export default function JobHunt() {
                 <ul className="pl-4 list-disc">
                     <li>engineering endeavors that have the potential to positively transform lives, i believe that this talent i have been given by God, i should try and use it to help people too.</li>
                     <li>
-                        the interesting discourse at the intersection of science and religion,
-                        exploring nuanced discussions on origins, evolution, and ultimate
-                        implicaions for humanity, i grew up in a christian home, but have the mind of a scientist, things are bound to clash.
+                        the interesting discourse at the intersection of science and religion, i grew up in a christian home, but have the mind of a scientist, things are bound to clash.
                     </li>
                     <li>
                         music and people that share music, sharing music is a love
                         language, beautiful music is one of the most magnificent and delightful presents God has given us.
                     </li>
-                    <li>the future and what it holds for us, are we really all gonna make it?</li>
+                    <li>the future and what it holds for us</li>
                 </ul>
             </div>
             <p>

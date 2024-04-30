@@ -12,11 +12,13 @@ import {
 import { renderAccordionItems } from '@/components/ExplorerComponents/Tree';
 import { setItemForPath } from '@/store/pathStorage';
 
+import { useInterface } from '@/store/InterfaceStore'
 
 
 export function Explorer() {
 
     const [tree, setTree] = useState<Directory[] | null>(null)
+    const { onClose } = useInterface()
 
     useEffect(() => {
         const headers = {
@@ -38,6 +40,7 @@ export function Explorer() {
     const onClick = async (path: string) => {
         setItemForPath(path)
         router.push(`/library/${path}`)
+        onClose()
     }
 
     if (!tree) {
