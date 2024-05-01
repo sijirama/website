@@ -1,14 +1,3 @@
-// export const metadata: Metadata = {
-//     title: "siji's shelf",
-//     description: "my website shelf",
-//     openGraph: {
-//         title: "siji's shelf",
-//         description: "read my writing guys",
-//         images:
-//             "https://i.pinimg.com/474x/f7/6e/c1/f76ec12821e613ef03bc78efb8bf3ef5.jpg"
-//     },
-// };
-
 import type { Metadata } from 'next'
 
 type Props = {
