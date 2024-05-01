@@ -22,7 +22,6 @@ export default function Page(props: any) {
     useEffect(() => {
         const fetchContent = async (path: string[]) => {
             const blobUrl = path.join("/")
-            //console.log(blobUrl)
 
             const headers = {
                 'Accept': 'application/vnd.github+json',
