@@ -8,13 +8,13 @@ import { Metadata } from "next";
 import { InterfaceProvider } from "@/providers/InterfaceProvider";
 
 export const metadata: Metadata = {
-    title: "sijiramakun ",
+    title: "sijiramakun",
     description: "my fucking website.",
     openGraph: {
         title: "oluwasijibomi",
         description: "guys it's my website, check it out.",
         images:
-            "https://siji.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Faphrodite.ba7bb8a6.jpg&w=3840&q=75",
+            "https://i.pinimg.com/474x/f7/6e/c1/f76ec12821e613ef03bc78efb8bf3ef5.jpg"
     },
 };
 
