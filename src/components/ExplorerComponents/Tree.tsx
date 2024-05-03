@@ -20,7 +20,7 @@ export function renderAccordionItems(tree: (Directory | File)[], onClick: (path:
             );
         } else {
             return (
-                <div className='py-3 px-1.5 bg-orange-300 text-xs md:text-sm my-1 rounded-md' key={item.fullPath} onClick={() => onClick(item.fullPath)}>{item.path}</div>
+                <div className='py-3 px-1.5 bg-orange-300 text-xs md:text-sm my-1 rounded-md' key={item.fullPath} onClick={() => onClick(item.fullPath)}>{item.path.slice(0, -3)}</div>
             );
         }
     });
