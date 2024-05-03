@@ -12,8 +12,10 @@ export default function Page() {
             const storedPath = getItemForPath();
             if (storedPath) {
                 router.push(`/library/${storedPath}`);
+            } else if (storedPath == null || storedPath.length < 2) {
+                router.push(`/library/Home`);
             } else {
-                router.push(`/library/Home.md`);
+                router.push(`/library/Home`);
             }
         }
     }, []);
