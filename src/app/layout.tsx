@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import { inter } from "@/lib/fonts";
 import { Metadata } from "next";
 import { InterfaceProvider } from "@/providers/InterfaceProvider";
+import Script from "next/script";
 
 export const metadata: Metadata = {
     title: "sijiramakun",
@@ -25,6 +26,8 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en" suppressHydrationWarning={true}>
+            <head>
+            </head>
             <body suppressHydrationWarning={true} className={`${inter.className} bg-zinc-50 dark:bg-stone-950 h-dvh flex flex-col px-3 md:px-0 `} >
                 <ThemeProvider
                     attribute="class"
