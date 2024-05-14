@@ -28,7 +28,7 @@ export default function JobHunt() {
             <p id='target'>
                 my name is <SpanWord word=" Oluwasijibomi Ilesanmi " />, a software developer based in Lagos, Nigeria. I have a deep passion for crafting applications that not only solve problems but also contribute positively to the well-being of people around me. I <SpanWord word="love music" link="https://open.spotify.com/user/31okn5a72nq67rs2sndgdoudfm3y" /> and listen mostly to R&B, Rap and occasionally Afro beats. i also love reading books, both fictional and non-fictional, you probrably should check out the notes and articles i have written <SpanWord word="Here in my library" link="/library" />, if you want more info on my professional background, the details can be found here  <SpanWord word="in my portfolio page" link="/portfolio" /></p>
             <div>
-                <p>i am really really really excited about ...</p>
+                <p>i am really excited about ...</p>
                 <ul className="pl-4 list-disc">
                     <li>engineering endeavors that have the potential to positively transform lives, i believe that this talent i have been given by God, i should try and use it to help people too.</li>
                     <li>
