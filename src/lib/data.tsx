@@ -47,21 +47,51 @@ export const skills = [
     "Git/Github",
     "Neovim/Vim",
     "Linux (ARCH BTW)",
+    "Kafka",
+    "Sysadmin, i can and do self host and manage my servers",
+    "Devops"
 ]
 
 export const projects = [
     {
+        "title": "BuymeZobo",
+        "description": "with buymezobo we are trying to create an easy way for nigerian creators or even anyone with an audience to monetize their audience and use that moola to pursue other endeavours and projects, we want to make creators independent",
+        "type": "Main Project",
+        "link": "https://buymezobo.vercel.app/",
+        "technologies": ["TypeScript", "Next.js", "TailwindCSS", "PostgreSQL", "Prisma"]
+    },
+    {
+        "title": "Sentinel",
+        "description": "a present work in progress, sentinel is a simple status page for my services and projects",
+        "type": "Side Project",
+        "link": "",
+        "technologies": ["Golang", "HTMX", "TailwindCSS", "Sqlite"]
+    },
+    {
+        "title": "Soro",
+        "description": "this is a serious work in progress and should not even be here, i'm currently on freedays doing research to build a programming language or rather the interpreter for my language, called soro, the challenge here is that i want to use boken english (pidgin) for the keywords, i just finished the tokenizer with flex and i'm having fun with it",
+        "type": "Research",
+        "link": "https://github.com/sijirama/interpreter-implementation-research",
+        "technologies": ["C++", "Golang"]
+    },
+    {
+        "title": "Seapick",
+        "description": "iphone bros should be angry but i wanted to clone airdrop, so this is is a simple file transfer over TCP, it works okay rn (i think), but i want to add bluetooth discovery to that, and maybe a web interface",
+        "type": "Side Project",
+        "technologies": ["Golang"]
+    },
+    {
         "title": "Bauble",
         "description": "Streamlining university project management for student groups and ensures an efficient project experience.",
         "type": "Final Year Project",
-        "link":"https://baublespace.vercel.app/",
+        "link": "https://baublespace.vercel.app/",
         "technologies": ["TypeScript", "Next.js", "TailwindCSS", "PostgreSQL", "Prisma"]
     },
     {
         "title": "Monko (WIP)",
         "description": "simple experimental interpreter built in Golang, mostly for research on lexical analysis and token parsing",
         "type": "Side Project",
-        "link":"",
+        "link": "",
         "technologies": ["Golang"]
     },
     {
@@ -74,7 +104,7 @@ export const projects = [
         "title": "Accord",
         "description": "fullstack messaging application inspired by Discord, channel management, real-time messaging etc.",
         "type": "Final Year Project",
-        "link":"https://accordingly.vercel.app/",
+        "link": "https://accordingly.vercel.app/",
         "technologies": ["TypeScript", "Next.js", "TailwindCSS", "PostgreSQL", "Prisma"]
     },
 
@@ -88,7 +118,7 @@ export const projects = [
         "title": "Tidy",
         "description": "CLI application for organization and task tracking",
         "type": "Side Project",
-        "link":"https://github.com/sijirama/tidy",
+        "link": "https://github.com/sijirama/tidy",
         "technologies": ["GoLang", "SQlite", "BubbleTea"]
     },
     {
@@ -102,14 +132,14 @@ export const projects = [
         "title": "Chip*",
         "description": "Simple chip8 emulator built with javascript.",
         "type": "Side Project",
-        "link":"https://sijirama.github.io/chip8/",
+        "link": "https://sijirama.github.io/chip8/",
         "technologies": ["JavaScript"]
     },
     {
         "title": "Particles",
         "description": "research repository for particle life cycles under various conditions.",
         "type": "Side Project",
-        "link":"https://sijirama.github.io/particles/",
+        "link": "https://sijirama.github.io/particles/",
         "technologies": ["JavaScript"]
     },
 

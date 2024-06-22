@@ -50,7 +50,7 @@ export default function Page() {
                     <div className="w-full flex gap-2 flex-wrap py-1 md:py-3">
                         {socials.map((social, i) => (
                             <a key={i} href={`${social.url}`} target="_blank">
-                                <div className=" p-2 md:p-3 rounded-lg border border-zinc-800 dark:hover:bg-zinc-800 hover:bg-zinc-300 transition-colors duration-300">
+                                <div className=" p-2 md:p-3 rounded-lg border border-zinc-500 dark:hover:bg-zinc-800 hover:bg-zinc-300 transition-colors duration-300">
                                     {social.icon}
                                 </div>
                             </a>
@@ -133,7 +133,6 @@ export default function Page() {
                     ))}
                 </div>
             </div>
-
         </main>
     )
 }
