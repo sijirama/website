@@ -25,11 +25,11 @@ export default function JobHunt() {
     return <section className={`w-full h-full  text-zinc-950 dark:text-zinc-100 items-center flex ${manrope.className} text-sm lg:text-lg `}>
         <div className="w-full lg:w-[95%] flex gap-3 md:gap-1.5 flex-col items-left h-full md:py-2">
             <p id='target'>
-                My name is <SpanWord word="Oluwasijibomi Ilesanmi" />, a software developer based in Lagos, Nigeria. I've got this deep passion for crafting applications that don't just solve problems, but actually make life better for the people around me. It's like coding with a purpose.
+                My name is <SpanWord word="Oluwasijibomi Ilesanmi" />{", a software developer based in Lagos, Nigeria. I've got this deep passion for crafting applications that don't just solve problems, but actually make life better for the people around me. It's like coding with a purpose."}
             </p>
 
             <p>
-                <SpanWord word="I really love music" link="https://open.spotify.com/user/31okn5a72nq67rs2sndgdoudfm3y" /> and listen mostly to R&B, Rap and occasionally Afrobeats. I also love reading books; both fiction and non-fiction hold a special place in my intellectual pursuits. They serve as windows to new worlds and reservoirs of knowledge - two things I'm especially addicted to.
+                <SpanWord word="I really love music" link="https://open.spotify.com/user/31okn5a72nq67rs2sndgdoudfm3y" />{" and listen mostly to R&B, Rap and occasionally Afrobeats. I also love reading books; both fiction and non-fiction hold a special place in my intellectual pursuits. They serve as windows to new worlds and reservoirs of knowledge - two things I'm especially addicted to."}
             </p>
 
             <p>
