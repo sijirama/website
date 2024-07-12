@@ -22,7 +22,7 @@ export function ImportantWord({ word, link }: Props) {
 
 
 export default function JobHunt() {
-    return <section className={`w-full h-full  text-zinc-950 dark:text-zinc-100 items-center flex ${manrope.className} text-sm lg:text-lg `}>
+    return <section className={`w-full h-full  text-zinc-950 dark:text-zinc-100 items-center flex ${manrope.className} text-sm lg:text-base `}>
         <div className="w-full lg:w-[95%] flex gap-3 md:gap-1.5 flex-col items-left h-full md:py-2">
             <p id='target'>
                 My name is <SpanWord word="Oluwasijibomi Ilesanmi" />{", a software developer based in Lagos, Nigeria. I've got this deep passion for crafting applications that don't just solve problems, but actually make life better for the people around me. It's like coding with a purpose."}
@@ -36,9 +36,9 @@ export default function JobHunt() {
                 I occasionally pen down my thoughts and insights. You can check out <SpanWord word="what I've written here" link="/library" />. If you want more info on my professional background, the details can be found <SpanWord word="in my portfolio page" link="/portfolio" />.
             </p>
             <div>
-                <p>what keeps me up at night</p>
-                <ul className="pl-4 list-disc">
-                    <li>engineering endeavors that have the potential to positively transform lives, i believe that this talent i have been given by God, i should try and use it to help people too.</li>
+                <p className="font-bold">what keeps me up at night</p>
+                <ul className="pl-4 list-disc space-y-2">
+                    <li>engineering endeavors that have the potential to positively transform lives, i believe that this talent we have been given by God, we should use it to positively impact the people around us, a totally random but apparently wise man once said - <span className="font-bold">Concern for man himself and his fate must always form the chief interest of all technical endeavors</span></li>
                     <li>
                         the interesting discourse at the intersection of science and religion, i grew up in a christian home, but have the mind of a scientist, things are bound to clash.
                     </li>
