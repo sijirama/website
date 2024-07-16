@@ -44,8 +44,7 @@ export default function JobHunt() {
                         Exploring the science-faith intersection (Christian upbringing meets scientific mind)
                     </li>
                     <li>
-                        music and people that share music: it's a love
-                        language, beautiful music is one of the most magnificent and delightful presents God has given us.   <SpanWord word="here are some playlists i've worked on" link="https://open.spotify.com/user/31okn5a72nq67rs2sndgdoudfm3y" />
+                    {"music and people that share music: it's a love language, "}<SpanWord word="here are some playlists i've worked on" link="https://open.spotify.com/user/31okn5a72nq67rs2sndgdoudfm3y" />
                     </li>
                 </ul>
             </div>
