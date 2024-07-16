@@ -16,7 +16,7 @@ export function renderAccordionItems(tree: (Directory | File)[], onClick: (path:
             );
         } else {
             return (
-                <div className='py-3 px-1.5 bg-slate-700 hover:bg-slate-600 dark:bg-slate-800 dark:hover:bg-slate-700 text-white dark:text-zinc-300 transition-all duration-300 font-bold cursor-pointer text-xs md:text-sm my-2 rounded-lg' key={item.fullPath} onClick={() => onClick(item.fullPath)}>{item.path.slice(0, -3)}</div>
+                <div className='py-2 px-1.5 bbg-slate-700 hoverr:bg-slate-600 darkk:bg-slate-800 darkk:hover:bg-slate-700 dark:text-zinc-300 text-slate-900 transition-all duration-300 font-bold cursor-pointer text-xs md:text-sm my-2 rounded-lg underline' key={item.fullPath} onClick={() => onClick(item.fullPath)}>{item.path.slice(0, -3)}</div>
             );
         }
     });

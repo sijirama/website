@@ -23,35 +23,51 @@ export function ImportantWord({ word, link }: Props) {
 
 export default function JobHunt() {
     return <section className={`w-full h-full  text-zinc-950 dark:text-zinc-100 items-center flex ${manrope.className} text-sm lg:text-base `}>
-        <div className="w-full lg:w-[95%] flex gap-3 md:gap-1.5 flex-col items-left h-full md:py-2">
+        <div className="w-full lg:w-[95%] flex gap-3 md:gap-1.5 flex-col items-left h-full md:py-2 ">
             <p id='target'>
-                my name is <SpanWord word="Oluwasijibomi" />{", a software developer based in Lagos, Nigeria, i've got an insanely deep passion for crafting applications that don't just solve problems, but actually make life better for the people around me."}
+                my name is sijibomi {", i'm a software developer that loves developing software, and so i have developed a slight social life deficit (turns out computers are pretty engaging)."}
             </p>
 
             <p>
-                <SpanWord word="I really love music" link="https://open.spotify.com/user/31okn5a72nq67rs2sndgdoudfm3y" />{" and listen mostly to R&B, Rap and occasionally Afrobeats. I also love reading books; both fiction and non-fiction hold a special place in my intellectual pursuits. They serve as windows to new worlds and reservoirs of knowledge - two things I'm especially addicted to."}
+                {"i'm currently interested and have experience in fullstack web-development, traditional software engineering, systems programming, a little bit of low level, sysadmin, network programming and basic devops."}
             </p>
 
             <p>
-                I occasionally pen down my thoughts and insights. You can check out <SpanWord word="what I've written here" link="/library" />. If you want more info on my professional background, the details can be found <SpanWord word="in my portfolio page" link="/portfolio" />.
+               occasionally(ish) I write. You can check out <SpanWord word="what I've written here" link="/library" />. If you want more info on my professional background, the details can be found <SpanWord word="in my portfolio page" link="/portfolio" />.
             </p>
             <div>
                 <p className="font-bold">what keeps me up at night</p>
                 <ul className="pl-4 list-disc space-y-2">
-                    <li>engineering endeavors that have the potential to positively transform lives, i believe that this talent we have been given by God, we should use it to positively impact the people around us, a totally random but apparently wise man once said - <span className="font-bold">Concern for man himself and his fate must always form the chief interest of all technical endeavors</span></li>
+                    <li>computers... i just wanna know everything about them</li>
+                    <li>engineering endeavors that have the potential to positively transform lives - <span className="font-bold">Concern for man himself and his fate must always form the chief interest of all technical endeavors</span></li>
                     <li>
-                        the interesting discourse at the intersection of science and religion, i grew up in a christian home, but have the mind of a scientist, things are bound to clash.
+                        Exploring the science-faith intersection (Christian upbringing meets scientific mind)
                     </li>
                     <li>
-                        music and people that share music, sharing music is a love
-                        language, beautiful music is one of the most magnificent and delightful presents God has given us.
+                        music and people that share music: it's a love
+                        language, beautiful music is one of the most magnificent and delightful presents God has given us.   <SpanWord word="here are some playlists i've worked on" link="https://open.spotify.com/user/31okn5a72nq67rs2sndgdoudfm3y" />
                     </li>
-                    <li>the future and what it holds for us</li>
                 </ul>
             </div>
             <p>
                 shoot me a dm on <SpanWord word="Twitter/X" link="https://twitter.com/sijiramakun" /> or <SpanWord word="Discord" link="https://discord.com/channels/@me/529714655333974025" /> or even  <SpanWord word="Github" link="https://github.com/sijirama" />, if you want to chat, vibe, or build something cool together.
             </p>
+            <div className="flex gap-0.5 items-center max-w-full flex-wrap">
+                <img width="88px" height="31px" src="/badges/debian.gif" />
+                <img width="88px" height="31px" src="/badges/vi.gif" />
+                <img width="88px" height="31px" src="/badges/anime.gif" />
+                <img width="88px" height="31px" src="/badges/animegirl.gif" />
+                <img width="88px" height="31px" src="/badges/fingers.gif" />
+                <img width="88px" height="31px" src="/badges/trustme.gif" />
+                <img width="88px" height="31px" src="/badges/firefox.gif" />
+                <img width="88px" height="31px" src="/badges/linux.gif" />
+                <img width="88px" height="31px" src="/badges/linuxnow.gif" />
+                <img width="88px" height="31px" src="/badges/luffy.gif" />
+                <img width="88px" height="31px" src="/badges/gecko.gif" />
+                <img width="88px" height="31px" src="/badges/eyes.gif" />
+                <img width="88px" height="31px" src="/badges/sijis.png" />
+            </div>
+
         </div>
     </section>
 }
