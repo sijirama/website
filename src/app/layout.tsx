@@ -31,7 +31,7 @@ export default function RootLayout({
             <body suppressHydrationWarning={true} className={`${inter.className} bg-gray-50 dark:bg-zinc-950 bbg-[#f5f2e9] dark:bbg-[#1e1e21] h-dvh flex flex-col px-3 md:px-0 `} >
                 <ThemeProvider
                     attribute="class"
-                    defaultTheme="system"
+                    defaultTheme="light"
                     enableSystem
                     disableTransitionOnChange
                 >
