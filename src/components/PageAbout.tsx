@@ -22,7 +22,7 @@ export function ImportantWord({ word, link }: Props) {
 
 
 export default function JobHunt() {
-    return <section className={`w-full h-full  text-zinc-950 dark:text-zinc-100 items-center flex ${manrope.className} text-sm lg:text-base `}>
+    return <section className={`w-full h-full  text-zinc-950 dark:text-zinc-100 items-center flex ${manrope.className} text-xs lg:text-base `}>
         <div className="w-full lg:w-[95%] flex gap-3 md:gap-1.5 flex-col items-left h-full md:py-2 ">
             <p id='target'>
                 my name is sijibomi {", i'm a software developer that loves developing software, and so i have developed a slight social life deficit (turns out computers are pretty engaging)."}
