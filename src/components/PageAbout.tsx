@@ -12,28 +12,21 @@ export function SpanWord({ word, link }: Props) {
         </span>
     </a>
 }
-export function ImportantWord({ word, link }: Props) {
-    return <a href={link ?? link} target="_blank">
-        <span className={`${sail.className} border border-zinc-500 text-4xl rounded-md px-2 hover:bg-white hover:text-black transition-colors duration-200`}>
-            {word}
-        </span>
-    </a>
-}
-
 
 export default function JobHunt() {
     return <section className={`w-full h-full  text-zinc-950 dark:text-zinc-100 items-center flex ${manrope.className} text-xs lg:text-base `}>
         <div className="w-full lg:w-[95%] flex gap-3 md:gap-1.5 flex-col items-left h-full md:py-2 ">
-            <p id='target'>
-                my name is sijibomi {", i'm a software developer that loves developing software, and so i have developed a slight social life deficit (turns out computers are pretty engaging)."}
+
+            <p id="target">
+                hi, i'm siji, a software developer currently working as a full-stack developer for a power company in Nigeria. I also collaborate with friends at <SpanWord word="mossgrid" link="https://mossgrid.netlify.app/" /> on various projects. we're planning to apply one of our projects to Y Combinator, so wish us luck!
             </p>
 
             <p>
-                {"i'm currently interested and have experience in fullstack web-development, traditional software engineering, systems programming, a little bit of low level, sysadmin, network programming and basic devops."}
+                {"i'm currently interested and have experience in fullstack web-development, systems programming, a little bit of low level, sysadmin and basic devops."}
             </p>
 
             <p>
-               occasionally(ish) I write. You can check out <SpanWord word="what I've written here" link="/library" />. If you want more info on my professional background, the details can be found <SpanWord word="in my portfolio page" link="/portfolio" />.
+                occasionally(ish) I write. You can check out <SpanWord word="what I've written here" link="/library" />. If you want more info on my professional background, the details can be found <SpanWord word="in my portfolio page" link="/portfolio" />.
             </p>
             <div>
                 <p className="font-bold">what keeps me up at night</p>
@@ -44,7 +37,7 @@ export default function JobHunt() {
                         Exploring the science-faith intersection (Christian upbringing meets scientific mind)
                     </li>
                     <li>
-                    {"music and people that share music: it's a love language, "}<SpanWord word="here are some playlists i've worked on" link="https://open.spotify.com/user/31okn5a72nq67rs2sndgdoudfm3y" />
+                        {"music and people that share music: it's a love language, "}<SpanWord word="here are some playlists i've worked on" link="https://open.spotify.com/user/31okn5a72nq67rs2sndgdoudfm3y" />
                     </li>
                 </ul>
             </div>
