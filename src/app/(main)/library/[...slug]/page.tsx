@@ -51,7 +51,7 @@ export default function Page(props: any) {
     }
 
     return (
-        <section className=' px-5 h-full overflow-y-auto'>
+        <section className='px-2 lg:px-5 h-full overflow-y-auto'>
             <h1 className="font-bold text-2xl md:text-3xl -tracking-wider dark:text-zinc-300">
                 {fileMeta?.data.title}
             </h1>
