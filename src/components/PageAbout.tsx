@@ -18,7 +18,7 @@ export default function JobHunt() {
         <div className="w-full lg:w-[95%] flex gap-3 md:gap-1.5 flex-col items-left h-full md:py-2 ">
 
             <p id="target">
-                hi, i'm siji, a software developer currently working as a full-stack developer for a power company in Nigeria. I also collaborate with friends at <SpanWord word="mossgrid" link="https://mossgrid.netlify.app/" /> on various projects. we're planning to apply one of our projects to Y Combinator, so wish us luck!
+                hi, i'm siji, a software developer currently working as a full-stack developer in Nigeria. I also collaborate with friends at <SpanWord word="mossgrid" link="https://mossgrid.netlify.app/" /> on various projects. we're planning to apply one of our projects to Y Combinator, so wish us luck!
             </p>
 
             <p>
