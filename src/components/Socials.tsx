@@ -3,7 +3,7 @@ import { FaXTwitter, FaLinkedin, FaGithub } from "react-icons/fa6";
 export const socials = [
     {
         icon: <FaXTwitter />,
-        link: "https://twitter.com/sijisaidwhat",
+        link: "https://twitter.com/sijirama",
         name: "Twitter/X",
     },
     {
