@@ -3,6 +3,7 @@ import { ThemeProvider } from "@/providers/theme-provider";
 import "./globals.css";
 import { inter } from "@/lib/fonts";
 import { Metadata } from "next";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "sijiramakun",
@@ -30,6 +31,11 @@ export default function RootLayout({
         <ThemeProvider attribute="class" disableTransitionOnChange>
           <main className="flex-1">{children}</main>
         </ThemeProvider>
+        <Script
+          src="https://analytics.siji.ng/script.js"
+          defer
+          data-website-id="26f16359-f861-4461-8283-6b21d74330a5"
+        />
       </body>
     </html>
   );
