@@ -4,8 +4,15 @@ const repo = "cerebrum"
 export const TreeUrl = `https://api.github.com/repos/${user}/${repo}/git/trees/master?recursive=1`
 
 export function getFileUrl(path: string) {
-    return `https://api.github.com/repos/${user}/${repo}/contents/${path}`
+    const cleanPath = path.replace(/^\//, '');
+    // If it's Home.md, fetch from root. Otherwise fetch from Public/
+    if (cleanPath === 'Home.md') {
+        return `https://api.github.com/repos/${user}/${repo}/contents/${cleanPath}`
+    }
+    const fullPath = cleanPath.startsWith('Public/') ? cleanPath : `Public/${cleanPath}`;
+    return `https://api.github.com/repos/${user}/${repo}/contents/${fullPath}`
 }
+
 
 export interface File {
     path: string;
@@ -33,14 +40,22 @@ export function structureRepositoryData(data: any[]): Directory[] {
         files: []
     };
 
-    data.forEach((entry: any) => {
-        const pathComponents = entry.path.split('/');
+    // Filter for entries that start with 'Public/' OR is exactly 'Home.md'
+    const allowedEntries = data.filter(entry =>
+        entry.path.startsWith('Public/') || entry.path === 'Home.md'
+    );
+
+    allowedEntries.forEach((entry: any) => {
+        // Remove 'Public/' prefix if it exists, otherwise keep as is (for Home.md)
+        const cleanPath = entry.path.replace(/^Public\//, '');
+        const pathComponents = cleanPath.split('/');
+
         let currentDirectory = rootDirectory;
-        let currentFullPath = ''; // Initialize currentFullPath here
+        let currentFullPath = '';
 
         pathComponents.forEach((component: string, index: number) => {
             if (index !== pathComponents.length - 1) {
-                currentFullPath += `/${component}`;
+                currentFullPath += currentFullPath === '' ? component : `/${component}`;
                 let foundDirectory = currentDirectory.files.find(
                     (fileOrDir) => fileOrDir.path === component && fileOrDir.type === 'tree'
                 );
@@ -50,7 +65,7 @@ export function structureRepositoryData(data: any[]): Directory[] {
                         path: component,
                         type: 'tree',
                         fullPath: currentFullPath,
-                        files: [] // Initialize files array if it's not defined
+                        files: []
                     };
                     currentDirectory.files.push(foundDirectory);
                 }
@@ -65,10 +80,9 @@ export function structureRepositoryData(data: any[]): Directory[] {
                     sha: entry.sha,
                     size: entry.size,
                     url: entry.url,
-                    fullPath: `${currentFullPath}/${fileName}` // Assign fullPath here for files
+                    fullPath: currentFullPath === '' ? fileName : `${currentFullPath}/${fileName}`
                 };
 
-                // Initialize files array if it's not defined
                 if (!currentDirectory.files) {
                     currentDirectory.files = [];
                 }
@@ -80,3 +94,21 @@ export function structureRepositoryData(data: any[]): Directory[] {
 
     return rootDirectory.files as Directory[];
 }
+
+// Simple Cache implementation for GitHub API
+const cache: Record<string, { data: any, timestamp: number }> = {};
+const CACHE_TTL = 3600 * 1000; // 1 hour
+
+export async function fetchWithCache(url: string) {
+    const now = Date.now();
+    if (cache[url] && (now - cache[url].timestamp < CACHE_TTL)) {
+        return cache[url].data;
+    }
+
+    const response = await fetch(url);
+    const data = await response.json();
+
+    cache[url] = { data, timestamp: now };
+    return data;
+}
+

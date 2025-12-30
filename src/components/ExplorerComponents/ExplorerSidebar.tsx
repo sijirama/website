@@ -1,80 +1,83 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useRouter } from "next/navigation";
-import { Bookmark } from "lucide-react";
+import { useRouter, usePathname } from "next/navigation";
+import { ChevronDown, FileText, Folder, Home, X } from "lucide-react";
 import {
   Sidebar,
   SidebarContent,
+  SidebarGroup,
+  SidebarGroupContent,
   SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  SidebarMenuSub,
+  SidebarMenuSubButton,
+  SidebarMenuSubItem,
+  useSidebar,
 } from "@/components/ui/sidebar";
-import { Directory, File } from "@/lib/library";
+import { Directory, File as FileType } from "@/lib/library";
 import { setItemForPath } from "@/store/pathStorage";
 import { useInterface } from "@/store/InterfaceStore";
-
-interface ExplorerItemProps {
-  item: Directory | File;
-  onClick: (path: string) => void;
-  depth?: number;
-}
-
 import Link from "next/link";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { dmSans } from "@/lib/fonts";
 
-function ExplorerItem({ item, onClick, depth = 0 }: ExplorerItemProps) {
-  const isDirectory = item.type === "tree";
-  const paddingLeft = `${depth * 1}rem`; // Indentation based on depth
-
-  const renderChildren = () => {
-    if (isDirectory) {
-      const directory = item as Directory;
-      return directory.files.map((child) => (
-        <ExplorerItem
-          key={child.fullPath}
-          item={child}
-          onClick={onClick}
-          depth={depth + 1} // Increase depth for child items
-        />
-      ));
-    }
-    return null;
-  };
+function FileItem({ file }: { file: FileType }) {
+  const pathname = usePathname();
+  const isActive = pathname?.includes(file.fullPath);
 
   return (
-    <>
-      <div className="pl-0">
-        <Link
-          href={`/library/${encodeURIComponent(item.fullPath)}`}
-          //onClick={() => onClick(item.fullPath)}
-        >
-          <p
-            className={`
-              text-sm underline font-semibold
-              ${
-                isDirectory
-                  ? "text-gray-700 hover:text-orange-500 no-underline"
-                  : "text-gray-600 hover:text-orange-500"
-              }
-            `}
-            style={{ paddingLeft }} // Apply indentation
-          >
-            {isDirectory
-              ? (item as Directory).path
-              : (item as File).path.slice(0, -3)}
-          </p>
+    <SidebarMenuSubItem>
+      <SidebarMenuSubButton asChild isActive={isActive} size="sm">
+        <Link href={`/library/${file.fullPath}`} className="text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100">
+          <span className="truncate">{file.path.replace(".md", "")}</span>
         </Link>
-      </div>
-      {renderChildren()}
-    </>
+      </SidebarMenuSubButton>
+    </SidebarMenuSubItem>
   );
 }
+
+function FolderItem({ folder, depth = 0 }: { folder: Directory; depth?: number }) {
+  const [isOpen, setIsOpen] = useState(true);
+
+  const files = folder.files.filter(f => f.type === "blob") as FileType[];
+  const subfolders = folder.files.filter(f => f.type === "tree") as Directory[];
+
+  return (
+    <Collapsible open={isOpen} onOpenChange={setIsOpen} className="group/collapsible">
+      <SidebarMenuItem>
+        <CollapsibleTrigger asChild>
+          <SidebarMenuButton className="text-zinc-800 dark:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-800">
+            <Folder className="size-4 text-zinc-400 shrink-0" />
+            <span className="font-medium truncate">{folder.path}</span>
+            <ChevronDown className="ml-auto size-4 text-zinc-400 transition-transform shrink-0 group-data-[state=open]/collapsible:rotate-180" />
+          </SidebarMenuButton>
+        </CollapsibleTrigger>
+        <CollapsibleContent>
+          <SidebarMenuSub className="border-l border-zinc-200 dark:border-zinc-800 ml-3">
+            {files.map((file) => (
+              <FileItem key={file.fullPath} file={file} />
+            ))}
+            {subfolders.map((subfolder) => (
+              <FolderItem key={subfolder.fullPath} folder={subfolder} depth={depth + 1} />
+            ))}
+          </SidebarMenuSub>
+        </CollapsibleContent>
+      </SidebarMenuItem>
+    </Collapsible>
+  );
+}
+
 export function ExplorerSidebar() {
   const [tree, setTree] = useState<Directory[] | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const { onClose } = useInterface();
   const router = useRouter();
+  const pathname = usePathname();
+  const { state } = useSidebar();
+  const isCollapsed = state === "collapsed";
 
   useEffect(() => {
     const fetchContent = async () => {
@@ -98,40 +101,109 @@ export function ExplorerSidebar() {
     onClose();
   };
 
+  const isHomeActive = pathname === "/library/Home.md";
+
   return (
-    <Sidebar variant="inset" className="">
-      <SidebarHeader>
-        <SidebarMenu>
-          <SidebarMenuItem>
-            <SidebarMenuButton size="lg" asChild>
-              <a href="/" className="flex items-center">
-                <div className="flex items-center justify-center size-8 rounded-lg bg-orange-500 text-white">
-                  <Bookmark className="size-4" />
-                </div>
-                <div className="flex flex-col gap-0.5 leading-none ml-2">
-                  <span className="font-semibold text-gray-900">Library</span>
-                  <span className="text-xs text-gray-500">Explorer</span>
-                </div>
-              </a>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-        </SidebarMenu>
+    <Sidebar collapsible="icon" className={dmSans.className}>
+      <SidebarHeader className="border-b border-zinc-100 dark:border-zinc-800 p-0 overflow-hidden">
+        {/* Expanded state */}
+        {!isCollapsed && (
+          <div>
+            {/* Cover Image - taller */}
+            <div className="w-full h-32 overflow-hidden">
+              <img
+                src="https://i.pinimg.com/736x/40/46/27/404627e9adabdd941edf659e358405a7.jpg"
+                alt="Cover"
+                className="w-full h-full object-cover object-center"
+              />
+            </div>
+
+            {/* Name & Label with X button */}
+            <div className="px-4 py-3 flex items-start justify-between">
+              <div>
+                <h2 className="font-semibold text-zinc-900 dark:text-zinc-100 text-sm">oluwasijibomi</h2>
+                <p className="text-[11px] text-zinc-400 mt-0.5">Digital Garden</p>
+              </div>
+              <Link
+                href="/"
+                className="p-1.5 rounded-md text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
+                title="Back to home"
+              >
+                <X className="size-4" />
+              </Link>
+            </div>
+          </div>
+        )}
+
+        {/* Collapsed state - aligned with menu icons */}
+        {isCollapsed && (
+          <div className="p-2">
+            <Link href="/" className="flex items-center justify-center size-8 rounded-md overflow-hidden">
+              <img
+                src="https://i.pinimg.com/736x/40/46/27/404627e9adabdd941edf659e358405a7.jpg"
+                alt="Cover"
+                className="w-full h-full object-cover object-center"
+              />
+            </Link>
+          </div>
+        )}
       </SidebarHeader>
 
-      <SidebarContent className="p-2 overflow-y-auto max-h-[calc(100vh-200px)]">
-        {isLoading ? (
-          <p className="text-sm text-gray-500 p-4"></p>
-        ) : tree && tree.length > 0 ? (
-          tree.map((item) => (
-            <ExplorerItem
-              key={item.fullPath}
-              item={item}
-              onClick={handleClick}
-            />
-          ))
-        ) : (
-          <p className="text-sm text-gray-500 p-4">No items found</p>
-        )}
+      <SidebarContent className="p-2">
+        <SidebarGroup>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {/* Home */}
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild isActive={isHomeActive} tooltip="Home" className="hover:bg-zinc-100 dark:hover:bg-zinc-800">
+                  <Link href="/library/Home.md" className="text-zinc-800 dark:text-zinc-200">
+                    <Home className="size-4 text-zinc-400 shrink-0" />
+                    <span className="font-medium truncate">Home</span>
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+
+              {/* Loading skeleton */}
+              {isLoading && (
+                <>
+                  {[1, 2, 3].map((i) => (
+                    <SidebarMenuItem key={i}>
+                      <div className="h-8 w-full animate-pulse rounded-md bg-zinc-100 dark:bg-zinc-800" />
+                    </SidebarMenuItem>
+                  ))}
+                </>
+              )}
+
+              {/* Tree items */}
+              {!isLoading && tree && tree.filter(item => item.path !== 'Home.md').map((item) => {
+                if (item.type === "tree") {
+                  return <FolderItem key={item.fullPath} folder={item as Directory} />;
+                }
+                const file = item as FileType;
+                const isActive = pathname?.includes(file.fullPath);
+                return (
+                  <SidebarMenuItem key={file.fullPath}>
+                    <SidebarMenuButton asChild isActive={isActive} tooltip={file.path.replace(".md", "")} className="hover:bg-zinc-100 dark:hover:bg-zinc-800">
+                      <Link href={`/library/${file.fullPath}`} className="text-zinc-800 dark:text-zinc-200">
+                        <FileText className="size-4 text-zinc-400 shrink-0" />
+                        <span className="font-medium truncate">{file.path.replace(".md", "")}</span>
+                      </Link>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                );
+              })}
+
+              {/* Empty state */}
+              {!isLoading && (!tree || tree.length === 0) && (
+                <SidebarMenuItem>
+                  <div className="px-3 py-8 text-center text-sm text-zinc-400">
+                    No notes yet
+                  </div>
+                </SidebarMenuItem>
+              )}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
       </SidebarContent>
     </Sidebar>
   );
