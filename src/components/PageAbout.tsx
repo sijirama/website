@@ -12,7 +12,7 @@ export default function Landing() {
 		>
 			<div className="w-full lg:w-[95%] flex gap-3 md:gap-1.5 flex-col items-left h-full md:py-2 ">
 				<div className="w-full h-20 lg:h-28 bg-black rounded-md overflow-hidden mb-1 lg:mb-4">
-					<img src={niceHeaders[0]} className="w-full object-center h-full" />
+					<img src={niceHeaders[0]} alt="Header Texture" className="w-full object-center h-full" />
 				</div>
 				<p className="font-bold text-lg tracking-tight underline">
 					Hey I'm siji
@@ -63,19 +63,19 @@ export default function Landing() {
 					if you want to chat, vibe, or build something cool together.
 				</p>
 				<div className="flex gap-0.5 items-center max-w-full flex-wrap">
-					<img width="88px" height="31px" src="/badges/debian.gif" />
-					<img width="88px" height="31px" src="/badges/vi.gif" />
-					<img width="88px" height="31px" src="/badges/anime.gif" />
-					<img width="88px" height="31px" src="/badges/animegirl.gif" />
-					<img width="88px" height="31px" src="/badges/fingers.gif" />
-					<img width="88px" height="31px" src="/badges/trustme.gif" />
-					<img width="88px" height="31px" src="/badges/firefox.gif" />
-					<img width="88px" height="31px" src="/badges/linux.gif" />
-					<img width="88px" height="31px" src="/badges/linuxnow.gif" />
-					<img width="88px" height="31px" src="/badges/luffy.gif" />
-					<img width="88px" height="31px" src="/badges/gecko.gif" />
-					<img width="88px" height="31px" src="/badges/eyes.gif" />
-					<img width="88px" height="31px" src="/badges/sijis.png" />
+					<img width="88px" height="31px" src="/badges/debian.gif" alt="Debian" />
+					<img width="88px" height="31px" src="/badges/vi.gif" alt="Vi" />
+					<img width="88px" height="31px" src="/badges/anime.gif" alt="Anime" />
+					<img width="88px" height="31px" src="/badges/animegirl.gif" alt="Anime Girl" />
+					<img width="88px" height="31px" src="/badges/fingers.gif" alt="Fingers" />
+					<img width="88px" height="31px" src="/badges/trustme.gif" alt="Trust Me" />
+					<img width="88px" height="31px" src="/badges/firefox.gif" alt="Firefox" />
+					<img width="88px" height="31px" src="/badges/linux.gif" alt="Linux" />
+					<img width="88px" height="31px" src="/badges/linuxnow.gif" alt="Linux Now" />
+					<img width="88px" height="31px" src="/badges/luffy.gif" alt="Luffy" />
+					<img width="88px" height="31px" src="/badges/gecko.gif" alt="Gecko" />
+					<img width="88px" height="31px" src="/badges/eyes.gif" alt="Eyes" />
+					<img width="88px" height="31px" src="/badges/sijis.png" alt="Siji's Badge" />
 				</div>
 			</div>
 		</section>

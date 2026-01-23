@@ -17,7 +17,7 @@ import {
   SidebarMenuSubItem,
   useSidebar,
 } from "@/components/ui/sidebar";
-import { Directory, File as FileType } from "@/lib/library";
+import { Directory, File as FileType, TreeItem } from "@/lib/library";
 import { setItemForPath } from "@/store/pathStorage";
 import { useInterface } from "@/store/InterfaceStore";
 import Link from "next/link";
@@ -71,7 +71,7 @@ function FolderItem({ folder, depth = 0 }: { folder: Directory; depth?: number }
 }
 
 export function ExplorerSidebar() {
-  const [tree, setTree] = useState<Directory[] | null>(null);
+  const [tree, setTree] = useState<TreeItem[] | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const { onClose } = useInterface();
   const router = useRouter();

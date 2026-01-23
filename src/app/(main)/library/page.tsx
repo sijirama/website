@@ -19,7 +19,7 @@ export default function Page() {
     } else {
       router.push(`/library/Home.md`);
     }
-  }, []);
+  }, [router]);
 
   return null;
 }

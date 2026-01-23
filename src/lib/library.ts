@@ -24,15 +24,17 @@ export interface File {
     fullPath: string;
 }
 
+export type TreeItem = File | Directory;
+
 export interface Directory {
     path: string;
     type: string;
     fullPath: string;
-    files: (File | Directory)[];
+    files: TreeItem[];
 }
 
 
-export function structureRepositoryData(data: any[]): Directory[] {
+export function structureRepositoryData(data: any[]): TreeItem[] {
     const rootDirectory: Directory = {
         path: '',
         type: 'tree',
@@ -92,7 +94,7 @@ export function structureRepositoryData(data: any[]): Directory[] {
         });
     });
 
-    return rootDirectory.files as Directory[];
+    return rootDirectory.files as TreeItem[];
 }
 
 // Simple Cache implementation for GitHub API
