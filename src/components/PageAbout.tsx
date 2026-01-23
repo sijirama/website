@@ -8,7 +8,7 @@ export default function Landing() {
 
 	return (
 		<section
-			className={`w-full h-full  text-zinc-950 dark:text-zinc-100 items-center flex ${manrope.className} text-sm lg:text-base `}
+			className={`w-full h-full text-zinc-900 items-center flex ${manrope.className} text-sm lg:text-base `}
 		>
 			<div className="w-full lg:w-[95%] flex gap-3 md:gap-1.5 flex-col items-left h-full md:py-2 ">
 				<div className="w-full h-20 lg:h-28 bg-black rounded-md overflow-hidden mb-1 lg:mb-4">

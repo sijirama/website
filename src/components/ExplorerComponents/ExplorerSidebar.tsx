@@ -31,7 +31,7 @@ function FileItem({ file }: { file: FileType }) {
   return (
     <SidebarMenuSubItem>
       <SidebarMenuSubButton asChild isActive={isActive} size="sm">
-        <Link href={`/library/${file.fullPath}`} className="text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100">
+        <Link href={`/library/${file.fullPath}`} className="text-zinc-600 hover:text-zinc-900">
           <span className="truncate">{file.path.replace(".md", "")}</span>
         </Link>
       </SidebarMenuSubButton>
@@ -49,14 +49,14 @@ function FolderItem({ folder, depth = 0 }: { folder: Directory; depth?: number }
     <Collapsible open={isOpen} onOpenChange={setIsOpen} className="group/collapsible">
       <SidebarMenuItem>
         <CollapsibleTrigger asChild>
-          <SidebarMenuButton className="text-zinc-800 dark:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-800">
+          <SidebarMenuButton className="text-zinc-800 hover:bg-zinc-100">
             <Folder className="size-4 text-zinc-400 shrink-0" />
             <span className="font-medium truncate">{folder.path}</span>
             <ChevronDown className="ml-auto size-4 text-zinc-400 transition-transform shrink-0 group-data-[state=open]/collapsible:rotate-180" />
           </SidebarMenuButton>
         </CollapsibleTrigger>
         <CollapsibleContent>
-          <SidebarMenuSub className="border-l border-zinc-200 dark:border-zinc-800 ml-3">
+          <SidebarMenuSub className="border-l border-zinc-200 ml-3">
             {files.map((file) => (
               <FileItem key={file.fullPath} file={file} />
             ))}
@@ -105,7 +105,7 @@ export function ExplorerSidebar() {
 
   return (
     <Sidebar collapsible="icon" className={dmSans.className}>
-      <SidebarHeader className="border-b border-zinc-100 dark:border-zinc-800 p-0 overflow-hidden">
+      <SidebarHeader className="border-b border-zinc-100 p-0 overflow-hidden">
         {/* Expanded state */}
         {!isCollapsed && (
           <div>
@@ -121,12 +121,12 @@ export function ExplorerSidebar() {
             {/* Name & Label with X button */}
             <div className="px-4 py-3 flex items-start justify-between">
               <div>
-                <h2 className="font-semibold text-zinc-900 dark:text-zinc-100 text-sm">oluwasijibomi</h2>
+                <h2 className="font-semibold text-zinc-900 text-sm">oluwasijibomi</h2>
                 <p className="text-[11px] text-zinc-400 mt-0.5">Digital Garden</p>
               </div>
               <Link
                 href="/"
-                className="p-1.5 rounded-md text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
+                className="p-1.5 rounded-md text-zinc-400 hover:text-zinc-600 hover:bg-zinc-100 transition-colors"
                 title="Back to home"
               >
                 <X className="size-4" />
@@ -155,8 +155,8 @@ export function ExplorerSidebar() {
             <SidebarMenu>
               {/* Home */}
               <SidebarMenuItem>
-                <SidebarMenuButton asChild isActive={isHomeActive} tooltip="Home" className="hover:bg-zinc-100 dark:hover:bg-zinc-800">
-                  <Link href="/library/Home.md" className="text-zinc-800 dark:text-zinc-200">
+                <SidebarMenuButton asChild isActive={isHomeActive} tooltip="Home" className="hover:bg-zinc-100">
+                  <Link href="/library/Home.md" className="text-zinc-800">
                     <Home className="size-4 text-zinc-400 shrink-0" />
                     <span className="font-medium truncate">Home</span>
                   </Link>
@@ -168,7 +168,7 @@ export function ExplorerSidebar() {
                 <>
                   {[1, 2, 3].map((i) => (
                     <SidebarMenuItem key={i}>
-                      <div className="h-8 w-full animate-pulse rounded-md bg-zinc-100 dark:bg-zinc-800" />
+                      <div className="h-8 w-full animate-pulse rounded-md bg-zinc-100" />
                     </SidebarMenuItem>
                   ))}
                 </>
@@ -183,8 +183,8 @@ export function ExplorerSidebar() {
                 const isActive = pathname?.includes(file.fullPath);
                 return (
                   <SidebarMenuItem key={file.fullPath}>
-                    <SidebarMenuButton asChild isActive={isActive} tooltip={file.path.replace(".md", "")} className="hover:bg-zinc-100 dark:hover:bg-zinc-800">
-                      <Link href={`/library/${file.fullPath}`} className="text-zinc-800 dark:text-zinc-200">
+                    <SidebarMenuButton asChild isActive={isActive} tooltip={file.path.replace(".md", "")} className="hover:bg-zinc-100">
+                      <Link href={`/library/${file.fullPath}`} className="text-zinc-800">
                         <FileText className="size-4 text-zinc-400 shrink-0" />
                         <span className="font-medium truncate">{file.path.replace(".md", "")}</span>
                       </Link>

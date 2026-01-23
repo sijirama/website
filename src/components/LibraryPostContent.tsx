@@ -137,7 +137,7 @@ export default function LibraryPostContent({ slug, allNotes }: { slug: string[];
 
     if (loading) {
         return (
-            <div className="min-h-screen flex items-center justify-center bg-zinc-50 dark:bg-zinc-950">
+            <div className="min-h-screen flex items-center justify-center bg-zinc-50">
                 <div className="w-5 h-5 border-2 border-pink-500/30 border-t-pink-500 rounded-full animate-spin"></div>
             </div>
         );
@@ -149,7 +149,7 @@ export default function LibraryPostContent({ slug, allNotes }: { slug: string[];
     let paragraphCount = 0;
 
     return (
-        <div className={`${dmSans.className} p-4 md:p-6 bg-zinc-50 dark:bg-zinc-950 min-h-screen`}>
+        <div className={`${dmSans.className} p-4 md:p-6 bg-zinc-50 min-h-screen`}>
             <article className="max-w-3xl mx-auto">
                 <header className="mb-8">
                     <div className="flex items-center justify-between mb-4">
@@ -159,7 +159,7 @@ export default function LibraryPostContent({ slug, allNotes }: { slug: string[];
                             {/* Random Note Button */}
                             <button
                                 onClick={handleRandomNote}
-                                className="p-2 rounded-lg text-zinc-400 hover:text-pink-500 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
+                                className="p-2 rounded-lg text-zinc-400 hover:text-pink-500 hover:bg-zinc-100 transition-colors"
                                 title="Random note (Cmd+Shift+R)"
                             >
                                 <Shuffle className="size-4" />
@@ -168,7 +168,7 @@ export default function LibraryPostContent({ slug, allNotes }: { slug: string[];
                             {/* Share Button */}
                             <button
                                 onClick={handleShare}
-                                className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm text-zinc-500 hover:text-pink-500 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
+                                className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm text-zinc-500 hover:text-pink-500 hover:bg-zinc-100 transition-colors"
                             >
                                 {copied ? (
                                     <>
@@ -185,21 +185,21 @@ export default function LibraryPostContent({ slug, allNotes }: { slug: string[];
                         </div>
                     </div>
 
-                    <h1 className={`${sourceSerif.className} text-xl md:text-2xl font-semibold text-zinc-900 dark:text-zinc-100 leading-snug`}>
+                    <h1 className={`${sourceSerif.className} text-xl md:text-2xl font-semibold text-zinc-900 leading-snug`}>
                         {post.title}
                     </h1>
                     {post.date && <p className="mt-2 text-xs text-zinc-400">{post.date}</p>}
                 </header>
 
-                <div className={`${sourceSerif.className} prose prose-sm prose-zinc dark:prose-invert max-w-none 
-                    prose-p:text-zinc-700 dark:prose-p:text-zinc-300 prose-p:leading-relaxed prose-p:text-[15px]
-                    prose-headings:font-semibold prose-headings:text-zinc-900 dark:prose-headings:text-zinc-100
+                <div className={`${sourceSerif.className} prose prose-sm prose-zinc max-w-none 
+                    prose-p:text-zinc-700 prose-p:leading-relaxed prose-p:text-[15px]
+                    prose-headings:font-semibold prose-headings:text-zinc-900
                     prose-a:text-pink-500 prose-a:no-underline hover:prose-a:underline
-                    prose-strong:text-zinc-900 dark:prose-strong:text-zinc-100
-                    prose-code:text-pink-600 dark:prose-code:text-pink-400 prose-code:bg-zinc-100 dark:prose-code:bg-zinc-800 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm prose-code:font-normal
-                    prose-li:text-zinc-700 dark:prose-li:text-zinc-300 prose-li:text-[15px]
-                    prose-blockquote:border-l-pink-500 prose-blockquote:bg-zinc-50 dark:prose-blockquote:bg-zinc-900 prose-blockquote:py-1 prose-blockquote:px-4 prose-blockquote:rounded-r-lg
-                    prose-hr:border-zinc-200 dark:prose-hr:border-zinc-800
+                    prose-strong:text-zinc-900
+                    prose-code:text-pink-600 prose-code:bg-zinc-100 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm prose-code:font-normal
+                    prose-li:text-zinc-700 prose-li:text-[15px]
+                    prose-blockquote:border-l-pink-500 prose-blockquote:bg-zinc-50 prose-blockquote:py-1 prose-blockquote:px-4 prose-blockquote:rounded-r-lg
+                    prose-hr:border-zinc-200
                 `}>
                     <Markdown
                         options={{

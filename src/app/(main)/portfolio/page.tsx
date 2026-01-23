@@ -11,7 +11,7 @@ import { FaRegFile } from "react-icons/fa";
 import { manrope } from "@/lib/fonts";
 
 export default function Page() {
-  const iconStyle = "text-base md:text-lg dark:text-zinc-300 text-zinc-500 ";
+  const iconStyle = "text-base md:text-lg text-zinc-500 ";
 
   const socials = [
     {
@@ -38,7 +38,7 @@ export default function Page() {
 
   return (
     <main
-      className={` ${manrope.className} flex min-h-screen flex-col gap-4 items-center mx-auto pt-2 w-full md:4/5 lg:w-4/6 xl:w-3/6 text-zinc-950  dark:text-zinc-100 -tracking-widest p-2.5  md:p-5`}
+      className={` ${manrope.className} flex min-h-screen flex-col gap-4 items-center mx-auto pt-2 w-full md:4/5 lg:w-4/6 xl:w-3/6 text-zinc-950 -tracking-widest p-2.5 md:p-5`}
     >
       <div className="flex justify-between items-center w-full">
         <div className="w-full md:w-3/5 flex flex-col gap-2">
@@ -56,7 +56,7 @@ export default function Page() {
           <div className="w-full flex gap-2 flex-wrap py-1 md:py-3">
             {socials.map((social, i) => (
               <a key={i} href={`${social.url}`} target="_blank">
-                <div className=" p-2 md:p-3 rounded-lg border border-zinc-500 dark:hover:bg-zinc-800 hover:bg-zinc-300 transition-colors duration-300">
+                <div className=" p-2 md:p-3 rounded-lg border border-zinc-500 hover:bg-zinc-300 transition-colors duration-300">
                   {social.icon}
                 </div>
               </a>
@@ -75,7 +75,7 @@ export default function Page() {
       </div>
       <div className="text-start  w-full flex flex-col gap-2">
         <p className="font-extrabold -tracking-wide text-lg">About</p>
-        <p className="text-xs md:text-base tracking-wide text-zinc-900 dark:text-zinc-100">
+        <p className="text-xs md:text-base tracking-wide text-zinc-900">
           As a dedicated Full Stack Engineer, my passion lies in building
           technology that positively impacts and aids people. I am consistently
           excited about the opportunity to create, innovate, and contribute to
@@ -97,13 +97,13 @@ export default function Page() {
                 <p className="font-semibold text-sm  md:text-base tracking-[0.010em] text-clip ">
                   {exp.name}
                 </p>
-                <div className="text-xs bg-zinc-900 dark:bg-zinc-200 text-zinc-100 dark:text-black rounded-md py-0.5 px-1 md:px-3 font-semibold tracking-wide">
+                <div className="text-xs bg-zinc-900 text-zinc-100 rounded-md py-0.5 px-1 md:px-3 font-semibold tracking-wide">
                   {exp.mode}
                 </div>
               </div>
               <p className="text-xs md:text-sm tracking-wide">{exp.period}</p>
             </div>
-            <p className="text-xs md:text-base font-light tracking-wide dark:text-zinc-300 text-zinc-900">
+            <p className="text-xs md:text-base font-light tracking-wide text-zinc-900">
               {exp.description}
             </p>
           </div>
@@ -117,7 +117,7 @@ export default function Page() {
               <p className="font-semibold tracking-[0.010em] ">{exp.name}</p>
               <p className="text-xs md:text-sm tracking-wide">{exp.period}</p>
             </div>
-            <p className="text-xs md:text-sm font-light tracking-wide text-zinc-900 dark:text-zinc-300">
+            <p className="text-xs md:text-sm font-light tracking-wide text-zinc-900">
               {exp.description}
             </p>
           </div>
@@ -129,7 +129,7 @@ export default function Page() {
           {skills.map((skill, i) => (
             <div
               key={i}
-              className="text-xs bg-zinc-950 text-zinc-200 dark:bg-zinc-200 dark:text-black rounded-md py-0.5 px-2 md:px-3 font-semibold tracking-wide"
+              className="text-xs bg-zinc-950 text-zinc-200 rounded-md py-0.5 px-2 md:px-3 font-semibold tracking-wide"
             >
               {skill}
             </div>
@@ -148,17 +148,17 @@ export default function Page() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <div className="p-3.5 hover:bg-zinc-200 dark:hover:bg-zinc-950 transition-colors duration-200 border border-zinc-400 dark:border-zinc-800 rounded-xl flex flex-col gap-4">
+              <div className="p-3.5 hover:bg-zinc-200 transition-colors duration-200 border border-zinc-400 rounded-xl flex flex-col gap-4">
                 <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
                   <div className="space-y-1">
                     <p className="text-sm md:text-base font-bold tracking-[0.010em]">
                       {project.title}
                     </p>
-                    <p className="text-xs md:text-sm tracking-wide text-zinc-900 dark:text-zinc-100">
+                    <p className="text-xs md:text-sm tracking-wide text-zinc-900">
                       {project.description}
                     </p>
                   </div>
-                  <p className="text-xs md:text-sm text-zinc-600 dark:text-zinc-400 italic sm:text-right">
+                  <p className="text-xs md:text-sm text-zinc-600 italic sm:text-right">
                     {project.type}
                   </p>
                 </div>
@@ -166,7 +166,7 @@ export default function Page() {
                   {project.technologies.map((skill, i) => (
                     <div
                       key={i}
-                      className="text-xs bg-zinc-950 text-zinc-200 dark:bg-zinc-200 dark:text-black rounded-md py-0.5 px-2 md:px-3 font-semibold tracking-wide"
+                      className="text-xs bg-zinc-950 text-zinc-200 rounded-md py-0.5 px-2 md:px-3 font-semibold tracking-wide"
                     >
                       {skill}
                     </div>
