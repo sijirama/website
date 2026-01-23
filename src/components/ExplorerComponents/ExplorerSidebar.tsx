@@ -149,7 +149,7 @@ export function ExplorerSidebar() {
         )}
       </SidebarHeader>
 
-      <SidebarContent className="p-2">
+      <SidebarContent className="p-0">
         <SidebarGroup>
           <SidebarGroupContent>
             <SidebarMenu>
