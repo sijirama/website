@@ -10,6 +10,7 @@ import { getPostContent } from "@/lib/getPostMetaData";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { useRouter } from "next/navigation";
 import { Share2, Check, Shuffle, ArrowRight } from "lucide-react";
+import { decodeBase64 } from "@/lib/utils";
 
 interface PostData {
     title: string;
@@ -95,7 +96,7 @@ export default function LibraryPostContent({ slug, allNotes }: { slug: string[];
                     const indexFile = response.data.find((f: any) => f.name === "index.md");
                     if (indexFile) {
                         const indexResponse = await axios.get(indexFile.url, { headers });
-                        const decodedContent = atob(indexResponse.data.content);
+                        const decodedContent = decodeBase64(indexResponse.data.content);
                         const parsedPost = getPostContent(decodedContent);
                         const firstH1Match = parsedPost.content.match(/^#\s+(.+)$/m);
                         const contentTitle = firstH1Match ? firstH1Match[1] : null;
@@ -111,7 +112,7 @@ export default function LibraryPostContent({ slug, allNotes }: { slug: string[];
                         router.push("/library/Home.md");
                     }
                 } else {
-                    const decodedContent = atob(response.data.content);
+                    const decodedContent = decodeBase64(response.data.content);
                     const parsedPost = getPostContent(decodedContent);
                     const firstH1Match = parsedPost.content.match(/^#\s+(.+)$/m);
                     const contentTitle = firstH1Match ? firstH1Match[1] : null;
