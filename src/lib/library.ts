@@ -99,7 +99,7 @@ export function structureRepositoryData(data: any[]): TreeItem[] {
 
 // Simple Cache implementation for GitHub API
 const cache: Record<string, { data: any, timestamp: number }> = {};
-const CACHE_TTL = 3600 * 1000; // 1 hour
+const CACHE_TTL = 60 * 1000; // 1 minute
 
 export async function fetchWithCache(url: string) {
     const now = Date.now();

@@ -2,8 +2,8 @@ import { Metadata } from "next";
 import LibraryPostContent from "@/components/LibraryPostContent";
 import { CONFIG } from "@/lib/config";
 
-// ISR: Revalidate every hour
-export const revalidate = 3600;
+// ISR: Revalidate every 60 seconds
+export const revalidate = 60;
 
 // Fetch all note paths for random note feature
 async function getAllNotePaths(): Promise<string[]> {
@@ -11,12 +11,12 @@ async function getAllNotePaths(): Promise<string[]> {
     const response = await fetch(
       `https://api.github.com/repos/sijirama/cerebrum/git/trees/master?recursive=1`,
       {
-        headers: {
-          Accept: "application/vnd.github+json",
-          Authorization: `Bearer ${CONFIG.GITHUB_TOKEN}`,
-        },
-        next: { revalidate: 3600 }, // Cache for 1 hour
-      }
+      headers: {
+        Accept: "application/vnd.github+json",
+        Authorization: `Bearer ${CONFIG.GITHUB_TOKEN}`,
+      },
+      next: { revalidate: 60 }, // Cache for 1 minute
+    }
     );
 
     if (!response.ok) return [];
