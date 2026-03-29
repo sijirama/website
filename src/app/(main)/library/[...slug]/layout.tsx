@@ -13,13 +13,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: name,
-    description: "from my website shelf",
+    description: "notes and thoughts on everything and nothing.",
     openGraph: {
       title: name,
-      description:
-        name == "Home" ? "homepage of my shelf" : "read my writing guys",
-      images:
-        "https://i.pinimg.com/474x/f7/6e/c1/f76ec12821e613ef03bc78efb8bf3ef5.jpg",
+      description: "notes and thoughts on everything and nothing.",
+      images: "https://media.sijibomi.com/blob/website/f5922f41614775aba49ba6c49f6ef36f.jpg",
     },
   };
 }

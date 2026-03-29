@@ -7,12 +7,11 @@ import Script from "next/script";
 
 export const metadata: Metadata = {
 	title: "sijibomi",
-	description: "my fucking website.",
+	description: "still learning. probably always will be.",
 	openGraph: {
-		title: "oluwasijibomi",
-		description: "guys it's my website, check it out.",
-		images:
-			"https://i.pinimg.com/474x/f7/6e/c1/f76ec12821e613ef03bc78efb8bf3ef5.jpg",
+		title: "sijibomi",
+		description: "still learning. probably always will be.",
+		images: "https://media.sijibomi.com/blob/website/f5922f41614775aba49ba6c49f6ef36f.jpg",
 	},
 };
 
