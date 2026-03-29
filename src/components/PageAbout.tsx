@@ -10,59 +10,37 @@ export default function Landing() {
 		<section
 			className={`w-full h-full text-zinc-900 items-center flex ${manrope.className} text-sm lg:text-base `}
 		>
-			<div className="w-full lg:w-[95%] flex gap-3 md:gap-1.5 flex-col items-left h-full md:py-2 ">
+			<div className="w-full lg:w-[95%] flex gap-5 flex-col items-left h-full md:py-2 ">
 				<div className="w-full h-20 lg:h-28 bg-black rounded-md overflow-hidden mb-1 lg:mb-4">
 					<img src={niceHeaders[0]} alt="Header Texture" className="w-full object-center h-full" />
 				</div>
-				<p className="font-bold text-lg tracking-tight underline">
-					Hey I'm siji
-				</p>
 				<p id="target">
-					i'm a software developer based and building in Lagos, Nigeria.
+					i'm siji. software developer based in Lagos. i do fullstack engineering for work, but
+					what i actually want is to be a generalist, someone who knows a lot about a lot.
+					so most of my spare time right now goes into studying math and trying to do ai/ml research,
+					hoping to fully pivot there eventually.
 				</p>
 
 				<p>
-					occasionally(ish) I write. You can check out{" "}
-					<SpanWord word="what I've written here" link="/library" />. If you
-					want more info on my professional background, the details can be found{" "}
-					<SpanWord word="in my portfolio page" link="/portfolio" />.
+					outside of work i read a lot, cycle when i can, and spend time with people i like.
+					computers somehow still manage to follow me everywhere.
 				</p>
-				<div>
-					<p className="font-bold">what keeps me up at night</p>
-					<ul className="pl-4 list-disc space-y-2">
-						<li>computers... i just wanna know everything about them</li>
-						<li>
-							engineering endeavors that have the potential to positively
-							transform lives -{" "}
-							<span className="font-bold">
-								man’s fate is the heart of tech, right?
-							</span>
-						</li>
-						<li>
-							Exploring the science-faith intersection (Christian upbringing
-							meets scientific mind)
-						</li>
-						<li>
-							{"music and people that share music: it's a love language, "}
-							<SpanWord
-								word="here are some playlists i've worked on"
-								link="https://open.spotify.com/user/31okn5a72nq67rs2sndgdoudfm3y"
-							/>
-						</li>
-					</ul>
-				</div>
+
 				<p>
-					shoot me a dm on{" "}
-					<SpanWord word="Twitter/X" link="https://twitter.com/sijiramakun" />{" "}
-					or{" "}
-					<SpanWord
-						word="Discord"
-						link="https://discord.com/channels/@me/529714655333974025"
-					/>{" "}
-					or even <SpanWord word="Github" link="https://github.com/sijirama" />,
-					if you want to chat, vibe, or build something cool together.
+					i write occasionally too, mostly notes and thoughts from things i’ve been reading or thinking about.
+					there isn’t much up there right now but i plan to write a lot more soon,{" "}
+					<SpanWord word="check it out here" link="/library" />.
+					professional background is{" "}
+					<SpanWord word="in my portfolio" link="/portfolio" />.
 				</p>
-				<div className="flex gap-0.5 items-center max-w-full flex-wrap">
+
+				<p>
+					if you read all this and for some reason still want to chat, you can find me on{" "}
+					<SpanWord word="Twitter/X" link="https://twitter.com/sijiramakun" />{" "}
+					or <SpanWord word="Github" link="https://github.com/sijirama" />,
+					or simply just email me at <SpanWord word="gbemilesanmi@gmail.com" link="mailto:gbemilesanmi@gmail.com" />.
+				</p>
+				<div className="flex gap-0.5 items-center max-w-full flex-wrap mt-4">
 					<img width="88px" height="31px" src="/badges/debian.gif" alt="Debian" />
 					<img width="88px" height="31px" src="/badges/vi.gif" alt="Vi" />
 					<img width="88px" height="31px" src="/badges/anime.gif" alt="Anime" />
