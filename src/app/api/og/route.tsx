@@ -104,7 +104,7 @@ export async function GET(request: NextRequest) {
                             fontFamily: 'system-ui',
                         }}
                     >
-                        siji.ng
+                        sijibomi.com
                     </span>
                 </div>
             </div>

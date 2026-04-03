@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { OG_IMAGE } from "@/lib/config";
 
 type Props = {
   params: { slug: string[] };
@@ -17,7 +18,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: name,
       description: "notes and thoughts on everything and nothing.",
-      images: [{ url: "https://media.sijibomi.com/blob/website/f5922f41614775aba49ba6c49f6ef36f.jpg", width: 1200, height: 630 }],
+      images: [{ url: OG_IMAGE, width: 1200, height: 630 }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      images: [{ url: OG_IMAGE, width: 1200, height: 630 }],
     },
   };
 }

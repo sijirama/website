@@ -4,6 +4,7 @@ import "./globals.css";
 import { inter } from "@/lib/fonts";
 import { Metadata } from "next";
 import Script from "next/script";
+import { OG_IMAGE } from "@/lib/config";
 
 export const metadata: Metadata = {
 	metadataBase: new URL("https://sijibomi.com"),
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
 	openGraph: {
 		title: "sijibomi",
 		description: "still learning. probably always will be.",
-		images: [{ url: "https://media.sijibomi.com/blob/website/f5922f41614775aba49ba6c49f6ef36f.jpg", width: 1200, height: 630 }],
+		images: [{ url: OG_IMAGE, width: 1200, height: 630 }],
 	},
 };
 
