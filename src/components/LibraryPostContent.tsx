@@ -167,6 +167,7 @@ export default function LibraryPostContent({ slug, allNotes }: { slug: string[];
 
     const status = post.status && STATUS_MAP[post.status] ? STATUS_MAP[post.status] : null;
     const isHandwritten = post.style === "handwritten";
+    const postLink = post.link ? (() => { try { return new URL(post.link); } catch { return null; } })() : null;
 
     return (
         <div className={`${dmSans.className} p-4 md:p-6 bg-zinc-50 min-h-screen`}>
@@ -236,6 +237,18 @@ export default function LibraryPostContent({ slug, allNotes }: { slug: string[];
                             </span>
                         ))}
                     </div>
+                    {postLink && (
+                        <a
+                            href={post.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 text-xs text-zinc-400 hover:text-pink-500 transition-colors group w-fit"
+                        >
+                            <span className="w-1.5 h-1.5 rounded-full bg-zinc-300 group-hover:bg-pink-400 transition-colors shrink-0" />
+                            <span className="underline underline-offset-2 decoration-zinc-200 group-hover:decoration-pink-300">{postLink.hostname}</span>
+                            <span className="opacity-0 group-hover:opacity-100 transition-opacity">↗</span>
+                        </a>
+                    )}
                 </header>
 
                 {/* Content */}
