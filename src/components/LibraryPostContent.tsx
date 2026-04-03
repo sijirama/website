@@ -3,13 +3,13 @@ import React, { useEffect, useState, useCallback } from "react";
 import { getFileUrl } from "@/lib/library";
 import { CONFIG } from "@/lib/config";
 import axios from "axios";
-import { sourceSerif, dmSans } from "@/lib/fonts";
+import { caveat, dmSans, manrope } from "@/lib/fonts";
 import Markdown from "markdown-to-jsx";
 import { PreBlock } from "@/lib/syntaxhighlight";
 import { getPostContent } from "@/lib/getPostMetaData";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { useRouter } from "next/navigation";
-import { Share2, Check, Shuffle, ArrowRight } from "lucide-react";
+import { Share2, Check, Shuffle } from "lucide-react";
 import { decodeBase64 } from "@/lib/utils";
 
 interface PostData {
@@ -18,21 +18,19 @@ interface PostData {
     [key: string]: any;
 }
 
-// Drop cap component for first paragraph
-function DropCapParagraph({ children, ...props }: any) {
-    const text = String(children);
-    if (text.length === 0) return <p {...props}>{children}</p>;
+const STATUS_MAP: Record<string, { label: string; color: string }> = {
+    seedling: { label: "seedling", color: "bg-emerald-100 text-emerald-700" },
+    budding: { label: "budding", color: "bg-amber-100 text-amber-700" },
+    evergreen: { label: "evergreen", color: "bg-green-100 text-green-800" },
+};
 
-    const firstLetter = text.charAt(0);
-    const rest = text.slice(1);
-
+function HandwrittenBlockquote({ children }: { children: React.ReactNode }) {
     return (
-        <p {...props}>
-            <span className="float-left text-5xl font-bold leading-none mr-2 mt-1 text-pink-500">
-                {firstLetter}
-            </span>
-            {rest}
-        </p>
+        <blockquote
+            className={`${caveat.className} my-6 pl-4 text-xl text-zinc-600 leading-snug not-prose border-l-2 border-pink-300`}
+        >
+            {children}
+        </blockquote>
     );
 }
 
@@ -40,10 +38,8 @@ export default function LibraryPostContent({ slug, allNotes }: { slug: string[];
     const [post, setPost] = useState<PostData | null>(null);
     const [loading, setLoading] = useState(true);
     const [copied, setCopied] = useState(false);
-    const [isFirstParagraph, setIsFirstParagraph] = useState(true);
     const router = useRouter();
 
-    // Share button handler
     const handleShare = async () => {
         const url = window.location.href;
         await navigator.clipboard.writeText(url);
@@ -51,25 +47,20 @@ export default function LibraryPostContent({ slug, allNotes }: { slug: string[];
         setTimeout(() => setCopied(false), 2000);
     };
 
-    // Random note handler
     const handleRandomNote = useCallback(() => {
         if (allNotes && allNotes.length > 0) {
             const randomIndex = Math.floor(Math.random() * allNotes.length);
-            const randomNote = allNotes[randomIndex];
-            router.push(`/library/${randomNote}`);
+            router.push(`/library/${allNotes[randomIndex]}`);
         }
     }, [allNotes, router]);
 
-    // Keyboard shortcuts
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
-            // Cmd/Ctrl + Shift + R for random note
             if ((e.metaKey || e.ctrlKey) && e.shiftKey && e.key === 'r') {
                 e.preventDefault();
                 handleRandomNote();
             }
         };
-
         window.addEventListener('keydown', handleKeyDown);
         return () => window.removeEventListener('keydown', handleKeyDown);
     }, [handleRandomNote]);
@@ -103,11 +94,7 @@ export default function LibraryPostContent({ slug, allNotes }: { slug: string[];
                         const cleanContent = firstH1Match
                             ? parsedPost.content.replace(/^#\s+.+$/m, '').trim()
                             : parsedPost.content;
-                        setPost({
-                            title: parsedPost.data.title || contentTitle || "Untitled",
-                            content: cleanContent,
-                            ...parsedPost.data,
-                        });
+                        setPost({ title: parsedPost.data.title || contentTitle || "Untitled", content: cleanContent, ...parsedPost.data });
                     } else {
                         router.push("/library/Home.md");
                     }
@@ -119,11 +106,7 @@ export default function LibraryPostContent({ slug, allNotes }: { slug: string[];
                     const cleanContent = firstH1Match
                         ? parsedPost.content.replace(/^#\s+.+$/m, '').trim()
                         : parsedPost.content;
-                    setPost({
-                        title: parsedPost.data.title || contentTitle || "Untitled",
-                        content: cleanContent,
-                        ...parsedPost.data,
-                    });
+                    setPost({ title: parsedPost.data.title || contentTitle || "Untitled", content: cleanContent, ...parsedPost.data });
                 }
             } catch (err) {
                 console.error(err);
@@ -138,74 +121,137 @@ export default function LibraryPostContent({ slug, allNotes }: { slug: string[];
 
     if (loading) {
         return (
-            <div className="min-h-screen flex items-center justify-center bg-zinc-50">
-                <div className="w-5 h-5 border-2 border-pink-500/30 border-t-pink-500 rounded-full animate-spin"></div>
+            <div className={`${dmSans.className} p-4 md:p-6 bg-zinc-50 min-h-screen`}>
+                <div className="max-w-3xl mx-auto">
+                    {/* Toolbar */}
+                    <div className="flex items-center justify-between mb-8">
+                        <div className="w-8 h-8 rounded-md bg-zinc-200 animate-pulse" />
+                        <div className="flex gap-2">
+                            <div className="w-8 h-8 rounded-lg bg-zinc-200 animate-pulse" />
+                            <div className="w-20 h-8 rounded-lg bg-zinc-200 animate-pulse" />
+                        </div>
+                    </div>
+                    {/* Title */}
+                    <div className="space-y-3 mb-8">
+                        <div className="h-8 w-3/4 rounded-md bg-zinc-200 animate-pulse" />
+                        <div className="h-4 w-1/2 rounded-md bg-zinc-100 animate-pulse" />
+                        <div className="flex gap-2 pt-1">
+                            <div className="h-4 w-16 rounded-full bg-zinc-100 animate-pulse" />
+                            <div className="h-4 w-20 rounded-full bg-zinc-100 animate-pulse" />
+                            <div className="h-4 w-14 rounded-full bg-zinc-100 animate-pulse" />
+                        </div>
+                    </div>
+                    {/* Body paragraphs */}
+                    <div className="space-y-6">
+                        {[1, 2, 3].map((i) => (
+                            <div key={i} className="space-y-2">
+                                <div className="h-4 w-full rounded bg-zinc-100 animate-pulse" />
+                                <div className="h-4 w-full rounded bg-zinc-100 animate-pulse" />
+                                <div className="h-4 w-5/6 rounded bg-zinc-100 animate-pulse" />
+                                <div className="h-4 w-4/5 rounded bg-zinc-100 animate-pulse" />
+                            </div>
+                        ))}
+                    </div>
+                </div>
             </div>
         );
     }
 
     if (!post) return null;
 
-    // Track first paragraph for drop cap
-    let paragraphCount = 0;
+    const tags: string[] = Array.isArray(post.tags)
+        ? post.tags
+        : typeof post.tags === "string"
+            ? post.tags.split(",").map((t: string) => t.trim())
+            : [];
+
+    const status = post.status && STATUS_MAP[post.status] ? STATUS_MAP[post.status] : null;
 
     return (
         <div className={`${dmSans.className} p-4 md:p-6 bg-zinc-50 min-h-screen`}>
             <article className="max-w-3xl mx-auto">
-                <header className="mb-8">
-                    <div className="flex items-center justify-between mb-4">
-                        <SidebarTrigger className="text-zinc-400 hover:text-pink-500 transition-colors" />
 
-                        <div className="flex items-center gap-2">
-                            {/* Random Note Button */}
-                            <button
-                                onClick={handleRandomNote}
-                                className="p-2 rounded-lg text-zinc-400 hover:text-pink-500 hover:bg-zinc-100 transition-colors"
-                                title="Random note (Cmd+Shift+R)"
-                            >
-                                <Shuffle className="size-4" />
-                            </button>
-
-                            {/* Share Button */}
-                            <button
-                                onClick={handleShare}
-                                className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm text-zinc-500 hover:text-pink-500 hover:bg-zinc-100 transition-colors"
-                            >
-                                {copied ? (
-                                    <>
-                                        <Check className="size-4 text-green-500" />
-                                        <span className="text-green-500">Copied!</span>
-                                    </>
-                                ) : (
-                                    <>
-                                        <Share2 className="size-4" />
-                                        <span>Share</span>
-                                    </>
-                                )}
-                            </button>
-                        </div>
+                {/* Toolbar */}
+                <div className="flex items-center justify-between mb-8">
+                    <SidebarTrigger className="border border-zinc-200 bg-white shadow-sm text-zinc-600 hover:text-pink-500 hover:border-pink-200 transition-colors rounded-md p-1.5 h-auto w-auto" />
+                    <div className="flex items-center gap-2">
+                        <button
+                            onClick={handleRandomNote}
+                            className="p-2 rounded-lg text-zinc-400 hover:text-pink-500 hover:bg-zinc-100 transition-colors"
+                            title="Random note (Cmd+Shift+R)"
+                        >
+                            <Shuffle className="size-4" />
+                        </button>
+                        <button
+                            onClick={handleShare}
+                            className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm text-zinc-500 hover:text-pink-500 hover:bg-zinc-100 transition-colors"
+                        >
+                            {copied ? (
+                                <>
+                                    <Check className="size-4 text-green-500" />
+                                    <span className="text-green-500">Copied!</span>
+                                </>
+                            ) : (
+                                <>
+                                    <Share2 className="size-4" />
+                                    <span>Share</span>
+                                </>
+                            )}
+                        </button>
                     </div>
+                </div>
 
-                    <h1 className={`${sourceSerif.className} text-xl md:text-2xl font-semibold text-zinc-900 leading-snug`}>
+                {/* Header / Metadata */}
+                <header className="mb-8 space-y-3">
+                    <h1 className={`${manrope.className} text-2xl md:text-3xl font-bold text-zinc-900 leading-snug tracking-tight`}>
                         {post.title}
                     </h1>
-                    {post.date && <p className="mt-2 text-xs text-zinc-400">{post.date}</p>}
+
+                    {post.description && (
+                        <p className="text-sm text-zinc-500 leading-relaxed">{post.description}</p>
+                    )}
+
+                    <div className="flex items-center flex-wrap gap-2 pt-1">
+                        {post.date && (
+                            <span className="text-xs text-zinc-400">{String(post.date)}</span>
+                        )}
+
+                        {post.date && (tags.length > 0 || status) && (
+                            <span className="text-zinc-300">·</span>
+                        )}
+
+                        {status && (
+                            <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${status.color}`}>
+                                {status.label}
+                            </span>
+                        )}
+
+                        {tags.map((tag) => (
+                            <span
+                                key={tag}
+                                className="text-xs text-zinc-400 bg-zinc-100 px-2 py-0.5 rounded-full"
+                            >
+                                #{tag}
+                            </span>
+                        ))}
+                    </div>
                 </header>
 
-                <div className={`${sourceSerif.className} prose prose-sm prose-zinc max-w-none 
+                {/* Content */}
+                <div className={`${dmSans.className} prose prose-base prose-zinc max-w-none
                     prose-p:text-zinc-700 prose-p:leading-relaxed prose-p:text-[15px]
                     prose-headings:font-semibold prose-headings:text-zinc-900
                     prose-a:text-pink-500 prose-a:no-underline hover:prose-a:underline
                     prose-strong:text-zinc-900
                     prose-code:text-pink-600 prose-code:bg-zinc-100 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm prose-code:font-normal
                     prose-li:text-zinc-700 prose-li:text-[15px]
-                    prose-blockquote:border-l-pink-500 prose-blockquote:bg-zinc-50 prose-blockquote:py-1 prose-blockquote:px-4 prose-blockquote:rounded-r-lg
                     prose-hr:border-zinc-200
                 `}>
                     <Markdown
                         options={{
                             overrides: {
                                 pre: PreBlock,
+                                blockquote: HandwrittenBlockquote,
                                 a: {
                                     props: {
                                         className: "text-pink-500 hover:underline",

@@ -31,7 +31,7 @@ export default function Landing() {
 					there isn’t much up there right now but i plan to write a lot more soon,{" "}
 					<SpanWord word="check it out here" link="/library" />.
 					professional background is{" "}
-					<SpanWord word="in my portfolio" link="/portfolio" />.
+					<SpanWord word="in my portfolio" link="https://flowcv.com/resume/qjwdae4u1j" />.
 				</p>
 
 				<p>

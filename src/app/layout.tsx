@@ -6,6 +6,7 @@ import { Metadata } from "next";
 import Script from "next/script";
 
 export const metadata: Metadata = {
+	metadataBase: new URL("https://sijibomi.com"),
 	title: "sijibomi",
 	description: "still learning. probably always will be.",
 	openGraph: {

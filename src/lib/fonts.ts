@@ -1,4 +1,4 @@
-import { Sail, Bebas_Neue, Bai_Jamjuree, Manrope, Rubik, Inter, Roboto, Poppins, Source_Serif_4, DM_Sans } from "next/font/google"
+import { Sail, Bebas_Neue, Bai_Jamjuree, Manrope, Rubik, Inter, Roboto, Poppins, Source_Serif_4, DM_Sans, Caveat } from "next/font/google"
 
 export const bai = Bai_Jamjuree({
     weight: ['400', '500', '700'],
@@ -46,6 +46,12 @@ export const sourceSerif = Source_Serif_4({
 
 // Clean modern sans for UI elements
 export const dmSans = DM_Sans({
+    subsets: ["latin"],
+    weight: ["400", "500", "600", "700"],
+});
+
+// Handwritten font for blockquotes / annotations
+export const caveat = Caveat({
     subsets: ["latin"],
     weight: ["400", "500", "600", "700"],
 });

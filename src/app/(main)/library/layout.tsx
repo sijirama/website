@@ -10,7 +10,7 @@ export default function LibraryLayout({
   children: React.ReactNode;
 }) {
   return (
-    <SidebarProvider defaultOpen={false}>
+    <SidebarProvider defaultOpen={true}>
       <ExplorerSidebar />
       <SidebarInset className="p-1 flex-col w-full">{children}</SidebarInset>
     </SidebarProvider>
