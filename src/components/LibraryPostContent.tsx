@@ -237,19 +237,18 @@ export default function LibraryPostContent({ slug, allNotes }: { slug: string[];
                                 #{tag}
                             </span>
                         ))}
+                        {postLink && (
+                            <a
+                                href={postLink}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-1 text-xs text-blue-400 bg-blue-50 hover:bg-blue-100 hover:text-blue-600 transition-colors px-2 py-0.5 rounded-full"
+                            >
+                                <span>↗</span>
+                                <span>{postLinkHostname}</span>
+                            </a>
+                        )}
                     </div>
-                    {postLink && (
-                        <a
-                            href={postLink}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1.5 text-xs text-zinc-400 hover:text-pink-500 transition-colors group w-fit"
-                        >
-                            <span className="w-1.5 h-1.5 rounded-full bg-zinc-300 group-hover:bg-pink-400 transition-colors shrink-0" />
-                            <span className="underline underline-offset-2 decoration-zinc-200 group-hover:decoration-pink-300">{postLinkHostname}</span>
-                            <span className="opacity-0 group-hover:opacity-100 transition-opacity">↗</span>
-                        </a>
-                    )}
                 </header>
 
                 {/* Content */}
