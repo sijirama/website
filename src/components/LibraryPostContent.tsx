@@ -166,6 +166,7 @@ export default function LibraryPostContent({ slug, allNotes }: { slug: string[];
             : [];
 
     const status = post.status && STATUS_MAP[post.status] ? STATUS_MAP[post.status] : null;
+    const isHandwritten = post.style === "handwritten";
 
     return (
         <div className={`${dmSans.className} p-4 md:p-6 bg-zinc-50 min-h-screen`}>
@@ -203,7 +204,7 @@ export default function LibraryPostContent({ slug, allNotes }: { slug: string[];
 
                 {/* Header / Metadata */}
                 <header className="mb-8 space-y-3">
-                    <h1 className={`${manrope.className} text-2xl md:text-3xl font-bold text-zinc-900 leading-snug tracking-tight`}>
+                    <h1 className={`${isHandwritten ? caveat.className : manrope.className} ${isHandwritten ? "text-4xl md:text-5xl font-normal" : "text-2xl md:text-3xl font-bold tracking-tight"} text-zinc-900 leading-snug`}>
                         {post.title}
                     </h1>
 
@@ -238,13 +239,14 @@ export default function LibraryPostContent({ slug, allNotes }: { slug: string[];
                 </header>
 
                 {/* Content */}
-                <div className={`${dmSans.className} prose prose-base prose-zinc max-w-none
-                    prose-p:text-zinc-700 prose-p:leading-relaxed prose-p:text-[15px]
-                    prose-headings:font-semibold prose-headings:text-zinc-900
+                <div className={`${isHandwritten ? caveat.className : dmSans.className} prose prose-zinc max-w-none
+                    ${isHandwritten ? "prose-lg prose-p:text-[22px] prose-p:leading-snug prose-headings:font-normal" : "prose-base prose-p:text-[15px] prose-p:leading-relaxed prose-headings:font-semibold"}
+                    prose-p:text-zinc-700
+                    prose-headings:text-zinc-900
                     prose-a:text-pink-500 prose-a:no-underline hover:prose-a:underline
-                    prose-strong:text-zinc-900
+                    prose-strong:font-normal
                     prose-code:text-pink-600 prose-code:bg-zinc-100 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm prose-code:font-normal
-                    prose-li:text-zinc-700 prose-li:text-[15px]
+                    prose-li:text-zinc-700
                     prose-hr:border-zinc-200
                 `}>
                     <Markdown
@@ -252,6 +254,14 @@ export default function LibraryPostContent({ slug, allNotes }: { slug: string[];
                             overrides: {
                                 pre: PreBlock,
                                 blockquote: HandwrittenBlockquote,
+                                strong: ({ children }: { children: React.ReactNode }) => (
+                                    <mark className={isHandwritten
+                                        ? "bg-pink-100 text-pink-900 px-0.5 rounded-sm not-italic font-normal"
+                                        : "bg-yellow-100 text-zinc-900 px-0.5 rounded-sm font-normal"
+                                    }>
+                                        {children}
+                                    </mark>
+                                ),
                                 a: {
                                     props: {
                                         className: "text-pink-500 hover:underline",
