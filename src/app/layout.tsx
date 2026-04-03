@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 	openGraph: {
 		title: "sijibomi",
 		description: "still learning. probably always will be.",
-		images: "https://media.sijibomi.com/blob/website/f5922f41614775aba49ba6c49f6ef36f.jpg",
+		images: [{ url: "https://media.sijibomi.com/blob/website/f5922f41614775aba49ba6c49f6ef36f.jpg", width: 1200, height: 630 }],
 	},
 };
 
