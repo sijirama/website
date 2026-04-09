@@ -19,25 +19,24 @@ export default function Landing() {
 					/>
 				</div>
 				<p id="target">
-					i'm siji. software engineer based in
-					Lagos. i currently do fullstack
-					engineering for work, but what i’m
-					really working toward is becoming a
-					generalist, someone comfortable moving
-					across systems, math, and ideas. so most
-					of my spare time right now goes into
-					studying math and trying to do ai/ml
-					research, hoping to fully pivot there
-					eventually.
+					i'm a software engineer based in Lagos.
+					i currently do fullstack engineering for
+					work, but what i’m really working toward
+					is becoming a generalist, someone
+					comfortable moving across systems, math,
+					and ideas. so most of my spare time
+					right now goes into studying math and
+					trying to do ai/ml research, hoping to
+					fully pivot there eventually.
 				</p>
 
 				<p>
 					outside of work i read a lot, cycle when
 					i can, and spend time with people i
 					like. i physically can't function
-					without music playing and always have
-					something playing, i appreciate art when
-					i understand it (and sometimes when i
+					without music and always have something
+					playing, i appreciate art when i
+					understand it (and sometimes when i
 					don’t), recently i’ve been getting into
 					cooking, though time hasn’t made that
 					easy.
