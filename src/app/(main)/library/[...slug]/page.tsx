@@ -48,6 +48,7 @@ export async function generateMetadata({ params }: { params: { slug: string[] } 
 
   return {
     title: `${cleanTitle} | Library`,
+    description: "",
     openGraph: {
       title: `${cleanTitle}`,
       images: [{ url: OG_IMAGE, width: 1200, height: 630 }],
