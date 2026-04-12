@@ -65,7 +65,7 @@ export default function Landing() {
 					still want to chat, you can find me on{" "}
 					<SpanWord
 						word="Twitter/X"
-						link="https://twitter.com/sijiramakun"
+						link="https://twitter.com/oluwasijirama"
 					/>{" "}
 					or{" "}
 					<SpanWord
