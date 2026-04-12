@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import LibraryPostContent from "@/components/LibraryPostContent";
-import { CONFIG } from "@/lib/config";
+import { CONFIG, OG_IMAGE } from "@/lib/config";
 
 // ISR: Revalidate every 60 seconds
 export const revalidate = 60;
@@ -48,17 +48,14 @@ export async function generateMetadata({ params }: { params: { slug: string[] } 
 
   return {
     title: `${cleanTitle} | Library`,
-    description: `Reading "${cleanTitle}" from siji's digital garden.`,
     openGraph: {
-      title: `${cleanTitle} — siji's library`,
-      description: `A note from my personal vault.`,
-      type: 'article',
-      images: [`/api/og?title=${encodeURIComponent(cleanTitle)}`],
+      title: `${cleanTitle}`,
+      images: [{ url: OG_IMAGE, width: 1200, height: 630 }],
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${cleanTitle} — siji's library`,
-      images: [`/api/og?title=${encodeURIComponent(cleanTitle)}`],
+      title: `${cleanTitle}`,
+      images: [{ url: OG_IMAGE, width: 1200, height: 630 }],
     },
   };
 }
