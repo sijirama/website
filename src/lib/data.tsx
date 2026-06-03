@@ -108,7 +108,7 @@ export const projects: Project[] = [
       "transit infrastructure over lagos' informal danfo network with no gps on the buses. the bet: instrument the riders, not the vehicles, and infer routes and stops from their telemetry.",
     status: "ongoing",
     technologies: ["Research"],
-    link: "https://danfo.com",
+    link: "https://danfo.ng",
   },
 
   // ───────────── research ─────────────
