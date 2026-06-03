@@ -52,7 +52,13 @@ export default function Landing() {
 						word="check it out here"
 						link="/library"
 					/>
-					. professional background is{" "}
+					. some of the things i've built (and am
+					still building) are{" "}
+					<SpanWord
+						word="in my projects"
+						link="/projects"
+					/>
+					, and professional background is{" "}
 					<SpanWord
 						word="in my portfolio"
 						link="https://flowcv.com/resume/qjwdae4u1j"

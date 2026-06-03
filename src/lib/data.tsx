@@ -62,53 +62,144 @@ export const skills = [
   "Devops",
 ];
 
-export const projects = [
+export type ProjectStatus = "ongoing" | "research" | "completed";
+
+export interface Project {
+  name: string;
+  description: string;
+  status: ProjectStatus;
+  technologies: string[];
+  // no longer maintained
+  deprecated?: boolean;
+  // a short handwritten aside (rendered in the caveat font)
+  note?: string;
+  // live site / demo
+  link?: string;
+  // source code
+  github?: string;
+  // articles / writeups i wrote about this project
+  papers?: { title: string; link: string }[];
+  // a screenshot or short clip
+  media?: { type: "image" | "video"; src: string; alt?: string };
+}
+
+export const projects: Project[] = [
+  // ───────────── ongoing ─────────────
   {
-    title: "Soro",
+    name: "Soro",
     description:
-      "i'm currently on freedays doing research to build a programming language or rather the interpreter for my language, called soro, the challenge here is that i want to use boken english (pidgin) for the keywords, i just finished the virtual machine and have been adding parts during my free time, check it out",
-    type: "Research",
-    link: "https://github.com/sijirama/soro",
-    technologies: ["Zig"],
+      "an interpreter for a language whose keywords are broken english (pidgin). bytecode compiler + stack vm, started in zig, now rewriting in c.",
+    status: "ongoing",
+    technologies: ["C"],
+    github: "https://github.com/sijirama/soro",
+    note: "my forever side project",
   },
   {
-    title: "Turva",
+    name: "Pico",
     description:
-      "real-time crowd-sourced danger alert platform for small communities, designed to empower residents with instant updates on local risks like crime, natural hazards, or emergencies. Built with a focus on simplicity and reliability, it allows users to report incidents, share geolocated alerts, and receive notifications, fostering safer and more connected neighborhoods.",
-    type: "Project",
-    link: "https://turva.co",
-    technologies: ["Golang", "React"],
+      "a tiny ml framework from scratch in c++: tensors, reverse-mode autograd and backprop, built to understand them instead of trusting pytorch.",
+    status: "ongoing",
+    technologies: ["C++"],
+    github: "https://github.com/sijirama/pico",
+  },
+  {
+    name: "Danfo",
+    description:
+      "transit infrastructure over lagos' informal danfo network with no gps on the buses. the bet: instrument the riders, not the vehicles, and infer routes and stops from their telemetry.",
+    status: "ongoing",
+    technologies: ["Research"],
+    link: "https://danfo.com",
   },
 
-  /*
+  // ───────────── research ─────────────
   {
-    title: "BuymeZobo",
+    name: "mnesh",
     description:
-      "with buymezobo we are trying to create an easy way for nigerian creators or even anyone with an audience to monetize their audience and use that moola to pursue other endeavours and projects, we want to make creators independent",
-    type: "Main Project",
-    link: "https://buymezobo.ng/",
-    technologies: [
-      "TypeScript",
-      "Next.js",
-      "TailwindCSS",
-      "PostgreSQL",
-      "Prisma",
+      "a local shell next-command predictor. trains on session telemetry (cmd, cwd, git state, exit codes) to rank likely next commands. began as an rnn, now a local qwen on llama-server.",
+    status: "research",
+    technologies: ["Python", "PyTorch"],
+    github: "https://github.com/sijirama/mnesh",
+    papers: [
+      {
+        title: "RNN train run for Mnesh",
+        link: "/library/Research/RNN%20train%20run%20for%20Mnesh.md",
+      },
     ],
+    note: "completely flopped",
   },
   {
-    title: "Seapick",
+    name: "bbn-sim",
     description:
-      "iphone bros should be angry but i wanted to clone airdrop, so this is is a simple file transfer over TCP, it works okay rn (i think), but i want to add bluetooth discovery to that, and maybe a web interface",
-    type: "Side Project",
+      "big brother simulacra: a house of llm agents that talk, scheme and form alliances on their own. exploring memory, reflection and emergent group dynamics in a reality-tv frame.",
+    status: "research",
     technologies: ["Golang"],
+    github: "https://github.com/sijirama/bbn-sim",
+  },
+
+  // ───────────── completed ─────────────
+  {
+    name: "Scholic",
+    description:
+      "a social annotation platform: chrome extension + web app for highlighting and threading discussions over any page. margins and book clubs for the whole web.",
+    status: "completed",
+    technologies: ["TypeScript", "React"],
+    github: "https://github.com/sijirama/scholic",
+    link: "https://scholic.com",
+    note: "for all the research papers i read",
   },
   {
-    title: "Monkey",
+    name: "Beacon",
     description:
-      "simple experimental interpreter built in Golang, mostly for research on lexical analysis and token parsing",
-    type: "Side Project",
-    link: "",
+      "a self-hosted event relay that fans events out to any notification channel you want, no third-party saas in the loop.",
+    status: "completed",
     technologies: ["Golang"],
+    github: "https://github.com/sijirama/beacon",
   },
-  */
+  {
+    name: "Lumen",
+    description:
+      "a screen-aware ai agent for linux. desktop chat with tool access to your obsidian vault, gmail, calendar and screen, and it acts on them. built on gemini, one-line install.",
+    status: "completed",
+    technologies: ["Rust", "Gemini"],
+    github: "https://github.com/sijirama/lumen",
+  },
+  {
+    name: "Voxel",
+    description:
+      "a lightweight clipboard manager for linux. a go clipboard watcher that persists history to sqlite, with a react ui to search back through it.",
+    status: "completed",
+    technologies: ["Golang", "React"],
+    github: "https://github.com/sijirama/voxel",
+  },
+  {
+    name: "naira-bert",
+    description:
+      "a bert-style encoder pretrained on ~200k nairaland posts i scraped. a small mlm that actually models how nigerians write online.",
+    status: "completed",
+    technologies: ["Python", "PyTorch"],
+    github: "https://github.com/sijirama/nairaland_scraper",
+    note: "scraped 200k posts for this",
+  },
+  {
+    name: "jason",
+    description:
+      "a json parser in zig with jsonpath-style queries and zero deps beyond the stdlib. my first zig project, built to learn the language.",
+    status: "completed",
+    technologies: ["Zig"],
+    github: "https://github.com/sijirama/jason",
+    note: "my first ever zig",
+  },
+  {
+    name: "sweep.nvim",
+    description:
+      "fully local ai code completion for neovim on sweep next-edit. groups edits into hunks with inline virtual-text previews and jump-to-change.",
+    status: "completed",
+    technologies: ["Lua", "Python"],
+    github: "https://github.com/sijirama/sweep.nvim",
+    note: "the 6★ one ✶",
+  },
+
+  // shape reference for fields i'll fill in later:
+  // papers: [{ title: "why i built X", link: "https://..." }],
+  // media: { type: "image", src: "/projects/x.png", alt: "X screenshot" },
 ];
