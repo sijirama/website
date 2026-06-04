@@ -20,6 +20,9 @@
 .DS_Store
 *.pem
 
+# local demo videos (uploaded to r2 instead of committed)
+/public/videos
+
 .env
 
 # debug

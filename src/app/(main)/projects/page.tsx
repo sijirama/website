@@ -1,44 +1,46 @@
 "use client";
 
-import { useEffect, useLayoutEffect, useRef } from "react";
+import {
+	useEffect,
+	useLayoutEffect,
+	useMemo,
+	useRef,
+	useState,
+} from "react";
 import gsap from "gsap";
 import Header from "@/components/Header";
+import { manrope, caveat } from "@/lib/fonts";
+import {
+	projects,
+	type Project,
+	type ProjectStatus,
+	type MediaItem,
+} from "@/lib/data";
 
 // useLayoutEffect on the client, useEffect on the server (avoids SSR warning)
 const useIsomorphicLayoutEffect =
 	typeof window !== "undefined" ? useLayoutEffect : useEffect;
-import { manrope, caveat } from "@/lib/fonts";
-import { projects, type Project, type ProjectStatus } from "@/lib/data";
 
-const groups: {
-	status: ProjectStatus;
-	label: string;
-	dot: string;
-	pill: string;
-	blurb: string;
-}[] = [
-	{
-		status: "ongoing",
+const statusMeta: Record<
+	ProjectStatus,
+	{ label: string; pill: string; dot: string }
+> = {
+	ongoing: {
 		label: "ongoing",
-		dot: "bg-orange-400",
 		pill: "bg-orange-50 text-orange-600 border-orange-200",
-		blurb: "things i'm actively building right now",
+		dot: "bg-orange-400",
 	},
-	{
-		status: "research",
+	research: {
 		label: "research",
-		dot: "bg-violet-400",
 		pill: "bg-violet-50 text-violet-600 border-violet-200",
-		blurb: "experiments where the point is to understand something",
+		dot: "bg-violet-400",
 	},
-	{
-		status: "completed",
+	completed: {
 		label: "completed",
-		dot: "bg-emerald-400",
 		pill: "bg-emerald-50 text-emerald-600 border-emerald-200",
-		blurb: "shipped, or as done as side projects ever get",
+		dot: "bg-emerald-400",
 	},
-];
+};
 
 // github-ish language colors; non-languages fall back to a neutral dot
 const techColors: Record<string, string> = {
@@ -51,20 +53,61 @@ const techColors: Record<string, string> = {
 	TypeScript: "#3178c6",
 	Lua: "#000080",
 	React: "#61dafb",
+	HTML: "#e34c26",
 	PyTorch: "#ee4c2c",
 	Gemini: "#8e75ff",
 	Research: "#a78bfa",
 };
 
+// pin these to the front, keep everything else in its current order
+const PINNED = ["Lumen", "Scholic", "Danfo", "Soro", "Pico", "Beacon", "mnesh"];
+
+// bottom-right peel: shallow along the bottom, sweeping up steeply at the right edge
+const PEEL_W = 150;
+const PEEL_H = 80;
+const PEEL_CURVE = `M40 ${PEEL_H} C 108 ${PEEL_H}, ${PEEL_W} 52, ${PEEL_W} 4`;
+const PEEL_PATH = `path('${PEEL_CURVE} L ${PEEL_W} ${PEEL_H} Z')`;
+
+type Slide = {
+	projectName: string;
+	item: MediaItem;
+	isFirstOfProject: boolean;
+};
+
 export default function ProjectsPage() {
 	const containerRef = useRef<HTMLDivElement>(null);
+	const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+	const ordered = useMemo<Project[]>(() => {
+		const pinned = PINNED.map((n) =>
+			projects.find((p) => p.name === n),
+		).filter((p): p is Project => Boolean(p));
+		const rest = projects.filter((p) => !PINNED.includes(p.name));
+		return [...pinned, ...rest];
+	}, []);
+
+	// flatten every project's media into one continuous reel
+	const { slides, firstSlideOf } = useMemo(() => {
+		const slides: Slide[] = [];
+		const firstSlideOf: Record<string, number> = {};
+		for (const p of ordered) {
+			if (!p.media?.length) continue;
+			firstSlideOf[p.name] = slides.length;
+			p.media.forEach((item, i) =>
+				slides.push({
+					projectName: p.name,
+					item,
+					isFirstOfProject: i === 0,
+				}),
+			);
+		}
+		return { slides, firstSlideOf };
+	}, [ordered]);
 
 	useIsomorphicLayoutEffect(() => {
 		const ctx = gsap.context(() => {
 			const cards = gsap.utils.toArray<HTMLElement>("[data-card]");
 			if (!cards.length) return;
-			// explicit set + to (not gsap.from) so dev StrictMode's
-			// double-mount can't capture mid-flight values as the target
 			gsap.set(cards, { opacity: 0, y: 24 });
 			gsap.to(cards, {
 				opacity: 1,
@@ -105,75 +148,70 @@ export default function ProjectsPage() {
 				</div>
 				<p className="text-xs lg:text-sm text-zinc-600 max-w-xl leading-relaxed">
 					some are products, some are research, most are just me
-					trying to understand something by building it. roughly
-					sorted by how alive they still are.
+					trying to understand something by building it. the ones
+					with a peeled corner have media — tap it.
 				</p>
 
-				<div className="flex flex-col gap-12 mt-10 pb-24">
-					{groups.map((group) => {
-						const items = projects.filter(
-							(p) => p.status === group.status,
-						);
-						if (items.length === 0) return null;
-						return (
-							<section key={group.status}>
-								{/* group header */}
-								<div className="flex items-center gap-3 mb-5">
-									<span className="relative flex h-2 w-2">
-										<span
-											className={`absolute inline-flex h-full w-full rounded-full opacity-60 ${group.dot}`}
-										/>
-										<span
-											className={`relative inline-flex h-2 w-2 rounded-full ${group.dot}`}
-										/>
-									</span>
-									<span
-										className={`text-[10px] tracking-wide font-medium border rounded px-2 py-0.5 ${group.pill}`}
-									>
-										{group.label}
-									</span>
-									<span className="text-[11px] text-zinc-400 hidden sm:inline">
-										{group.blurb}
-									</span>
-								</div>
-
-								{/* project grid */}
-								<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-									{items.map((project) => (
-										<ProjectCard
-											key={project.name}
-											project={project}
-										/>
-									))}
-								</div>
-							</section>
-						);
-					})}
+				{/* one merged grid */}
+				<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 mt-10 pb-24">
+					{ordered.map((project) => (
+						<ProjectCard
+							key={project.name}
+							project={project}
+							onOpenMedia={() =>
+								setOpenIndex(firstSlideOf[project.name] ?? 0)
+							}
+						/>
+					))}
 				</div>
 			</div>
+
+			{openIndex !== null && slides.length > 0 && (
+				<MediaViewer
+					slides={slides}
+					index={openIndex}
+					setIndex={setOpenIndex}
+					onClose={() => setOpenIndex(null)}
+				/>
+			)}
 		</main>
 	);
 }
 
-function ProjectCard({ project }: { project: Project }) {
+function ProjectCard({
+	project,
+	onOpenMedia,
+}: {
+	project: Project;
+	onOpenMedia: () => void;
+}) {
+	const status = statusMeta[project.status];
+	const hasMedia = Boolean(project.media?.length);
+	const gutter = hasMedia ? "pr-[96px]" : "";
+
 	return (
 		<div
 			data-card
-			className="group relative flex flex-col rounded-lg border border-zinc-200 bg-white/60 p-3 transition-all duration-200 hover:border-orange-300 hover:bg-white hover:shadow-[0_4px_20px_-8px_rgba(0,0,0,0.12)]"
+			className="group relative flex flex-col overflow-hidden rounded-lg border border-zinc-200 bg-white/60 p-3 transition-all duration-200 hover:border-orange-300 hover:bg-white hover:shadow-[0_4px_20px_-8px_rgba(0,0,0,0.12)]"
 		>
-			{/* top row: name + deprecated */}
+			{/* top row: name + status + deprecated */}
 			<div className="flex items-center gap-2 flex-wrap">
 				<h3 className="text-sm font-semibold text-zinc-900 group-hover:text-orange-700 transition-colors">
 					{project.name}
 				</h3>
+				<span
+					className={`inline-flex items-center gap-1 text-[9px] font-medium border rounded px-1.5 py-px ${status.pill}`}
+				>
+					<span
+						className={`h-1.5 w-1.5 rounded-full ${status.dot}`}
+					/>
+					{status.label}
+				</span>
 				{project.deprecated && (
 					<span className="text-[9px] uppercase tracking-wider text-rose-500/80 border border-rose-200 bg-rose-50 rounded px-1.5 py-px">
 						deprecated
 					</span>
 				)}
-				<span className="ml-auto text-zinc-300 group-hover:text-orange-400 group-hover:translate-x-0.5 transition-all">
-					↗
-				</span>
 			</div>
 
 			{/* tech */}
@@ -205,14 +243,16 @@ function ProjectCard({ project }: { project: Project }) {
 
 			{project.note && (
 				<p
-					className={`${caveat.className} text-[15px] text-orange-500/80 leading-none mt-2 -rotate-1`}
+					className={`${caveat.className} text-[15px] text-orange-500/80 leading-none mt-2 -rotate-1 ${gutter}`}
 				>
 					↳ {project.note}
 				</p>
 			)}
 
 			{/* links */}
-			<div className="flex gap-2 flex-wrap mt-auto pt-3">
+			<div
+				className={`flex gap-2 flex-wrap items-center mt-auto pt-3 ${gutter}`}
+			>
 				{project.link && (
 					<ProjectLink href={project.link} label="live" kind="live" />
 				)}
@@ -231,6 +271,222 @@ function ProjectCard({ project }: { project: Project }) {
 						kind="paper"
 					/>
 				))}
+			</div>
+
+			{/* bottom-right media peek — the card looks lifted off a larger image behind it */}
+			{hasMedia && (
+				<>
+					<span
+						onClick={onOpenMedia}
+						className={`${caveat.className} absolute z-30 cursor-pointer select-none text-[15px] leading-none text-orange-500/90 -rotate-6`}
+						style={{ bottom: PEEL_H - 45, right: 15 }}
+					>
+						click me ↘
+					</span>
+					<button
+						type="button"
+						onClick={onOpenMedia}
+						aria-label={`view ${project.name} media`}
+						className="group/peek absolute bottom-0 right-0 z-20 overflow-hidden"
+						style={{
+							width: PEEL_W,
+							height: PEEL_H,
+							clipPath: PEEL_PATH,
+						}}
+					>
+						{project.media![0].type === "video" ? (
+							<video
+								src={project.media![0].url}
+								muted
+								playsInline
+								preload="metadata"
+								className="absolute bottom-0 right-0 h-[190px] w-[330px] max-w-none object-cover transition-transform duration-300 group-hover/peek:scale-[1.04]"
+							/>
+						) : (
+							<img
+								src={project.media![0].url}
+								alt={project.media![0].alt ?? ""}
+								className="absolute bottom-0 right-0 h-[190px] w-[330px] max-w-none object-cover transition-transform duration-300 group-hover/peek:scale-[1.04]"
+							/>
+						)}
+					</button>
+					{/* thin line tracing the peel curve (no shadow) */}
+					<svg
+						width={PEEL_W}
+						height={PEEL_H}
+						viewBox={`0 0 ${PEEL_W} ${PEEL_H}`}
+						className="pointer-events-none absolute bottom-0 right-0 z-20"
+					>
+						<path
+							d={PEEL_CURVE}
+							fill="none"
+							stroke="rgba(0,0,0,0.22)"
+							strokeWidth={1}
+						/>
+					</svg>
+				</>
+			)}
+		</div>
+	);
+}
+
+function MediaViewer({
+	slides,
+	index,
+	setIndex,
+	onClose,
+}: {
+	slides: Slide[];
+	index: number;
+	setIndex: (i: number) => void;
+	onClose: () => void;
+}) {
+	const touchX = useRef<number | null>(null);
+	const current = slides[index];
+
+	const go = (dir: 1 | -1) =>
+		setIndex((index + dir + slides.length) % slides.length);
+
+	const nextProject = () => {
+		for (let step = 1; step <= slides.length; step++) {
+			const i = (index + step) % slides.length;
+			if (slides[i].isFirstOfProject) {
+				setIndex(i);
+				return;
+			}
+		}
+	};
+
+	useEffect(() => {
+		const onKey = (e: KeyboardEvent) => {
+			if (e.key === "Escape") onClose();
+			else if (e.key === "ArrowRight") go(1);
+			else if (e.key === "ArrowLeft") go(-1);
+		};
+		document.addEventListener("keydown", onKey);
+		const prevOverflow = document.body.style.overflow;
+		document.body.style.overflow = "hidden";
+		return () => {
+			document.removeEventListener("keydown", onKey);
+			document.body.style.overflow = prevOverflow;
+		};
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [index, slides.length]);
+
+	// how many media this project has + position within it
+	const projectSlides = slides.filter(
+		(s) => s.projectName === current.projectName,
+	);
+	const posInProject =
+		slides
+			.slice(0, index + 1)
+			.filter((s) => s.projectName === current.projectName).length;
+
+	return (
+		<div
+			className={`${manrope.className} fixed inset-0 z-50 flex flex-col bg-black/90 backdrop-blur-sm`}
+			onClick={onClose}
+			onTouchStart={(e) => (touchX.current = e.touches[0].clientX)}
+			onTouchEnd={(e) => {
+				if (touchX.current === null) return;
+				const dx = e.changedTouches[0].clientX - touchX.current;
+				if (Math.abs(dx) > 50) go(dx < 0 ? 1 : -1);
+				touchX.current = null;
+			}}
+		>
+			{/* top bar */}
+			<div
+				className="flex items-center justify-between px-5 py-4 text-white/80"
+				onClick={(e) => e.stopPropagation()}
+			>
+				<div className="flex items-baseline gap-3">
+					<span className="text-sm font-semibold text-white">
+						{current.projectName}
+					</span>
+					<span className="text-xs text-white/50 tabular-nums">
+						{posInProject} / {projectSlides.length}
+					</span>
+				</div>
+				<button
+					type="button"
+					onClick={onClose}
+					aria-label="close"
+					className="text-white/70 hover:text-white text-xl leading-none px-2"
+				>
+					✕
+				</button>
+			</div>
+
+			{/* stage */}
+			<div
+				className="relative flex-1 flex items-center justify-center px-4 pb-2 min-h-0"
+				onClick={(e) => e.stopPropagation()}
+			>
+				<button
+					type="button"
+					onClick={() => go(-1)}
+					aria-label="previous"
+					className="absolute left-2 md:left-6 z-10 h-10 w-10 rounded-full bg-white/10 hover:bg-white/20 text-white text-lg grid place-items-center transition-colors"
+				>
+					‹
+				</button>
+
+				{current.item.type === "video" ? (
+					<video
+						key={current.item.url}
+						src={current.item.url}
+						controls
+						autoPlay
+						muted
+						playsInline
+						className="max-h-full max-w-full rounded-lg shadow-2xl"
+					/>
+				) : (
+					<img
+						key={current.item.url}
+						src={current.item.url}
+						alt={current.item.alt ?? ""}
+						className="max-h-full max-w-full rounded-lg object-contain shadow-2xl"
+					/>
+				)}
+
+				<button
+					type="button"
+					onClick={() => go(1)}
+					aria-label="next"
+					className="absolute right-2 md:right-6 z-10 h-10 w-10 rounded-full bg-white/10 hover:bg-white/20 text-white text-lg grid place-items-center transition-colors"
+				>
+					›
+				</button>
+			</div>
+
+			{/* bottom bar */}
+			<div
+				className="flex items-center justify-center gap-4 px-5 py-4"
+				onClick={(e) => e.stopPropagation()}
+			>
+				<div className="flex items-center gap-1.5">
+					{slides.map((s, i) => (
+						<button
+							key={i}
+							type="button"
+							onClick={() => setIndex(i)}
+							aria-label={`go to ${s.projectName} media ${i + 1}`}
+							className={`h-1.5 rounded-full transition-all ${
+								i === index
+									? "w-5 bg-white"
+									: "w-1.5 bg-white/30 hover:bg-white/50"
+							}`}
+						/>
+					))}
+				</div>
+				<button
+					type="button"
+					onClick={nextProject}
+					className="text-xs text-white/80 hover:text-white border border-white/30 hover:border-white/60 rounded-md px-3 py-1 transition-colors"
+				>
+					next project →
+				</button>
 			</div>
 		</div>
 	);

@@ -64,6 +64,13 @@ export const skills = [
 
 export type ProjectStatus = "ongoing" | "research" | "completed";
 
+export interface MediaItem {
+  type: "image" | "video";
+  // cloudflare r2 url
+  url: string;
+  alt?: string;
+}
+
 export interface Project {
   name: string;
   description: string;
@@ -79,8 +86,8 @@ export interface Project {
   github?: string;
   // articles / writeups i wrote about this project
   papers?: { title: string; link: string }[];
-  // a screenshot or short clip
-  media?: { type: "image" | "video"; src: string; alt?: string };
+  // screenshots / clips on cloudflare r2; the first one is the card peek
+  media?: MediaItem[];
 }
 
 export const projects: Project[] = [
@@ -107,7 +114,7 @@ export const projects: Project[] = [
     description:
       "transit infrastructure over lagos' informal danfo network with no gps on the buses. the bet: instrument the riders, not the vehicles, and infer routes and stops from their telemetry.",
     status: "ongoing",
-    technologies: ["Research"],
+    technologies: ["Golang", "TypeScript"],
     link: "https://danfo.ng",
   },
 
@@ -142,26 +149,79 @@ export const projects: Project[] = [
     description:
       "a social annotation platform: chrome extension + web app for highlighting and threading discussions over any page. margins and book clubs for the whole web.",
     status: "completed",
-    technologies: ["TypeScript", "React"],
+    technologies: ["Golang", "TypeScript"],
     github: "https://github.com/sijirama/scholic",
     link: "https://scholic.com",
     note: "for all the research papers i read",
+    media: [
+      {
+        type: "image",
+        url: "https://media.sijibomi.com/blob/website/projects/Screenshot%20from%202026-06-04%2002-53-28.png",
+        alt: "scholic annotations in the margin",
+      },
+      {
+        type: "image",
+        url: "https://media.sijibomi.com/blob/website/projects/Screenshot%20from%202026-06-04%2002-56-26.png",
+        alt: "scholic threaded discussion",
+      },
+      {
+        type: "image",
+        url: "https://media.sijibomi.com/blob/website/projects/Screenshot%20from%202026-06-04%2002-58-02.png",
+        alt: "scholic annotation page",
+      },
+    ],
   },
   {
     name: "Beacon",
     description:
       "a self-hosted event relay that fans events out to any notification channel you want, no third-party saas in the loop.",
     status: "completed",
-    technologies: ["Golang"],
+    technologies: ["Golang", "HTML"],
     github: "https://github.com/sijirama/beacon",
+    media: [
+      {
+        type: "image",
+        url: "https://media.sijibomi.com/blob/website/projects/Screenshot%20from%202026-06-04%2003-22-45.png",
+        alt: "beacon relay dashboard",
+      },
+      {
+        type: "image",
+        url: "https://media.sijibomi.com/blob/website/projects/Screenshot%20from%202026-06-04%2003-22-52.png",
+        alt: "beacon relay dashboard",
+      },
+    ],
   },
   {
     name: "Lumen",
     description:
       "a screen-aware ai agent for linux. desktop chat with tool access to your obsidian vault, gmail, calendar and screen, and it acts on them. built on gemini, one-line install.",
     status: "completed",
-    technologies: ["Rust", "Gemini"],
+    technologies: ["Rust", "React", "Gemini"],
     github: "https://github.com/sijirama/lumen",
+    note: "i daily drive this",
+    // MOCK media — swap these urls for your cloudflare r2 links
+    media: [
+      {
+        type: "image",
+        url: "https://media.sijibomi.com/blob/website/projects/Screenshot%20from%202026-06-04%2003-00-53.png",
+        alt: "lumen chat overlay",
+      },
+      {
+        type: "image",
+        url: "https://media.sijibomi.com/blob/website/projects/Screenshot%20from%202026-06-04%2003-01-55.png",
+        alt: "lumen chhat overlay and dashboard showing memory system",
+      },
+      {
+        type: "video",
+        url: "https://media.sijibomi.com/blob/website/projects/Screencast%20from%2004-06-26%2003_03_17%20%28online-video-cutter.com%29.mp4",
+        alt: "lumen chat in action",
+      },
+      {
+        type: "video",
+        url: "https://media.sijibomi.com/blob/website/projects/simplescreenrecorder2-2026-06-04_03.15.03.mkv",
+        alt: "lumen chat in action again",
+      },
+    ],
   },
   {
     name: "Voxel",
@@ -201,5 +261,5 @@ export const projects: Project[] = [
 
   // shape reference for fields i'll fill in later:
   // papers: [{ title: "why i built X", link: "https://..." }],
-  // media: { type: "image", src: "/projects/x.png", alt: "X screenshot" },
+  // media: [{ type: "image", url: "https://<r2>/x.png", alt: "X screenshot" }],
 ];
