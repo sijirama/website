@@ -344,8 +344,22 @@ function MediaViewer({
 	const touchX = useRef<number | null>(null);
 	const current = slides[index];
 
+	// the current project's contiguous range in the flat slides array
+	let start = index;
+	while (start > 0 && slides[start - 1].projectName === current.projectName)
+		start--;
+	let end = index;
+	while (
+		end < slides.length - 1 &&
+		slides[end + 1].projectName === current.projectName
+	)
+		end++;
+	const count = end - start + 1;
+
+	// swiping stays inside the current project (wraps its own media);
+	// crossing to another project only happens via the "next project" button
 	const go = (dir: 1 | -1) =>
-		setIndex((index + dir + slides.length) % slides.length);
+		setIndex(start + ((index - start + dir + count) % count));
 
 	const nextProject = () => {
 		for (let step = 1; step <= slides.length; step++) {
@@ -373,14 +387,7 @@ function MediaViewer({
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [index, slides.length]);
 
-	// how many media this project has + position within it
-	const projectSlides = slides.filter(
-		(s) => s.projectName === current.projectName,
-	);
-	const posInProject =
-		slides
-			.slice(0, index + 1)
-			.filter((s) => s.projectName === current.projectName).length;
+	const posInProject = index - start + 1;
 
 	return (
 		<div
@@ -404,7 +411,7 @@ function MediaViewer({
 						{current.projectName}
 					</span>
 					<span className="text-xs text-white/50 tabular-nums">
-						{posInProject} / {projectSlides.length}
+						{posInProject} / {count}
 					</span>
 				</div>
 				<button
@@ -466,19 +473,22 @@ function MediaViewer({
 				onClick={(e) => e.stopPropagation()}
 			>
 				<div className="flex items-center gap-1.5">
-					{slides.map((s, i) => (
-						<button
-							key={i}
-							type="button"
-							onClick={() => setIndex(i)}
-							aria-label={`go to ${s.projectName} media ${i + 1}`}
-							className={`h-1.5 rounded-full transition-all ${
-								i === index
-									? "w-5 bg-white"
-									: "w-1.5 bg-white/30 hover:bg-white/50"
-							}`}
-						/>
-					))}
+					{Array.from({ length: count }).map((_, i) => {
+						const idx = start + i;
+						return (
+							<button
+								key={idx}
+								type="button"
+								onClick={() => setIndex(idx)}
+								aria-label={`go to ${current.projectName} media ${i + 1}`}
+								className={`h-1.5 rounded-full transition-all ${
+									idx === index
+										? "w-5 bg-white"
+										: "w-1.5 bg-white/30 hover:bg-white/50"
+								}`}
+							/>
+						);
+					})}
 				</div>
 				<button
 					type="button"
