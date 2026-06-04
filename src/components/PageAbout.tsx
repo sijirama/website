@@ -35,7 +35,7 @@ export default function Landing() {
 				<Section
 					right={[
 						{
-							text: "↳ the pivot scares me a little, but a boring life scares me a lot more.",
+							text: "↳ the pivot scares me but fuck it we ball",
 							top: 4,
 							rotate: 3,
 						},
