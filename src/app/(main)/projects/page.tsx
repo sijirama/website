@@ -60,7 +60,17 @@ const techColors: Record<string, string> = {
 };
 
 // pin these to the front, keep everything else in its current order
-const PINNED = ["Lumen", "Scholic", "Danfo", "Soro", "Pico", "Beacon", "mnesh"];
+const PINNED = [
+	"Lumen",
+	"Scholic",
+	"bbn-sim",
+	"naira-bert",
+	"Beacon",
+	"Soro",
+	"Pico",
+	"Danfo",
+	"mnesh",
+];
 
 // bottom-right peel: shallow along the bottom, sweeping up steeply at the right edge
 const PEEL_W = 150;
