@@ -84,6 +84,8 @@ export interface Project {
   link?: string;
   // source code
   github?: string;
+  // hugging face model / collection
+  huggingface?: string;
   // articles / writeups i wrote about this project
   papers?: { title: string; link: string }[];
   // screenshots / clips on cloudflare r2; the first one is the card peek
@@ -126,6 +128,7 @@ export const projects: Project[] = [
     status: "research",
     technologies: ["Python", "PyTorch"],
     github: "https://github.com/sijirama/mnesh",
+    huggingface: "https://huggingface.co/collections/sijirama/mnesh",
     papers: [
       {
         title: "RNN train run for Mnesh",
@@ -238,6 +241,7 @@ export const projects: Project[] = [
     status: "completed",
     technologies: ["Python", "PyTorch"],
     github: "https://github.com/sijirama/nairaland_scraper",
+    huggingface: "https://huggingface.co/sijirama/nairabert-beta",
     note: "scraped 200k posts for this",
   },
   {

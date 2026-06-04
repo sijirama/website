@@ -273,6 +273,13 @@ function ProjectCard({
 						kind="github"
 					/>
 				)}
+				{project.huggingface && (
+					<ProjectLink
+						href={project.huggingface}
+						label="hugging face"
+						kind="huggingface"
+					/>
+				)}
 				{project.papers?.map((paper) => (
 					<ProjectLink
 						key={paper.link}
@@ -512,7 +519,7 @@ function MediaViewer({
 	);
 }
 
-type LinkKind = "live" | "github" | "paper";
+type LinkKind = "live" | "github" | "paper" | "huggingface";
 
 function ProjectLink({
 	href,
@@ -534,6 +541,13 @@ function ProjectLink({
 }
 
 function LinkIcon({ kind }: { kind: LinkKind }) {
+	if (kind === "huggingface") {
+		return (
+			<span className="text-[12px] leading-none" aria-hidden>
+				🤗
+			</span>
+		);
+	}
 	if (kind === "github") {
 		return (
 			<svg
