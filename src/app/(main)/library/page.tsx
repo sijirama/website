@@ -40,7 +40,7 @@ export default async function LibraryIndex() {
             <p
               className={`${caveat.className} text-2xl md:text-[26px] text-pink-500 -rotate-1 mt-1`}
             >
-              thinking out loud, in public
+              today i’m thinking about the trees and how beautiful they are
             </p>
             <p className="text-sm text-zinc-500 mt-3 leading-relaxed max-w-lg">
               notes, research and half-thoughts. i keep telling myself
