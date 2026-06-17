@@ -1,16 +1,11 @@
 "use client";
-import React, { useEffect, useState, useCallback } from "react";
-import { getFileUrl } from "@/lib/library";
-import { CONFIG } from "@/lib/config";
-import axios from "axios";
+import React, { useEffect, useCallback } from "react";
 import { caveat, dmSans, manrope } from "@/lib/fonts";
 import Markdown from "markdown-to-jsx";
 import { PreBlock } from "@/lib/syntaxhighlight";
-import { getPostContent } from "@/lib/getPostMetaData";
-import { SidebarTrigger } from "@/components/ui/sidebar";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Share2, Check, Shuffle } from "lucide-react";
-import { decodeBase64 } from "@/lib/utils";
+import { Share2, Check, Shuffle, ArrowLeft } from "lucide-react";
 
 interface PostData {
     title: string;
@@ -34,10 +29,8 @@ function HandwrittenBlockquote({ children }: { children: React.ReactNode }) {
     );
 }
 
-export default function LibraryPostContent({ slug, allNotes }: { slug: string[]; allNotes?: string[] }) {
-    const [post, setPost] = useState<PostData | null>(null);
-    const [loading, setLoading] = useState(true);
-    const [copied, setCopied] = useState(false);
+export default function LibraryPostContent({ post, allNotes }: { post: PostData; allNotes?: string[] }) {
+    const [copied, setCopied] = React.useState(false);
     const router = useRouter();
 
     const handleShare = async () => {
@@ -65,100 +58,6 @@ export default function LibraryPostContent({ slug, allNotes }: { slug: string[];
         return () => window.removeEventListener('keydown', handleKeyDown);
     }, [handleRandomNote]);
 
-    useEffect(() => {
-        const fetchPost = async () => {
-            try {
-                let blobUrl = slug.join("/");
-                if (slug.length > 0 && !blobUrl.endsWith(".md")) {
-                    blobUrl = `${blobUrl}/index.md`;
-                } else if (slug.length === 0) {
-                    blobUrl = "Home.md";
-                }
-
-                const url = getFileUrl(blobUrl);
-                const headers = {
-                    Accept: "application/vnd.github+json",
-                    Authorization: `Bearer ${CONFIG.GITHUB_TOKEN}`,
-                };
-
-                const response = await axios.get(url, { headers });
-
-                if (Array.isArray(response.data)) {
-                    const indexFile = response.data.find((f: any) => f.name === "index.md");
-                    if (indexFile) {
-                        const indexResponse = await axios.get(indexFile.url, { headers });
-                        const decodedContent = decodeBase64(indexResponse.data.content);
-                        const parsedPost = getPostContent(decodedContent);
-                        const firstH1Match = parsedPost.content.match(/^#\s+(.+)$/m);
-                        const contentTitle = firstH1Match ? firstH1Match[1] : null;
-                        const cleanContent = firstH1Match
-                            ? parsedPost.content.replace(/^#\s+.+$/m, '').trim()
-                            : parsedPost.content;
-                        setPost({ title: parsedPost.data.title || contentTitle || "Untitled", content: cleanContent, ...parsedPost.data });
-                    } else {
-                        router.push("/library/Home.md");
-                    }
-                } else {
-                    const decodedContent = decodeBase64(response.data.content);
-                    const parsedPost = getPostContent(decodedContent);
-                    const firstH1Match = parsedPost.content.match(/^#\s+(.+)$/m);
-                    const contentTitle = firstH1Match ? firstH1Match[1] : null;
-                    const cleanContent = firstH1Match
-                        ? parsedPost.content.replace(/^#\s+.+$/m, '').trim()
-                        : parsedPost.content;
-                    setPost({ title: parsedPost.data.title || contentTitle || "Untitled", content: cleanContent, ...parsedPost.data });
-                }
-            } catch (err) {
-                console.error(err);
-                router.push("/library/Home.md");
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        fetchPost();
-    }, [slug, router]);
-
-    if (loading) {
-        return (
-            <div className={`${dmSans.className} p-4 md:p-6 bg-zinc-50 min-h-screen`}>
-                <div className="max-w-3xl mx-auto">
-                    {/* Toolbar */}
-                    <div className="flex items-center justify-between mb-8">
-                        <div className="w-8 h-8 rounded-md bg-zinc-200 animate-pulse" />
-                        <div className="flex gap-2">
-                            <div className="w-8 h-8 rounded-lg bg-zinc-200 animate-pulse" />
-                            <div className="w-20 h-8 rounded-lg bg-zinc-200 animate-pulse" />
-                        </div>
-                    </div>
-                    {/* Title */}
-                    <div className="space-y-3 mb-8">
-                        <div className="h-8 w-3/4 rounded-md bg-zinc-200 animate-pulse" />
-                        <div className="h-4 w-1/2 rounded-md bg-zinc-100 animate-pulse" />
-                        <div className="flex gap-2 pt-1">
-                            <div className="h-4 w-16 rounded-full bg-zinc-100 animate-pulse" />
-                            <div className="h-4 w-20 rounded-full bg-zinc-100 animate-pulse" />
-                            <div className="h-4 w-14 rounded-full bg-zinc-100 animate-pulse" />
-                        </div>
-                    </div>
-                    {/* Body paragraphs */}
-                    <div className="space-y-6">
-                        {[1, 2, 3].map((i) => (
-                            <div key={i} className="space-y-2">
-                                <div className="h-4 w-full rounded bg-zinc-100 animate-pulse" />
-                                <div className="h-4 w-full rounded bg-zinc-100 animate-pulse" />
-                                <div className="h-4 w-5/6 rounded bg-zinc-100 animate-pulse" />
-                                <div className="h-4 w-4/5 rounded bg-zinc-100 animate-pulse" />
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </div>
-        );
-    }
-
-    if (!post) return null;
-
     const tags: string[] = Array.isArray(post.tags)
         ? post.tags
         : typeof post.tags === "string"
@@ -176,7 +75,13 @@ export default function LibraryPostContent({ slug, allNotes }: { slug: string[];
 
                 {/* Toolbar */}
                 <div className="flex items-center justify-between mb-8">
-                    <SidebarTrigger className="border border-zinc-200 bg-white shadow-sm text-zinc-600 hover:text-pink-500 hover:border-pink-200 transition-colors rounded-md p-1.5 h-auto w-auto" />
+                    <Link
+                        href="/library"
+                        className="inline-flex items-center gap-1.5 text-sm text-zinc-500 hover:text-pink-500 transition-colors"
+                    >
+                        <ArrowLeft className="size-4" />
+                        <span>library</span>
+                    </Link>
                     <div className="flex items-center gap-2">
                         <button
                             onClick={handleRandomNote}
