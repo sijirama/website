@@ -117,3 +117,11 @@ html {
         @apply bg-background text-foreground;
     }
 }
+
+@layer components {
+    .home-noise-bg {
+        position: relative;
+        isolation: isolate;
+        background: #ffffff;
+    }
+}

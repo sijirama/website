@@ -27,10 +27,10 @@ export default async function LibraryIndex() {
   const dirs = tree.filter(isDir).sort(byName).reverse();
 
   return (
-    <div className={`${dmSans.className} p-4 md:p-6 bg-zinc-50 min-h-screen`}>
-      <div className="max-w-3xl mx-auto">
+    <div className={`${dmSans.className} min-h-svh bg-white px-4 py-6 md:px-8 lg:flex lg:items-center`}>
+      <div className="w-full max-w-xl mx-auto">
         {/* header */}
-        <header className="mt-3 mb-8 flex items-start justify-between gap-4">
+        <header className="mb-8 flex items-start justify-between gap-4">
           <div>
             <h1
               className={`${manrope.className} text-3xl md:text-4xl font-bold tracking-tight text-zinc-900`}
@@ -83,7 +83,7 @@ export default async function LibraryIndex() {
         )}
 
         {/* folders */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-3 gap-y-7 max-w-xl">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-3 gap-y-7">
           {dirs.map((dir, i) => (
             <FolderSection key={dir.fullPath} dir={dir} flip={i % 2 === 0} />
           ))}
