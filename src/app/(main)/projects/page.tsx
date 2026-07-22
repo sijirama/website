@@ -65,9 +65,9 @@ const PINNED = [
 	"Danfo",
 	"Lumen",
 	"Scholic",
+	"Beacon",
 	"bbn-sim",
 	"naira-bert",
-	"Beacon",
 	"Soro",
 	"mnesh",
 ];
@@ -162,7 +162,7 @@ export default function ProjectsPage() {
 					with a peeled corner have media — tap it.
 				</p>
 
-				<div className="flex flex-col gap-3 mt-10 pb-24">
+				<div className="grid grid-cols-1 gap-3 mt-10 pb-24 md:grid-cols-2">
 					{ordered.map((project) => (
 						<ProjectCard
 							key={project.name}
@@ -201,12 +201,12 @@ function ProjectCard({
 	return (
 		<div
 			data-card
-			className="group relative flex min-h-[150px] flex-col overflow-hidden rounded-lg border border-zinc-200 bg-white/60 p-4 transition-all duration-200 hover:border-orange-300 hover:bg-white hover:shadow-[0_4px_20px_-8px_rgba(0,0,0,0.12)] md:min-h-[128px] md:p-5"
+			className="group relative flex min-h-[150px] flex-col overflow-hidden rounded-lg border border-zinc-200 bg-white/60 p-4 transition-all duration-200 hover:border-orange-300 hover:bg-white hover:shadow-[0_4px_20px_-8px_rgba(0,0,0,0.12)]"
 		>
-			<div className={`${gutter} md:pr-40`}>
+			<div className={gutter}>
 				{/* top row: name + status + deprecated */}
 				<div className="flex items-center gap-2 flex-wrap">
-					<h3 className="text-base font-semibold text-zinc-900 group-hover:text-orange-700 transition-colors md:text-lg">
+					<h3 className="text-sm font-semibold text-zinc-900 group-hover:text-orange-700 transition-colors">
 						{project.name}
 					</h3>
 					<span
@@ -246,7 +246,7 @@ function ProjectCard({
 				</div>
 
 				<p
-					className={`text-[12px] text-zinc-600 mt-3 leading-relaxed md:max-w-3xl md:text-[13px] ${project.deprecated ? "line-through decoration-zinc-300/70" : ""}`}
+					className={`text-[12px] text-zinc-600 mt-2.5 leading-snug ${project.deprecated ? "line-through decoration-zinc-300/70" : ""}`}
 				>
 					{project.description}
 				</p>
@@ -262,7 +262,7 @@ function ProjectCard({
 
 			{/* links */}
 			<div
-				className={`flex gap-2 flex-wrap items-center mt-auto pt-4 ${gutter} md:pr-40`}
+				className={`flex gap-2 flex-wrap items-center mt-auto pt-3 ${gutter}`}
 			>
 				{project.link && (
 					<ProjectLink href={project.link} label="live" kind="live" />
