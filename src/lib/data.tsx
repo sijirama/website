@@ -106,9 +106,9 @@ export const projects: Project[] = [
   {
     name: "Pico",
     description:
-      "a tiny ml framework from scratch in c++: tensors, reverse-mode autograd and backprop, built to understand them instead of trusting pytorch.",
+      "a tiny ml framework from scratch in c: tensors, reverse-mode autograd and backprop, built to understand them instead of trusting pytorch.",
     status: "ongoing",
-    technologies: ["C++"],
+    technologies: ["C"],
     github: "https://github.com/sijirama/pico",
   },
   {

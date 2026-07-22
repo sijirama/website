@@ -61,14 +61,14 @@ const techColors: Record<string, string> = {
 
 // pin these to the front, keep everything else in its current order
 const PINNED = [
+	"Pico",
+	"Danfo",
 	"Lumen",
 	"Scholic",
 	"bbn-sim",
 	"naira-bert",
 	"Beacon",
 	"Soro",
-	"Pico",
-	"Danfo",
 	"mnesh",
 ];
 
@@ -162,8 +162,7 @@ export default function ProjectsPage() {
 					with a peeled corner have media — tap it.
 				</p>
 
-				{/* one merged grid */}
-				<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 mt-10 pb-24">
+				<div className="flex flex-col gap-3 mt-10 pb-24">
 					{ordered.map((project) => (
 						<ProjectCard
 							key={project.name}
@@ -202,66 +201,68 @@ function ProjectCard({
 	return (
 		<div
 			data-card
-			className="group relative flex flex-col overflow-hidden rounded-lg border border-zinc-200 bg-white/60 p-3 transition-all duration-200 hover:border-orange-300 hover:bg-white hover:shadow-[0_4px_20px_-8px_rgba(0,0,0,0.12)]"
+			className="group relative flex min-h-[150px] flex-col overflow-hidden rounded-lg border border-zinc-200 bg-white/60 p-4 transition-all duration-200 hover:border-orange-300 hover:bg-white hover:shadow-[0_4px_20px_-8px_rgba(0,0,0,0.12)] md:min-h-[128px] md:p-5"
 		>
-			{/* top row: name + status + deprecated */}
-			<div className="flex items-center gap-2 flex-wrap">
-				<h3 className="text-sm font-semibold text-zinc-900 group-hover:text-orange-700 transition-colors">
-					{project.name}
-				</h3>
-				<span
-					className={`inline-flex items-center gap-1 text-[9px] font-medium border rounded px-1.5 py-px ${status.pill}`}
-				>
+			<div className={`${gutter} md:pr-40`}>
+				{/* top row: name + status + deprecated */}
+				<div className="flex items-center gap-2 flex-wrap">
+					<h3 className="text-base font-semibold text-zinc-900 group-hover:text-orange-700 transition-colors md:text-lg">
+						{project.name}
+					</h3>
 					<span
-						className={`h-1.5 w-1.5 rounded-full ${status.dot}`}
-					/>
-					{status.label}
-				</span>
-				{project.deprecated && (
-					<span className="text-[9px] uppercase tracking-wider text-rose-500/80 border border-rose-200 bg-rose-50 rounded px-1.5 py-px">
-						deprecated
+						className={`inline-flex items-center gap-1 text-[9px] font-medium border rounded px-1.5 py-px ${status.pill}`}
+					>
+						<span
+							className={`h-1.5 w-1.5 rounded-full ${status.dot}`}
+						/>
+						{status.label}
 					</span>
+					{project.deprecated && (
+						<span className="text-[9px] uppercase tracking-wider text-rose-500/80 border border-rose-200 bg-rose-50 rounded px-1.5 py-px">
+							deprecated
+						</span>
+					)}
+				</div>
+
+				{/* tech */}
+				<div className="flex items-center gap-1.5 flex-wrap mt-2">
+					{project.technologies.map((tech) => {
+						const color = techColors[tech] ?? "#d4d4d8";
+						return (
+							<span
+								key={tech}
+								className="inline-flex items-center gap-1 h-[18px] font-mono text-[9px] leading-none text-zinc-500 bg-zinc-100 rounded px-1.5"
+							>
+								<span
+									className="h-1.5 w-1.5 rounded-full shrink-0"
+									style={{ backgroundColor: color }}
+								/>
+								<span className="relative top-[0.5px]">
+									{tech}
+								</span>
+							</span>
+						);
+					})}
+				</div>
+
+				<p
+					className={`text-[12px] text-zinc-600 mt-3 leading-relaxed md:max-w-3xl md:text-[13px] ${project.deprecated ? "line-through decoration-zinc-300/70" : ""}`}
+				>
+					{project.description}
+				</p>
+
+				{project.note && (
+					<p
+						className={`${caveat.className} text-[15px] text-orange-500/80 leading-none mt-2 -rotate-1`}
+					>
+						↳ {project.note}
+					</p>
 				)}
 			</div>
 
-			{/* tech */}
-			<div className="flex items-center gap-1.5 flex-wrap mt-2">
-				{project.technologies.map((tech) => {
-					const color = techColors[tech] ?? "#d4d4d8";
-					return (
-						<span
-							key={tech}
-							className="inline-flex items-center gap-1 h-[18px] font-mono text-[9px] leading-none text-zinc-500 bg-zinc-100 rounded px-1.5"
-						>
-							<span
-								className="h-1.5 w-1.5 rounded-full shrink-0"
-								style={{ backgroundColor: color }}
-							/>
-							<span className="relative top-[0.5px]">
-								{tech}
-							</span>
-						</span>
-					);
-				})}
-			</div>
-
-			<p
-				className={`text-[12px] text-zinc-600 mt-2.5 leading-snug ${project.deprecated ? "line-through decoration-zinc-300/70" : ""}`}
-			>
-				{project.description}
-			</p>
-
-			{project.note && (
-				<p
-					className={`${caveat.className} text-[15px] text-orange-500/80 leading-none mt-2 -rotate-1 ${gutter}`}
-				>
-					↳ {project.note}
-				</p>
-			)}
-
 			{/* links */}
 			<div
-				className={`flex gap-2 flex-wrap items-center mt-auto pt-3 ${gutter}`}
+				className={`flex gap-2 flex-wrap items-center mt-auto pt-4 ${gutter} md:pr-40`}
 			>
 				{project.link && (
 					<ProjectLink href={project.link} label="live" kind="live" />
