@@ -2,12 +2,10 @@
 
 import {
 	useEffect,
-	useLayoutEffect,
 	useMemo,
 	useRef,
 	useState,
 } from "react";
-import gsap from "gsap";
 import Header from "@/components/Header";
 import { manrope, caveat } from "@/lib/fonts";
 import {
@@ -16,10 +14,6 @@ import {
 	type ProjectStatus,
 	type MediaItem,
 } from "@/lib/data";
-
-// useLayoutEffect on the client, useEffect on the server (avoids SSR warning)
-const useIsomorphicLayoutEffect =
-	typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
 const statusMeta: Record<
 	ProjectStatus,
@@ -85,7 +79,6 @@ type Slide = {
 };
 
 export default function ProjectsPage() {
-	const containerRef = useRef<HTMLDivElement>(null);
 	const [openIndex, setOpenIndex] = useState<number | null>(null);
 
 	const ordered = useMemo<Project[]>(() => {
@@ -114,28 +107,10 @@ export default function ProjectsPage() {
 		return { slides, firstSlideOf };
 	}, [ordered]);
 
-	useIsomorphicLayoutEffect(() => {
-		const ctx = gsap.context(() => {
-			const cards = gsap.utils.toArray<HTMLElement>("[data-card]");
-			if (!cards.length) return;
-			gsap.set(cards, { opacity: 0, y: 24 });
-			gsap.to(cards, {
-				opacity: 1,
-				y: 0,
-				duration: 0.6,
-				ease: "power3.out",
-				stagger: 0.06,
-				overwrite: "auto",
-			});
-		}, containerRef);
-		return () => ctx.revert();
-	}, []);
-
 	return (
 		<main className="h-full overflow-x-hidden flex flex-col">
 			<Header />
 			<div
-				ref={containerRef}
 				className={`${manrope.className} px-4 md:px-8 w-full mt-2 md:mt-3 md:max-w-5xl lg:max-w-6xl mx-auto text-zinc-900`}
 			>
 				<a
