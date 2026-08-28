@@ -13,14 +13,14 @@ import { manrope } from "@/lib/fonts";
 
 const links = [
 	{
-		label: "library",
-		href: "/library",
-		icon: BookOpen,
-	},
-	{
 		label: "projects",
 		href: "/projects",
 		icon: Folder,
+	},
+	{
+		label: "library",
+		href: "/library",
+		icon: BookOpen,
 	},
 	{
 		label: "portfolio",
@@ -45,6 +45,24 @@ const socials = [
 		label: "email",
 		href: "mailto:gbemilesanmi@gmail.com",
 		icon: Mail,
+	},
+];
+
+const featuredProjects = [
+	{
+		name: "muna",
+		href: "https://onmuna.com",
+		description: "a private-beta general agent assistant for friends.",
+	},
+	{
+		name: "pico",
+		href: "https://github.com/sijirama/pico",
+		description: "a tiny ml framework in c, built to learn autograd.",
+	},
+	{
+		name: "scholic",
+		href: "https://scholic.com",
+		description: "social annotation for highlights and threaded notes.",
 	},
 ];
 
@@ -77,15 +95,15 @@ export default function Landing() {
 
 	return (
 		<section
-			className={`w-full text-zinc-900 ${manrope.className} text-[13px] leading-relaxed lg:text-sm`}
+			className={`w-full text-zinc-900 ${manrope.className} text-sm leading-relaxed`}
 		>
-			<div className="w-full space-y-6">
+			<div className="w-full space-y-5">
 				<div className="flex items-start justify-between gap-4">
 					<div className="space-y-1">
-						<h1 className="text-sm font-semibold leading-none text-zinc-950 lg:text-base">
-							Oluwasijibomi<span className="text-orange-500">.</span>
+						<h1 className="text-base font-medium leading-none text-zinc-950 lg:text-lg">
+							oluwasijibomi<span className="text-orange-500">.</span>
 						</h1>
-						<p className="text-zinc-500">software engineer based in Lagos.</p>
+						<p className="text-zinc-700">software engineer based in lagos.</p>
 					</div>
 
 					<div className="flex shrink-0 items-center gap-1.5">
@@ -96,15 +114,15 @@ export default function Landing() {
 								target={href.startsWith("http") ? "_blank" : undefined}
 								rel={href.startsWith("http") ? "noreferrer" : undefined}
 								aria-label={label}
-								className="inline-flex h-7 w-7 items-center justify-center rounded-md text-zinc-500 transition-colors hover:bg-zinc-100 hover:text-zinc-950"
+								className="inline-flex h-8 w-8 items-center justify-center rounded-md text-zinc-600 transition-colors hover:bg-zinc-100 hover:text-zinc-950"
 							>
-								<Icon className="h-3.5 w-3.5" aria-hidden="true" />
+								<Icon className="h-4 w-4" aria-hidden="true" />
 							</a>
 						))}
 					</div>
 				</div>
 
-				<div className="space-y-2.5 text-zinc-600">
+				<div className="space-y-2 text-zinc-800">
 					<p>
 						i work across the fullstack, but i prefer backend work: business
 						logic, infrastructure, and the systems underneath the product.
@@ -120,6 +138,31 @@ export default function Landing() {
 					</p>
 				</div>
 
+				<section className="space-y-1.5 pt-0.5" aria-labelledby="featured-projects">
+					<p
+						id="featured-projects"
+						className="text-sm text-zinc-950"
+					>
+						a few projects i'm currently working on:
+					</p>
+
+					<ul className="list-disc space-y-1 pl-5 marker:text-zinc-500">
+						{featuredProjects.map((project) => (
+							<li key={project.name} className="text-sm leading-relaxed text-zinc-700">
+								<a
+									href={project.href}
+									target={project.href.startsWith("http") ? "_blank" : undefined}
+									rel={project.href.startsWith("http") ? "noreferrer" : undefined}
+									className="text-zinc-950 underline decoration-zinc-300 underline-offset-2 transition-colors hover:text-orange-800 hover:decoration-orange-300"
+								>
+									{project.name}
+								</a>
+								<span> - {project.description}</span>
+							</li>
+						))}
+					</ul>
+				</section>
+
 				<nav className="flex flex-wrap gap-2 pt-1" aria-label="Homepage links">
 					{links.map(({ label, href, icon: Icon, external }) => (
 						<a
@@ -127,7 +170,7 @@ export default function Landing() {
 							href={href}
 							target={external ? "_blank" : undefined}
 							rel={external ? "noreferrer" : undefined}
-							className="inline-flex h-8 items-center gap-1.5 rounded-md border border-zinc-200 bg-white px-3 text-[12px] text-zinc-700 transition-colors hover:border-orange-300 hover:bg-orange-50 hover:text-zinc-950"
+							className="inline-flex h-8 items-center gap-1.5 rounded-md border border-zinc-200 bg-white/90 px-3 text-[12px] text-zinc-800 transition-colors hover:border-orange-300 hover:bg-white hover:text-orange-800"
 						>
 							<Icon className="h-3.5 w-3.5" aria-hidden="true" />
 							<span>{label}</span>

@@ -122,6 +122,33 @@ html {
     .home-noise-bg {
         position: relative;
         isolation: isolate;
-        background: #ffffff;
+        background: transparent;
+    }
+
+    .home-noise-bg::before {
+        content: "";
+        position: fixed;
+        inset: -24px;
+        z-index: 0;
+        background-image: url("https://i.pinimg.com/736x/af/e8/82/afe882745b8cdc126a368578465f9965.jpg");
+        background-position: center;
+        background-size: cover;
+        filter: blur(30px) saturate(0.9);
+        opacity: 0.18;
+        transform: scale(1.04);
+    }
+
+    .home-noise-bg::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: 1;
+        background: rgba(255, 255, 255, 0.76);
+        pointer-events: none;
+    }
+
+    .home-noise-bg > * {
+        position: relative;
+        z-index: 2;
     }
 }

@@ -8,7 +8,7 @@ export default function Home() {
       <div className="lg:hidden">
         <Header />
       </div>
-      <div className="relative z-10 px-4 md:px-8 w-full mt-3 md:mt-4 lg:mt-0 max-w-xl mx-auto lg:min-h-svh lg:flex lg:items-center">
+      <div className="relative z-10 px-4 md:px-8 w-full mt-3 md:mt-4 lg:mt-0 max-w-[34rem] mx-auto lg:min-h-svh lg:flex lg:items-center lg:py-12">
         <LandingPage />
       </div>
     </main>

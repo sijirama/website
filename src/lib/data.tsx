@@ -95,7 +95,7 @@ export interface Project {
 export const projects: Project[] = [
   // ───────────── ongoing ─────────────
   {
-    name: "Soro",
+    name: "soro",
     description:
       "an interpreter for a language whose keywords are broken english (pidgin). bytecode compiler + stack vm, started in zig, now rewriting in c.",
     status: "ongoing",
@@ -104,7 +104,7 @@ export const projects: Project[] = [
     note: "my forever side project",
   },
   {
-    name: "Pico",
+    name: "pico",
     description:
       "a tiny ml framework from scratch in c: tensors, reverse-mode autograd and backprop, built to understand them instead of trusting pytorch.",
     status: "ongoing",
@@ -112,12 +112,20 @@ export const projects: Project[] = [
     github: "https://github.com/sijirama/pico",
   },
   {
-    name: "Danfo",
+    name: "danfo",
     description:
       "transit infrastructure over lagos' informal danfo network with no gps on the buses. the bet: instrument the riders, not the vehicles, and infer routes and stops from their telemetry.",
     status: "ongoing",
     technologies: ["Golang", "TypeScript"],
     link: "https://danfo.ng",
+  },
+  {
+    name: "muna",
+    description:
+      "a private-beta general agent assistant currently used by a small circle of friends.",
+    status: "ongoing",
+    technologies: ["TypeScript"],
+    link: "https://onmuna.com",
   },
 
   // ───────────── research ─────────────
@@ -148,7 +156,7 @@ export const projects: Project[] = [
 
   // ───────────── completed ─────────────
   {
-    name: "Scholic",
+    name: "scholic",
     description:
       "a social annotation platform: chrome extension + web app for highlighting and threading discussions over any page. margins and book clubs for the whole web.",
     status: "completed",
@@ -175,7 +183,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    name: "Beacon",
+    name: "beacon",
     description:
       "a self-hosted event relay that fans events out to any notification channel you want, no third-party saas in the loop.",
     status: "completed",
@@ -195,7 +203,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    name: "Lumen",
+    name: "lumen",
     description:
       "a screen-aware ai agent for linux. desktop chat with tool access to your obsidian vault, gmail, calendar and screen, and it acts on them. built on gemini, one-line install.",
     status: "completed",
@@ -227,7 +235,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    name: "Voxel",
+    name: "voxel",
     description:
       "a lightweight clipboard manager for linux. a go clipboard watcher that persists history to sqlite, with a react ui to search back through it.",
     status: "completed",

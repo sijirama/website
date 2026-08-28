@@ -55,14 +55,15 @@ const techColors: Record<string, string> = {
 
 // pin these to the front, keep everything else in its current order
 const PINNED = [
-	"Pico",
-	"Danfo",
-	"Lumen",
-	"Scholic",
-	"Beacon",
+	"pico",
+	"danfo",
+	"muna",
+	"lumen",
+	"scholic",
+	"beacon",
 	"bbn-sim",
 	"naira-bert",
-	"Soro",
+	"soro",
 	"mnesh",
 ];
 
@@ -508,7 +509,7 @@ function ProjectLink({
 }) {
 	return (
 		<a href={href} target="_blank" rel="noopener noreferrer">
-			<span className="inline-flex items-center gap-1 text-[10px] text-zinc-600 border border-zinc-300 rounded-md pl-1.5 pr-2 py-0.5 hover:border-orange-400 hover:bg-orange-50 hover:text-orange-700 transition-colors duration-200">
+				<span className="inline-flex items-center gap-1 text-[10px] text-zinc-600 border border-zinc-300 rounded-md pl-1.5 pr-2 py-0.5 hover:border-orange-400 hover:bg-white hover:text-orange-700 transition-colors duration-200">
 				<LinkIcon kind={kind} />
 				{label}
 			</span>
