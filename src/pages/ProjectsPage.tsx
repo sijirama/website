@@ -1,12 +1,9 @@
-"use client";
-
 import {
 	useEffect,
 	useMemo,
 	useRef,
 	useState,
 } from "react";
-import Header from "@/components/Header";
 import { manrope, caveat } from "@/lib/fonts";
 import {
 	projects,
@@ -58,6 +55,8 @@ const PINNED = [
 	"pico",
 	"danfo",
 	"muna",
+	"sonar",
+	"ferno",
 	"lumen",
 	"scholic",
 	"beacon",
@@ -77,6 +76,24 @@ type Slide = {
 	projectName: string;
 	item: MediaItem;
 	isFirstOfProject: boolean;
+};
+
+const markStyles: Record<string, { background: string; color: string }> = {
+	soro: { background: "#e8e4ff", color: "#5146a8" },
+	pico: { background: "#dff4ff", color: "#16749b" },
+	danfo: { background: "#fff0c7", color: "#9a6900" },
+	muna: { background: "#ffe3ed", color: "#b33d6c" },
+	sonar: { background: "#dff7ef", color: "#14795b" },
+	ferno: { background: "#ffe4d7", color: "#a74922" },
+	mnesh: { background: "#e9e7ff", color: "#6354b4" },
+	"bbn-sim": { background: "#f0e4ff", color: "#8045a7" },
+	scholic: { background: "#e1efff", color: "#2667a8" },
+	beacon: { background: "#fff0d9", color: "#a15d18" },
+	lumen: { background: "#e4edff", color: "#3b62a8" },
+	voxel: { background: "#e9e9e9", color: "#525252" },
+	"naira-bert": { background: "#e1f4e5", color: "#347449" },
+	jason: { background: "#fff1d9", color: "#9a671d" },
+	"sweep.nvim": { background: "#e8e8ff", color: "#5656a4" },
 };
 
 export default function ProjectsPage() {
@@ -110,7 +127,6 @@ export default function ProjectsPage() {
 
 	return (
 		<main className="h-full overflow-x-hidden flex flex-col">
-			<Header />
 			<div
 				className={`${manrope.className} px-4 md:px-8 w-full mt-2 md:mt-3 md:max-w-5xl lg:max-w-6xl mx-auto text-zinc-900`}
 			>
@@ -173,6 +189,7 @@ function ProjectCard({
 	const status = statusMeta[project.status];
 	const hasMedia = Boolean(project.media?.length);
 	const gutter = hasMedia ? "pr-[96px]" : "";
+	const mark = markStyles[project.name] ?? { background: "#f1f1f1", color: "#525252" };
 
 	return (
 		<div
@@ -182,6 +199,13 @@ function ProjectCard({
 			<div className={gutter}>
 				{/* top row: name + status + deprecated */}
 				<div className="flex items-center gap-2 flex-wrap">
+					<div
+						className="grid h-8 w-8 shrink-0 place-items-center rounded-md text-[10px] font-bold tracking-tight"
+						style={{ backgroundColor: mark.background, color: mark.color }}
+						aria-hidden="true"
+					>
+						{project.name.replace(/[^a-z]/gi, "").slice(0, 2).toUpperCase()}
+					</div>
 					<h3 className="text-sm font-semibold text-zinc-900 group-hover:text-orange-700 transition-colors">
 						{project.name}
 					</h3>

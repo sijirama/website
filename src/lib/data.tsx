@@ -127,6 +127,20 @@ export const projects: Project[] = [
     technologies: ["TypeScript"],
     link: "https://onmuna.com",
   },
+  {
+    name: "sonar",
+    description: "a project in progress.",
+    status: "ongoing",
+    technologies: ["TypeScript"],
+    link: "https://sonar.ng",
+  },
+  {
+    name: "ferno",
+    description: "a project in progress.",
+    status: "ongoing",
+    technologies: ["TypeScript"],
+    link: "https://useferno.com",
+  },
 
   // ───────────── research ─────────────
   {

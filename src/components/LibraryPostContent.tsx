@@ -1,10 +1,8 @@
-"use client";
 import React, { useEffect, useCallback } from "react";
 import { caveat, dmSans, manrope } from "@/lib/fonts";
 import Markdown from "markdown-to-jsx";
 import { PreBlock } from "@/lib/syntaxhighlight";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { Link, useNavigate } from "react-router-dom";
 import { Share2, Check, Shuffle, ArrowLeft } from "lucide-react";
 
 interface PostData {
@@ -31,7 +29,7 @@ function HandwrittenBlockquote({ children }: { children: React.ReactNode }) {
 
 export default function LibraryPostContent({ post, allNotes }: { post: PostData; allNotes?: string[] }) {
     const [copied, setCopied] = React.useState(false);
-    const router = useRouter();
+    const navigate = useNavigate();
 
     const handleShare = async () => {
         const url = window.location.href;
@@ -43,9 +41,9 @@ export default function LibraryPostContent({ post, allNotes }: { post: PostData;
     const handleRandomNote = useCallback(() => {
         if (allNotes && allNotes.length > 0) {
             const randomIndex = Math.floor(Math.random() * allNotes.length);
-            router.push(`/library/${allNotes[randomIndex]}`);
+            navigate(`/library/${allNotes[randomIndex]}`);
         }
-    }, [allNotes, router]);
+    }, [allNotes, navigate]);
 
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
@@ -76,7 +74,7 @@ export default function LibraryPostContent({ post, allNotes }: { post: PostData;
                 {/* Toolbar */}
                 <div className="flex items-center justify-between mb-8">
                     <Link
-                        href="/library"
+                        to="/library"
                         className="inline-flex items-center gap-1.5 text-sm text-zinc-500 hover:text-pink-500 transition-colors"
                     >
                         <ArrowLeft className="size-4" />
