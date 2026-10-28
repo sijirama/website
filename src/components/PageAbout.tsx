@@ -9,7 +9,11 @@ import {
   Twitter,
 } from "lucide-react";
 import { manrope } from "@/lib/fonts";
-import { GITHUB_CONTRIBUTIONS_URL, GITHUB_USERNAME, TOP_MEDIA_URL } from "@/lib/site";
+import {
+  GITHUB_CONTRIBUTIONS_URL,
+  GITHUB_USERNAME,
+  TOP_MEDIA_URL,
+} from "@/lib/site";
 
 const links = [
   { label: "projects", href: "/projects", icon: Folder },
@@ -24,15 +28,40 @@ const links = [
 
 const socials = [
   { label: "github", href: "https://github.com/sijirama", icon: Github },
-  { label: "twitter", href: "https://twitter.com/oluwasijirama", icon: Twitter },
+  {
+    label: "twitter",
+    href: "https://twitter.com/oluwasijirama",
+    icon: Twitter,
+  },
 ];
 
 const featuredProjects = [
-  { name: "ferno", href: "https://useferno.com", description: "agentic product analytics for finding problems and patterns." },
-  { name: "pico", href: "https://github.com/sijirama/pico", description: "a tiny ml framework in c, built from scratch to learn autograd." },
-  { name: "sonar", href: "https://sonar.ng", description: "real-time community safety alerts and emergency reporting." },
-  { name: "scholic", href: "https://scholic.com", description: "social annotation for highlights and threaded discussions." },
-  { name: "muna", href: "https://onmuna.com", description: "a private-beta general agent assistant for friends." },
+  {
+    name: "ferno",
+    href: "https://useferno.com",
+    description: "agentic product analytics for finding problems and patterns.",
+  },
+  {
+    name: "pico",
+    href: "https://github.com/sijirama/pico",
+    description:
+      "a tiny ml framework in c, built from scratch to learn autograd.",
+  },
+  {
+    name: "sonar",
+    href: "https://sonar.ng",
+    description: "real-time community safety alerts and emergency reporting.",
+  },
+  {
+    name: "scholic",
+    href: "https://scholic.com",
+    description: "social annotation for highlights and threaded discussions.",
+  },
+  {
+    name: "muna",
+    href: "https://onmuna.com",
+    description: "a private-beta general agent assistant for friends.",
+  },
 ];
 
 const projectMarks: Record<string, { background: string; color: string }> = {
@@ -61,7 +90,10 @@ function GitHubGraph() {
       });
   }, []);
 
-  const visibleContributions = contributions.filter((contribution) => contribution.date <= new Date().toISOString().slice(0, 10));
+  const visibleContributions = contributions.filter(
+    (contribution) =>
+      contribution.date <= new Date().toISOString().slice(0, 10),
+  );
   const weeks = [];
   for (let index = 0; index < visibleContributions.length; index += 7) {
     weeks.push(visibleContributions.slice(index, index + 7));
@@ -76,14 +108,23 @@ function GitHubGraph() {
         <span>{total.toLocaleString()} contributions in 2026</span>
       </div>
       {weeks.length > 0 ? (
-        <div className="grid grid-flow-col grid-rows-7 gap-1 pb-1" style={{ gridTemplateColumns: `repeat(${weeks.length}, minmax(0, 1fr))` }}>
+        <div
+          className="grid grid-flow-col grid-rows-7 gap-1 pb-1"
+          style={{
+            gridTemplateColumns: `repeat(${weeks.length}, minmax(0, 1fr))`,
+          }}
+        >
           {weeks.flatMap((week) =>
             Array.from({ length: 7 }, (_, day) => {
               const contribution = week[day];
               return (
                 <span
                   key={contribution?.date ?? `${week[0]?.date}-${day}`}
-                  title={contribution ? `${contribution.count} contributions on ${contribution.date}` : undefined}
+                  title={
+                    contribution
+                      ? `${contribution.count} contributions on ${contribution.date}`
+                      : undefined
+                  }
                   className={`aspect-square w-full rounded-[3px] ${
                     contribution?.level === 4
                       ? "bg-emerald-700"
@@ -105,7 +146,11 @@ function GitHubGraph() {
       )}
       <div className="mt-3 flex justify-between text-[10px] text-zinc-400">
         <span>Jan</span>
-        <span>{new Intl.DateTimeFormat(undefined, { month: "short" }).format(new Date())}</span>
+        <span>
+          {new Intl.DateTimeFormat(undefined, { month: "short" }).format(
+            new Date(),
+          )}
+        </span>
       </div>
     </div>
   );
@@ -128,10 +173,15 @@ export default function Landing() {
   }, []);
 
   return (
-    <section className={`w-full text-zinc-900 ${manrope.className} text-sm leading-relaxed`}>
+    <section
+      className={`w-full text-zinc-900 ${manrope.className} text-sm leading-relaxed`}
+    >
       <div className="w-full space-y-6">
         <div className="space-y-3">
-          <nav className="flex items-center justify-end gap-1.5" aria-label="Primary navigation">
+          <nav
+            className="flex items-center justify-end gap-1.5"
+            aria-label="Primary navigation"
+          >
             {links.map(({ label, href, icon: Icon, external }) => (
               <a
                 key={label}
@@ -140,7 +190,10 @@ export default function Landing() {
                 rel={external ? "noreferrer" : undefined}
                 className="group inline-flex items-center gap-1.5 rounded-md border border-zinc-200 bg-zinc-50 px-2.5 py-1.5 text-xs text-zinc-600 transition-colors hover:border-zinc-300 hover:bg-zinc-100 hover:text-zinc-950"
               >
-                <Icon className="h-3.5 w-3.5 text-zinc-400 transition-colors group-hover:text-zinc-700" aria-hidden="true" />
+                <Icon
+                  className="h-3.5 w-3.5 text-zinc-400 transition-colors group-hover:text-zinc-700"
+                  aria-hidden="true"
+                />
                 {label}
               </a>
             ))}
@@ -155,11 +208,20 @@ export default function Landing() {
         </div>
 
         <div className="flex items-center gap-3">
-          <img src="/images/landing.jpeg" alt="Oluwasijibomi" className="h-14 w-14 rounded-xl border border-zinc-200 object-cover" />
+          <img
+            src="/images/landing.jpeg"
+            alt="Oluwasijibomi"
+            className="h-14 w-14 rounded-xl border border-zinc-200 object-cover"
+          />
           <div className="min-w-0">
             <div className="flex items-center gap-1.5">
-              <h1 className="text-lg font-semibold leading-tight text-zinc-950">Oluwasijibomi</h1>
-              <BadgeCheck className="h-4 w-4 fill-sky-500 text-white" aria-label="verified" />
+              <h1 className="text-lg font-semibold leading-tight text-zinc-950">
+                Oluwasijibomi
+              </h1>
+              <BadgeCheck
+                className="h-4 w-4 fill-sky-500 text-white"
+                aria-label="verified"
+              />
             </div>
             <p className="text-sm text-zinc-500">fullstack software engineer</p>
           </div>
@@ -174,7 +236,14 @@ export default function Landing() {
           </div>
           <div className="flex items-center gap-1">
             {socials.map(({ label, href, icon: Icon }) => (
-              <a key={label} href={href} target="_blank" rel="noreferrer" aria-label={label} className="inline-flex h-8 w-8 items-center justify-center rounded-md border border-zinc-200 bg-zinc-50 text-zinc-500 transition-colors hover:border-zinc-300 hover:bg-zinc-100 hover:text-zinc-950">
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={label}
+                className="inline-flex h-8 w-8 items-center justify-center rounded-md border border-zinc-200 bg-zinc-50 text-zinc-500 transition-colors hover:border-zinc-300 hover:bg-zinc-100 hover:text-zinc-950"
+              >
                 <Icon className="h-4 w-4" aria-hidden="true" />
               </a>
             ))}
@@ -183,26 +252,37 @@ export default function Landing() {
 
         <div className="space-y-3 text-[15px] leading-[1.55] text-zinc-600">
           <p>
-            i work across the fullstack, but i prefer backend work: business logic, infrastructure, and the systems underneath the product.
+            i work across the fullstack, but i prefer backend work: business
+            logic, infrastructure, and the systems underneath the product.
           </p>
           <p>
-            lately, most of my spare time has been going into math, ai/ml, and research-y engineering: reading papers, building small systems, and trying to move closer to that kind of work.
-          </p>
-          <p>
-            i also write notes sometimes, keep a few side projects alive, and occasionally document whatever i am learning or thinking through.
+            lately, most of my spare time has been going into math, ai/ml, and
+            research-y engineering: reading papers, building small systems, and
+            trying to move closer to that kind of work.
           </p>
         </div>
 
         <section className="space-y-4 pt-2" aria-labelledby="featured-projects">
           <div className="flex items-center justify-between text-xs text-zinc-500">
-            <p id="featured-projects">work <span className="ml-1 text-zinc-300">/</span> <span className="ml-1 tabular-nums">{String(featuredProjects.length).padStart(2, "0")}</span></p>
-            <a href="/projects" className="inline-flex items-center gap-1 transition-colors hover:text-zinc-950">
+            <p id="featured-projects">
+              work <span className="ml-1 text-zinc-300">/</span>{" "}
+              <span className="ml-1 tabular-nums">
+                {String(featuredProjects.length).padStart(2, "0")}
+              </span>
+            </p>
+            <a
+              href="/projects"
+              className="inline-flex items-center gap-1 transition-colors hover:text-zinc-950"
+            >
               all work <ArrowUpRight className="h-3 w-3" aria-hidden="true" />
             </a>
           </div>
           <ul className="space-y-3">
             {featuredProjects.map((project) => (
-              <li key={project.name} className="group flex items-center gap-3 text-sm text-zinc-600">
+              <li
+                key={project.name}
+                className="group flex items-center gap-3 text-sm text-zinc-600"
+              >
                 <span
                   className="grid h-11 w-11 shrink-0 place-items-center rounded-xl text-[10px] font-bold tracking-tight transition-transform duration-200 group-hover:scale-[1.04]"
                   style={projectMarks[project.name]}
@@ -211,29 +291,52 @@ export default function Landing() {
                   {project.name.slice(0, 2).toUpperCase()}
                 </span>
                 <span className="min-w-0 flex-1">
-                  <a href={project.href} target="_blank" rel="noreferrer" className="block font-medium text-zinc-950 transition-colors hover:text-orange-800">
+                  <a
+                    href={project.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="block font-medium text-zinc-950 transition-colors hover:text-orange-800"
+                  >
                     {project.name}
                   </a>
-                  <span className="block line-clamp-2 text-[13px] leading-5 text-zinc-500">{project.description}</span>
+                  <span className="block line-clamp-2 text-[13px] leading-5 text-zinc-500">
+                    {project.description}
+                  </span>
                 </span>
-                <ArrowUpRight className="h-4 w-4 shrink-0 text-zinc-400 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-zinc-950" aria-hidden="true" />
+                <ArrowUpRight
+                  className="h-4 w-4 shrink-0 text-zinc-400 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-zinc-950"
+                  aria-hidden="true"
+                />
               </li>
             ))}
           </ul>
         </section>
 
-        <section className="space-y-4 pt-4" aria-labelledby="github-contributions">
+        <section
+          className="space-y-4 pt-4"
+          aria-labelledby="github-contributions"
+        >
           <div className="flex items-center justify-between text-xs text-zinc-500">
             <p id="github-contributions">github</p>
-            <a href={`https://github.com/${GITHUB_USERNAME}`} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 transition-colors hover:text-zinc-950">
-              @{GITHUB_USERNAME} <ArrowUpRight className="h-3 w-3" aria-hidden="true" />
+            <a
+              href={`https://github.com/${GITHUB_USERNAME}`}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1 transition-colors hover:text-zinc-950"
+            >
+              @{GITHUB_USERNAME}{" "}
+              <ArrowUpRight className="h-3 w-3" aria-hidden="true" />
             </a>
           </div>
-          <a href={`https://github.com/${GITHUB_USERNAME}`} target="_blank" rel="noreferrer" className="block transition-colors hover:border-zinc-300">
+          <a
+            href={`https://github.com/${GITHUB_USERNAME}`}
+            target="_blank"
+            rel="noreferrer"
+            className="block transition-colors hover:border-zinc-300"
+          >
             <GitHubGraph />
           </a>
         </section>
-
       </div>
     </section>
   );
