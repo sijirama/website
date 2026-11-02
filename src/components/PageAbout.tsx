@@ -4,7 +4,6 @@ import {
   BadgeCheck,
   BookOpen,
   BriefcaseBusiness,
-  Folder,
   Github,
   Twitter,
 } from "lucide-react";
@@ -15,7 +14,6 @@ import {
 } from "@/lib/site";
 
 const links = [
-  { label: "projects", href: "/projects", icon: Folder },
   { label: "library", href: "/library", icon: BookOpen },
   {
     label: "portfolio",
@@ -39,6 +37,7 @@ const featuredProjects = [
     name: "ferno",
     href: "https://useferno.com",
     description: "agentic product analytics for finding problems and patterns.",
+    icon: "/images/ferno-icon-512.png",
   },
   {
     name: "pico",
@@ -177,6 +176,10 @@ export default function Landing() {
     >
       <div className="w-full space-y-6">
         <div className="space-y-3">
+          <div
+            className="h-44 w-full md:h-52"
+            aria-hidden="true"
+          />
           <nav
             className="flex items-center justify-end gap-1.5"
             aria-label="Primary navigation"
@@ -197,10 +200,6 @@ export default function Landing() {
               </a>
             ))}
           </nav>
-          <div
-            className="h-44 w-full md:h-52"
-            aria-hidden="true"
-          />
         </div>
 
         <div className="flex items-center gap-3">
@@ -267,10 +266,12 @@ export default function Landing() {
               </span>
             </p>
             <a
-              href="/projects"
+              href="https://useferno.com"
+              target="_blank"
+              rel="noreferrer"
               className="inline-flex items-center gap-1 transition-colors hover:text-zinc-950"
             >
-              all work <ArrowUpRight className="h-3 w-3" aria-hidden="true" />
+              featured <ArrowUpRight className="h-3 w-3" aria-hidden="true" />
             </a>
           </div>
           <ul className="space-y-3">
@@ -284,7 +285,15 @@ export default function Landing() {
                   style={projectMarks[project.name]}
                   aria-hidden="true"
                 >
-                  {project.name.slice(0, 2).toUpperCase()}
+                  {"icon" in project && project.icon ? (
+                    <img
+                      src={project.icon}
+                      alt=""
+                      className="h-full w-full rounded-xl object-cover"
+                    />
+                  ) : (
+                    project.name.slice(0, 2).toUpperCase()
+                  )}
                 </span>
                 <span className="min-w-0 flex-1">
                   <a

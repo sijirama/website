@@ -1,6 +1,5 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Home from "@/pages/HomePage";
-import ProjectsPage from "@/pages/ProjectsPage";
 import LibraryPage from "@/pages/LibraryPage";
 import LibraryNotePage from "@/pages/LibraryNotePage";
 
@@ -12,7 +11,6 @@ function PortfolioRedirect() {
 export default function App() {
   return <BrowserRouter><Routes>
     <Route path="/" element={<Home />} />
-    <Route path="/projects" element={<ProjectsPage />} />
     <Route path="/portfolio" element={<PortfolioRedirect />} />
     <Route path="/library" element={<LibraryPage />} />
     <Route path="/library/*" element={<LibraryNotePage />} />
