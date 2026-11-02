@@ -12,7 +12,6 @@ import { manrope } from "@/lib/fonts";
 import {
   GITHUB_CONTRIBUTIONS_URL,
   GITHUB_USERNAME,
-  TOP_MEDIA_URL,
 } from "@/lib/site";
 
 const links = [
@@ -198,13 +197,10 @@ export default function Landing() {
               </a>
             ))}
           </nav>
-          <div className="h-44 w-full md:h-52">
-            <img
-              src={TOP_MEDIA_URL}
-              alt="animated pond scene"
-              className="h-full w-full rounded-xl object-cover"
-            />
-          </div>
+          <div
+            className="h-44 w-full md:h-52"
+            aria-hidden="true"
+          />
         </div>
 
         <div className="flex items-center gap-3">
